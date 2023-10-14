@@ -1,14 +1,18 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import {Link} from "react-router-dom"
+import AuthContext from '../../context/AuthContext'
 
 const LoginPage = () => {
+  let {loginUser} = useContext(AuthContext)
+
+
   return (
     <section className="bg-center bg-cover bg-no-repeat bg-[url('/self-learning.jpg')]">
   <div className="w-full flex flex-wrap justify-center items-center py-24 px-6">
   {/* Text on the left */}
   <div className="w-full sm:w-1/2 p-4 text-center">
     <h1 className="text-3xl font-bold text-gray-200 dark:text-white">
-      Welcome to Our E-Learning Platform
+      Welcome to Skill Savant
     </h1>
     <p className="mt-4 text-lg text-gray-200 dark:text-gray-300">
       Discover a world of knowledge and unlock your potential.
@@ -17,9 +21,9 @@ const LoginPage = () => {
 
   {/* Login card on the right */}
   <div className="w-full sm:w-1/2 max-w-sm p-4  bg-white bg-opacity-70 border-white/80 rounded-lg shadow-md sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700 backdrop-blur-2xl backdrop-saturate-200">
-    <form className="space-y-6" action="#">
+    <form className="space-y-6" onSubmit={loginUser}>
       <h5 className="text-xl font-medium text-gray-900 dark:text-white">
-        Sign in to our platform
+        Sign in to Skill Savant
       </h5>
       {/* ... Your login form fields and buttons ... */}
       <div>
@@ -35,7 +39,7 @@ const LoginPage = () => {
         id="email"
         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
         placeholder="example@gmail.com"
-        required=""
+        required
       />
     </div>
     <div>
@@ -51,7 +55,7 @@ const LoginPage = () => {
         id="password"
         placeholder="••••••••"
         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-        required=""
+        required
       />
     </div>
     <div className="flex items-start">
@@ -62,7 +66,7 @@ const LoginPage = () => {
             type="checkbox"
             defaultValue=""
             className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
-            required=""
+          
           />
         </div>
         <label

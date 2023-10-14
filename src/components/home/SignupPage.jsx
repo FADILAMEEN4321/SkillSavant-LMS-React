@@ -8,7 +8,7 @@ const SignupPage = () => {
   {/* Text on the left */}
   <div className="w-full sm:w-1/2 p-4 text-center">
     <h1 className="text-3xl font-bold text-gray-200 dark:text-white">
-      Welcome to Our E-Learning Platform
+      Welcome to Skill Savant.
     </h1>
     <p className="mt-4 text-lg text-gray-200 dark:text-gray-300">
       Discover a world of knowledge and unlock your potential.
@@ -19,7 +19,7 @@ const SignupPage = () => {
   <div className="w-full sm:w-1/2 max-w-sm p-4  bg-white bg-opacity-70 border-white/80 rounded-lg shadow-md sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700 backdrop-blur-2xl backdrop-saturate-200">
     <form className="space-y-6" action="#">
       <h5 className="text-xl font-medium text-gray-900 dark:text-white">
-        Sign Up to our platform
+        Join Skill Savant.
       </h5>
       {/* ... Your login form fields and buttons ... */}
 

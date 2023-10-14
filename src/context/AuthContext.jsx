@@ -20,7 +20,7 @@ export const AuthProvider = ({children}) => {
         e.preventDefault();
       
         try {
-          const response = await axios.post('login/', {
+          const response = await axios.post('student-login/', {
             email: e.target.email.value,
             password: e.target.password.value,
           });

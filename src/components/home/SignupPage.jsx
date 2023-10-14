@@ -1,7 +1,50 @@
-import React from 'react'
-import {Link} from "react-router-dom"
+import React,{useState} from 'react'
+import {Link,useNavigate} from "react-router-dom"
+import axios from './../../services/axios'
+import { toast } from 'react-toastify';
+
 
 const SignupPage = () => {
+  
+
+  const [formData, setFormData] = useState({
+    first_name: '',
+    last_name: '',
+    email: '',
+    phone_number: '',
+    password: '',
+  });
+
+  const navigate = useNavigate()
+
+  const handleInputChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  
+    try {
+      const response = await axios.post('student-signup/', formData);
+  
+      if (response.status === 201) {
+        // Signup successful, you can redirect to the login page or show a success message
+        toast.success('Account created successfully. Please login now')
+        navigate('/login')
+      } else {
+        // Handle other response statuses (e.g., display an error message)
+        toast.error('something went wrong.')
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      toast.error('something went wrong.')
+
+    }
+  };
+  
+  
+   
+
   return (
     <section className="bg-center bg-cover bg-no-repeat bg-[url('/self-learning.jpg')]">
   <div className="w-full flex flex-wrap justify-center items-center py-24 px-6">
@@ -17,7 +60,7 @@ const SignupPage = () => {
 
   {/* Login card on the right */}
   <div className="w-full sm:w-1/2 max-w-sm p-4  bg-white bg-opacity-70 border-white/80 rounded-lg shadow-md sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700 backdrop-blur-2xl backdrop-saturate-200">
-    <form className="space-y-6" action="#">
+    <form className="space-y-6" onSubmit={handleSubmit}>
       <h5 className="text-xl font-medium text-gray-900 dark:text-white">
         Join Skill Savant.
       </h5>
@@ -33,10 +76,11 @@ const SignupPage = () => {
       <input
         type="text"
         name="first_name"
-        id="email"
+        id="first_name"
         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
         placeholder="first name"
-        required=""
+        onChange={handleInputChange}
+        required
       />
     </div>
     <div>
@@ -49,10 +93,11 @@ const SignupPage = () => {
       <input
         type="text"
         name="last_name"
-        id="email"
+        id="last_name"
         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
         placeholder="last name"
-        required=""
+        onChange={handleInputChange}
+        required
       />
     </div>
 
@@ -69,7 +114,8 @@ const SignupPage = () => {
         id="email"
         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
         placeholder="example@gmail.com"
-        required=""
+        onChange={handleInputChange}
+        required
       />
     </div>
     <div>
@@ -80,12 +126,14 @@ const SignupPage = () => {
         Phone number
       </label>
       <input
-        type="number"
+        type="text"
         name="phone_number"
-        id="email"
+        id="phone_number"
         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
         placeholder=""
-        required=""
+        onChange={handleInputChange}
+        required 
+        // pattern="[7-9]{1}[0-9]{9}"
       />
     </div>
     <div>
@@ -100,8 +148,9 @@ const SignupPage = () => {
         name="password"
         id="password"
         placeholder="••••••••"
+        onChange={handleInputChange}
         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-        required=""
+        required
       />
     </div>
     

@@ -5,11 +5,12 @@ import {baseUrlMedia} from './../../services/constants'
 import axios from './../../services/axios'
 
 const Header = () => {
-  let {logoutUser,user,authTokens} = useContext(AuthContext)
+  let {logoutUser,user,authTokens,setStudentProfile,studentProfile} = useContext(AuthContext)
   const [studentData, setStudentData] = useState(null)
 
   const handleLogout = () =>{
     setStudentData(null)
+    setStudentProfile(null)
     logoutUser()
   }
 
@@ -30,6 +31,7 @@ const Header = () => {
           if (response.status === 200) {
             const studentProfileData = response.data;
             setStudentData(studentProfileData);
+            setStudentProfile(studentProfileData);
           }
         } catch (error) {
           // Handle any errors, e.g., by showing an error message or logging them
@@ -45,9 +47,9 @@ const Header = () => {
 
 
   return (
-<div className="navbar bg-base-100 sticky inset-0 z-10 border-white/8 bg-opacity-80 shadow-md backdrop-blur-2xl backdrop-saturate-200">
+<div className="navbar bg-base-100 sticky inset-0 z-40 border-white/8 bg-opacity-80 shadow-md backdrop-blur-2xl backdrop-saturate-200">
   <div className="navbar-start">
-    <div className="dropdown">
+    <div className="dropdown dropdown-hover">
       <label tabIndex={0} className="btn btn-ghost lg:hidden">
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
       </label>

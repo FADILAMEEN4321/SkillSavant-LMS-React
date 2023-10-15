@@ -7,6 +7,7 @@ import StudenProfilePage from './components/student_profile/StudenProfilePage.js
 import InstructorLoginPage from './components/instructor_profile/InstructorLoginPage.jsx';
 import InstructorSignupPage from './components/instructor_profile/InstructorSignupPage.jsx';
 import AdminLoginPage from './components/admin_profile/AdminLoginPage.jsx';
+import StudentRoute from './protectedRoutes/StudentRoute.jsx';
 
 
 
@@ -16,7 +17,7 @@ const RoutesComponents = () => {
         <Route path='/' element={<Home/>} exact></Route>
         <Route path='/login' element={<LoginPage/>}></Route>
         <Route path='/signup' element={<SignupPage/>}></Route>
-        <Route path='/profile' element={<StudenProfilePage/>}></Route>
+        <Route path='/profile' element={<StudentRoute Component={StudenProfilePage} />}></Route>
         <Route path='/instructor/login' element={<InstructorLoginPage/>}></Route>
         <Route path='/instructor/signup' element={<InstructorSignupPage/>}></Route>
         <Route path='/admin/login' element={<AdminLoginPage/>}></Route>

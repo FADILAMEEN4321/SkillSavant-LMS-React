@@ -33,18 +33,7 @@ export const AuthProvider = ({children}) => {
             console.log(decodedToken)
             setUser(decodedToken);
             localStorage.setItem('authTokens', JSON.stringify(data));
-
-            // // After a successful login, fetch student profile data
-            // const user_id = decodedToken.user_id;
-            // const profileResponse = await axios.get(`student-profile/${user_id}/`);
-
-            // if (profileResponse.status === 200) {
-            //   const studentProfileData = profileResponse.data;
-            //   setStudentProfile(studentProfileData);
-            //   console.log(studentProfileData,'<---------------studentProfileData')
-            // }
-
-
+            toast.success('You are successfully logged in.')  
             navigate('/');
           } 
         } catch (error) {
@@ -54,6 +43,64 @@ export const AuthProvider = ({children}) => {
          
         }
       };
+
+      const loginInstructor = async (e) => {
+        e.preventDefault();
+      
+        try {
+          const response = await axios.post('instructor-login/', {
+            email: e.target.email.value,
+            password: e.target.password.value,
+          });
+      
+          if (response.status === 200) {
+            const data = response.data;
+            console.log(data,'<---respone data')
+            setAuthTokens(data);
+            const decodedToken = jwt_decode(data.access);
+            console.log(decodedToken)
+            setUser(decodedToken);
+            localStorage.setItem('authTokens', JSON.stringify(data));
+            toast.success('You are successfully logged in.')
+            navigate('/');
+          } 
+        } catch (error) {
+        // console.log(respone.message) 
+        toast.error('Invalid Email or Password');
+          
+         
+        }
+      };  
+
+      const loginAdmin = async (e) => {
+        e.preventDefault();
+      
+        try {
+          const response = await axios.post('admin-login/', {
+            email: e.target.email.value,
+            password: e.target.password.value,
+          });
+      
+          if (response.status === 200) {
+            const data = response.data;
+            console.log(data,'<---respone data')
+            setAuthTokens(data);
+            const decodedToken = jwt_decode(data.access);
+            console.log(decodedToken)
+            setUser(decodedToken);
+            localStorage.setItem('authTokens', JSON.stringify(data));
+            toast.success('You are successfully logged in.')
+            navigate('/');
+          } 
+        } catch (error) {
+        // console.log(respone.message) 
+        toast.error('Invalid Email or Password');
+          
+         
+        }
+      };  
+
+
 
 
     const logoutUser = () => {
@@ -74,6 +121,8 @@ export const AuthProvider = ({children}) => {
         authTokens:authTokens,
         studentProfile:studentProfile,
         setStudentProfile:setStudentProfile,
+        loginInstructor:loginInstructor,
+        loginAdmin:loginAdmin,
     }
 
     return(

@@ -87,7 +87,8 @@ const Header = () => {
         </details>
       </li>
       <li><a>My learning</a></li>
-      <li><a>Teach On Skill Savant</a></li>
+      {user ? (''):(<li><Link to="/instructor/login">Teach On Skill Savant</Link></li>)}
+      
       {user && <li><a>{user.email}</a></li> }
     </ul>
 

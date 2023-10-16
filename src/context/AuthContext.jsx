@@ -62,7 +62,7 @@ export const AuthProvider = ({children}) => {
             setUser(decodedToken);
             localStorage.setItem('authTokens', JSON.stringify(data));
             toast.success('You are successfully logged in.')
-            navigate('/');
+            navigate('/instructor/profile');
           } 
         } catch (error) {
         // console.log(respone.message) 
@@ -90,7 +90,7 @@ export const AuthProvider = ({children}) => {
             setUser(decodedToken);
             localStorage.setItem('authTokens', JSON.stringify(data));
             toast.success('You are successfully logged in.')
-            navigate('/');
+            navigate('/admin/user-management');
           } 
         } catch (error) {
         // console.log(respone.message) 

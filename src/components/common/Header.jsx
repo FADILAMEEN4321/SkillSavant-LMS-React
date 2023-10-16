@@ -27,7 +27,7 @@ const Header = () => {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${authTokens?.access}`,
           };
-          const response = await axios.get(`student-profile/${user_id}/`,{ headers });
+          const response = await axios.get(`student-profile-view-update/${user_id}/`,{ headers });
           if (response.status === 200) {
             const studentProfileData = response.data;
             setStudentData(studentProfileData);

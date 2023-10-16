@@ -59,7 +59,7 @@ const StudenProfilePage = () => {
       {studentProfile ? (<p className="py-6">{studentProfile.bio}</p>):('')}
       {/* <button className="btn btn-primary">Get Started</button> */}
 
-      <button className="btn btn-primary" onClick={()=>document.getElementById('my_modal_3').showModal()}>Edit Bio</button>
+ <button className="btn btn-primary" onClick={()=>document.getElementById('my_modal_3').showModal()}>Edit Bio</button>
 <dialog id="my_modal_3" className="modal">
   <div className="modal-box">
     <form method="dialog">

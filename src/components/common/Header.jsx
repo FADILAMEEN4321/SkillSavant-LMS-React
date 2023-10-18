@@ -27,12 +27,27 @@ const Header = () => {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${authTokens?.access}`,
           };
-          const response = await axios.get(`student-profile-view-update/${user_id}/`,{ headers });
-          if (response.status === 200) {
-            const studentProfileData = response.data;
-            setStudentData(studentProfileData);
-            setStudentProfile(studentProfileData);
+          if(user.role === 'student'){
+            console.log('if condition---yes',)
+            const response = await axios.get(`student-profile-view-update/${user_id}/`,{ headers });
+            if (response.status === 200) {
+              const studentProfileData = response.data;
+              console.log('from header----------->',studentProfileData)
+              setStudentData(studentProfileData);
+              setStudentProfile(studentProfileData);
+            }
           }
+          if(user.role === 'instructor'){
+            console.log('if condition---yes admin',)
+            const response = await axios.get(`instructor-profile-view-update/${user_id}/`,{ headers });
+            if (response.status === 200) {
+              const studentProfileData = response.data;
+              console.log('from header----------->',studentProfileData)
+              setStudentData(studentProfileData);
+              setStudentProfile(studentProfileData);
+            }
+          }
+          
         } catch (error) {
           // Handle any errors, e.g., by showing an error message or logging them
           console.error('Error fetching student profile data:', error);
@@ -67,8 +82,8 @@ const Header = () => {
     </div>
     <a className="btn btn-ghost normal-case text-xl mr-6">Skill Savant</a>
     <div className="form-control">
-    
-      <input type="text" placeholder="Search Courses..." className="input input-bordered w-24 md:w-auto hidden md:flex" />
+    {/* md:w-auto */}
+      <input type="text" placeholder="Search Courses..." className="input input-bordered w-26 md:w-auto hidden md:flex" />
     </div>
     
   </div>
@@ -78,8 +93,8 @@ const Header = () => {
   <div className="navbar-end">
 
   <ul className="menu menu-horizontal px-1 hidden lg:flex">
-  <li><Link to="/">Home</Link></li>
-      <li tabIndex={0}>
+  {user ? (user.role === "student" && <li><Link to="/">Home</Link></li>) : <li><Link to="/">Home</Link></li>}
+  {user ? (user.role === "student" && <li tabIndex={0}>
         <details>
           <summary>Courses</summary>
           <ul className="p-2">
@@ -87,8 +102,21 @@ const Header = () => {
             <li><a>Submenu 2</a></li>
           </ul>
         </details>
-      </li>
-      <li><a>My learning</a></li>
+      </li>) : <li tabIndex={0}>
+        <details>
+          <summary>Courses</summary>
+          <ul className="p-2">
+            <li><a>Submenu 1</a></li>
+            <li><a>Submenu 2</a></li>
+          </ul>
+        </details>
+      </li>}
+
+  {user ? (user.role === "student" && <li><a>My learning</a></li>) : <li><a>My learning</a></li>}
+
+    
+      
+      
       {user ? (''):(<li><Link to="/instructor/login">Teach On Skill Savant</Link></li>)}
       
       {user && <li><a>{user.email}</a></li> }

@@ -67,74 +67,92 @@ const StudenProfilePage = () => {
       <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
     </form>
     <h3 className="font-bold text-lg">Edit Bio</h3>
-    <form onSubmit=''>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">First name</span>
-                </label>
-                <input
-                  type="text"
-                  name="first_name"
-                  placeholder="Enter your first name"
-                  className="textarea textarea-bordered"
-                  // value={userData.bio}
-                  // onChange={handleChange}
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Last name</span>
-                </label>
-                <input
-                  type="text"
-                  name="last_name"
-                  placeholder="Enter your last name"
-                  className="textarea textarea-bordered"
-                  // value={userData.bio}
-                  // onChange={handleChange}
-                />
-              </div>
-              
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">State</span>
-                </label>
-                <input
+    
+    {/* Modal body */}
+<form action="#">
+          <div className="grid gap-4 mb-4 sm:grid-cols-2">
+            <div>
+              <label
+                htmlFor="name"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                First name
+              </label>
+              <input
                 type="text"
-                  name="state"
-                  placeholder="Enter your state"
-                  className="textarea textarea-bordered"
-                  // value={userData.bio}
-                  // onChange={handleChange}
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Country</span>
-                </label>
-                <input
-                  type='text'
-                  name="country"
-                  placeholder="Enter your country"
-                  className="textarea textarea-bordered"
-                  // value={userData.bio}
-                  // onChange={handleChange}
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Bio</span>
-                </label>
-                <textarea
-                  name="bio"
-                  placeholder="Enter your bio"
-                  className="textarea textarea-bordered"
-                  // value={userData.bio}
-                  // onChange={handleChange}
-                />
-              </div>
-              <div className="form-control mb-2">
-                <label className="label">
+                name="first_name"
+                id="first_name"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                placeholder="First name"
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="brand"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Last name
+              </label>
+              <input
+                type="text"
+                name="last_name"
+                id="last_name"
+                // defaultValue="Google"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                placeholder="Last name"
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="state"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                State
+              </label>
+              <input
+                type="text"
+                
+                name="state"
+                id="state"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                placeholder="eg: kerala"
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="country"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Country
+              </label>
+              <select
+                id="country"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              >
+                <option selected="">India</option>
+                <option value="TV">Russia</option>
+                <option value="PC">Ireland</option>
+                <option value="GA">Pakistan</option>
+                <option value="PH">UAE</option>
+              </select>
+            </div>
+            <div className="sm:col-span-2">
+              <label
+                htmlFor="bio"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Bio
+              </label>
+              <textarea
+                id="description"
+                rows={4}
+                className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                placeholder="Write a description..."
+              />
+            </div>
+
+            <div className="sm:col-span-2">
+                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                   <span className="label-text">Profile Image</span>
                 </label>
                 <input
@@ -143,10 +161,26 @@ const StudenProfilePage = () => {
                   // onChange={handleImageChange}
                 />
               </div>
-              <button className="btn btn-primary" type="submit">
-                Save
-              </button>
-            </form>
+
+
+
+
+          </div>
+          <div className="flex items-center space-x-4">
+            <button
+              type="submit"
+              className="text-white bg-gray-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+            >
+              Save
+            </button>
+           
+          </div>
+        </form>
+
+
+
+
+
   </div>
 </dialog>
 

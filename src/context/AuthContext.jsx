@@ -67,8 +67,7 @@ export const AuthProvider = ({children}) => {
         } catch (error) {
         // console.log(respone.message) 
         toast.error('Invalid Email or Password');
-          
-         
+              
         }
       };  
 

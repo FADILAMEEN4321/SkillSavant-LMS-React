@@ -13,7 +13,7 @@ export const AuthProvider = ({children}) => {
 
     let [authTokens, setAuthTokens] = useState(()=> localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null)
     let [user, setUser] = useState(()=> localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')) : null)
-    let [studentProfile, setStudentProfile] = useState(null);
+    let [userProfile, setUserProfile] = useState(null);
     
 
     const loginUser = async (e) => {
@@ -89,7 +89,7 @@ export const AuthProvider = ({children}) => {
             setUser(decodedToken);
             localStorage.setItem('authTokens', JSON.stringify(data));
             toast.success('You are successfully logged in.')
-            navigate('/admin/user-management');
+            navigate('/admin/dashboard');
           } 
         } catch (error) {
         // console.log(respone.message) 
@@ -118,8 +118,8 @@ export const AuthProvider = ({children}) => {
         logoutUser:logoutUser,
         user:user,
         authTokens:authTokens,
-        studentProfile:studentProfile,
-        setStudentProfile:setStudentProfile,
+        userProfile:userProfile,
+        setUserProfile:setUserProfile,
         loginInstructor:loginInstructor,
         loginAdmin:loginAdmin,
     }

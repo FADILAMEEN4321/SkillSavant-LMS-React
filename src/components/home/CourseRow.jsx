@@ -11,7 +11,7 @@ const CourseRow = ({title,subtitle}) => {
 
 
 {/* Course card */}
-<div class="flex-shrink-0 w-64 bg-white border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 rounded-lg hover:bg-blue-100">
+<div class="flex-shrink-0 py-2.5 w-64 bg-white border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 rounded-md hover:bg-blue-100 transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg">
   <img src="https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg" alt="Image Alt Text" class="w-full rounded-t-lg" />
   <div class="p-4">
     <p>20m</p>
@@ -22,7 +22,7 @@ const CourseRow = ({title,subtitle}) => {
 </div>
 
 
-<div class="flex-shrink-0 w-64 bg-white border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 rounded-lg hover:bg-blue-100">
+<div class="flex-shrink-0 w-64 bg-white border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 rounded-md hover:bg-blue-100">
   <img src="https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg" alt="Image Alt Text" class="w-full rounded-t-lg" />
   <div class="p-4">
     <p>20m</p>
@@ -33,7 +33,7 @@ const CourseRow = ({title,subtitle}) => {
 </div>
 
 
-<div class="flex-shrink-0 w-64 bg-white border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 rounded-lg hover:bg-blue-100">
+<div class="flex-shrink-0 w-64 bg-white border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 rounded-md hover:bg-blue-100">
   <img src="https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg" alt="Image Alt Text" class="w-full rounded-t-lg" />
   <div class="p-4">
     <p>20m</p>
@@ -44,7 +44,7 @@ const CourseRow = ({title,subtitle}) => {
 </div>
 
 
-<div class="flex-shrink-0 w-64 bg-white border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 rounded-lg hover:bg-blue-100">
+<div class="flex-shrink-0 w-64 bg-white border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 rounded-md hover:bg-blue-100">
   <img src="https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg" alt="Image Alt Text" class="w-full rounded-t-lg" />
   <div class="p-4">
     <p>20m</p>
@@ -55,7 +55,7 @@ const CourseRow = ({title,subtitle}) => {
 </div>
 
 
-<div class="flex-shrink-0 w-64 bg-white border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 rounded-lg hover:bg-blue-100">
+<div class="flex-shrink-0 w-64 bg-white border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 rounded-md hover:bg-blue-100">
   <img src="https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg" alt="Image Alt Text" class="w-full rounded-t-lg" />
   <div class="p-4">
     <p>20m</p>

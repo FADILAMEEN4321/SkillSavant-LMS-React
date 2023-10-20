@@ -1,9 +1,14 @@
-import React,{useEffect} from 'react'
+import React,{useEffect,useContext} from 'react'
 import { initFlowbite } from 'flowbite'
 import InstructorSideBar from './InstructorSideBar';
+import InstructorMobileSideBar from './InstructorMobileSideBar';
+import AuthContext from './../../context/AuthContext';
+import {baseUrlMedia} from './../../services/constants'
 
 
 const InstructorProfilePage = () => {
+
+  let {userProfile,user} = useContext(AuthContext)
 
     useEffect(()=>{
         initFlowbite();
@@ -13,230 +18,244 @@ const InstructorProfilePage = () => {
   return (
 
 <>
-  {/* <div className="grid grid-cols-4 gap-3 h-screen"> */}
-  <div className="grid grid-cols-1 md:grid-cols-4 h-screen">
-    {/* Sidebar */}
-    {/* <div className="bg-blue-400 rounded-lg shadow-xl h-full col-span-1 min-h-[50px] hidden md:flex"> */}
-     <InstructorSideBar/>
-
-    {/* Dashboard Space */}
-    {/* <div className="col-span-3"> */}
-    <div className="col-span-1 md:col-span-3 w-full min-h-fit md:w-auto">
-      {/* Dashboard content goes here */}
-      <div className="bg-blue-200 h-full shadow-xl min-h-[50px]">
-        {/* Dashboard content goes here */}
+    {/* Main Content Container */}
+    <div className="mx-auto flex">
+      {/* Sidebar for Dash Board */}
+  
+      <InstructorSideBar/>
       
+  
+      {/* Scrollable Area for Course Listings */}
+      <div className="h-screen w-full bg-gray-200 p-4 overflow-y-auto">
+
+        
+        {/* for mobile */}
+        <InstructorMobileSideBar/>
 
 
-<div className=''>
-
-</div>
-
-<div className='bg-green-300 border border-solid h-24 min-w-fit flex items-center'>
-  <h3 className="m-5 text-3xl font-bold tracking-tight leading-none text-gray-900 lg:mb-6 md:text-5xl xl:text-6xl dark:text-white"> Profile</h3>
-  <p class="font-light mt-5 text-gray-900 md:text-lg xl:text-xl dark:text-gray-400">Manage your profile here.</p>
-</div>
-
-
-
-<section className="text-gray-600 body-font">
-  <div className="container px-1 py-2 mx-auto flex flex-col">
-    <div className="lg:w-4/6 mx-auto ">
-      <div className="rounded-lg overflow-hidden">
-        {/* <img
-          alt="content"
-          className="object-cover object-center h-full w-full"
-          src="https://dummyimage.com/1200x500"
-        /> */}
-        {/* <h2 className='text-xl'>Profile</h2> */}
-      </div>
-      <div className="flex flex-col sm:flex-row mt-10">
-        <div className="sm:w-1/3 text-center sm:pr-8 sm:py-8">
-          <div className="w-32 h-32 rounded-full inline-flex items-center justify-center bg-gray-200 text-gray-400">
-            <img className='rounded-full w-32 h-32 border-4 border-opacity-10' src="/fadil_profile.jpg" alt="" />
-          
+        <div className="relative container bg-blue-700 min-h-[200px] rounded-md mb-4">
+          <div className="absolute inset-0 bg-opacity-60 bg-black rounded-md" />
+          <div className="absolute left-0 top-0 bottom-0 p-4 text-white">
+            {/* Your text content here */}
+            <h1 class="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl"><span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Lets's Teach the</span> World.</h1>
+            <p class="text-lg font-normal text-gray-200 lg:text-xl dark:text-gray-400">Here at Flowbite we focus on markets where technology, innovation.</p>
+            {/* <p className="mt-2">All Students of Skill savant</p> */}
           </div>
-          <div className="flex flex-col items-center text-center justify-center">
-            <h2 className="font-medium title-font mt-4 text-gray-900 text-lg">
-              Fadil Ameen
-            </h2>
-            <div className="w-12 h-1 bg-indigo-500 rounded mt-2 mb-4" />
-            <p className="text-base">
-              kerala, India.
-      
-            </p>
-          </div>
+          <div className="bg-cover bg-[url('/self-learning.jpg')] min-h-[200px] rounded-md" />
         </div>
-        <div className="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
-          <p className="leading-relaxed text-lg mb-4">
-            Meggings portland fingerstache lyft, post-ironic fixie man bun banh
-            mi umami everyday carry hexagon locavore direct trade art party.
-            Locavore small batch listicle gastropub farm-to-table lumbersexual
-            salvia messenger bag. Coloring book flannel truffaut craft beer
-            drinking vinegar sartorial, disrupt fashion axe normcore meh
-            butcher. Portland 90's scenester vexillologist forage post-ironic
-            asymmetrical, chartreuse disrupt butcher paleo intelligentsia pabst
-            before they sold out four loko. 3 wolf moon brooklyn.
-          </p>
 
 
+        <div className="container">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* <!-- Profile Details --> */}
+        {/* <div className="p-4 bg-white rounded shadow-lg"> */}
+            {/* <h2 className="text-2xl font-bold mb-2">Profile Details</h2> */}
+            {/* <!-- Add your profile information here --> */}
 
-<button className="btn btn-primary" onClick={()=>document.getElementById('my_modal_3').showModal()}>Edit Bio</button>
+            <div className="p-7 bg-white rounded shadow-lg">
+
+            <div className="relative flex w-full max-w-[26rem] flex-col rounded-xl bg-transparent bg-clip-border text-gray-700 shadow-none">
+  <div className="relative flex items-center gap-4 pt-0 pb-8 mx-0 mt-4 overflow-hidden text-gray-700 bg-transparent shadow-none rounded-xl bg-clip-border">
+    {userProfile? (
+      <img
+      src={`${baseUrlMedia+userProfile.profile_photo}`}
+      alt="tania andrew"
+      className="relative inline-block h-[75px] w-[75px] !rounded-full object-cover object-center"
+    />
+
+    ):(
+      <img
+      src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
+      alt="tania andrew"
+      className="relative inline-block h-[58px] w-[58px] !rounded-full object-cover object-center"
+    />
+
+    )}
+    <div className="flex w-full flex-col gap-0.5">
+      <div className="flex items-center justify-between">
+        <h5 className="block font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+         {user ? (user.first_name + ' ' + user.last_name) : ''}
+        </h5>
+        <div class="flex items-center gap-0 5">
+
+          {/* You can open the modal using document.getElementById('ID').showModal() method */}
+<button className="btn" onClick={()=>document.getElementById('my_modal_3').showModal()}>Edit</button>
 <dialog id="my_modal_3" className="modal">
   <div className="modal-box">
     <form method="dialog">
       {/* if there is a button in form, it will close the modal */}
       <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
     </form>
-    <h3 className="font-bold text-lg">Edit Bio</h3>
 
 
-{/* Modal body */}
-<form action="#">
-          <div className="grid gap-4 mb-4 sm:grid-cols-2">
-            <div>
-              <label
-                htmlFor="name"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >
-                First name
-              </label>
-              <input
-                type="text"
-                name="name"
-                id="name"
-                defaultValue="iPad Air Gen 5th Wi-Fi"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                placeholder="Ex. Apple iMac 27“"
-              />
-            </div>
-            <div>
-              <label
-                htmlFor="brand"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >
-                Last name
-              </label>
-              <input
-                type="text"
-                name="brand"
-                id="brand"
-                defaultValue="Google"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                placeholder="Ex. Apple"
-              />
-            </div>
-            <div>
-              <label
-                htmlFor="price"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >
-                State
-              </label>
-              <input
-                type="text"
-                
-                name="state"
-                id="price"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                placeholder="eg: kerala"
-              />
-            </div>
-            <div>
-              <label
-                htmlFor="category"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >
-                Country
-              </label>
-              <select
-                id="country"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              >
-                <option selected="">India</option>
-                <option value="TV">Russia</option>
-                <option value="PC">Ireland</option>
-                <option value="GA">Pakistan</option>
-                <option value="PH">UAE</option>
-              </select>
-            </div>
-            <div className="sm:col-span-2">
-              <label
-                htmlFor="description"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >
-                Description
-              </label>
-              <textarea
-                id="description"
-                rows={5}
-                className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                placeholder="Write a description..."
-                defaultValue={
-                  "Standard glass, 3.8GHz 8-core 10th-generation Intel Core i7 processor, Turbo Boost up to 5.0GHz, 16GB 2666MHz DDR4 memory, Radeon Pro 5500 XT with 8GB of GDDR6 memory, 256GB SSD storage, Gigabit Ethernet, Magic Mouse 2, Magic Keyboard - US"
-                }
-              />
-            </div>
-
-            <div className="sm:col-span-2">
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                  <span className="label-text">Profile Image</span>
-                </label>
-                <input
-                  type="file"
-                  name="profile_image"
-                  // onChange={handleImageChange}
-                />
-              </div>
-
-
-
-
-          </div>
-          <div className="flex items-center space-x-4">
-            <button
-              type="submit"
-              className="text-white bg-gray-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-            >
-              Save
-            </button>
-           
-          </div>
-        </form>
-
-
-    
-  </div>
-</dialog>
-
-
-
-
-
-        </div>
+    <>
+  {/* Modal body */}
+  <form action="#">
+    <div className="grid gap-4 mb-4 sm:grid-cols-2">
+      <div>
+        <label
+          htmlFor="first_name"
+          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >
+          First name
+        </label>
+        <input
+          type="text"
+          name="first_name"
+          id="first_name"
+          
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+          
+        />
       </div>
-    </div>
-  </div>
-</section>
+      <div>
+        <label
+          htmlFor="last_name"
+          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >
+          Last name
+        </label>
+        <input
+          type="text"
+          name="last_name"
+          id="last_name"
+          
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+          
+        />
+      </div>
+      
+      
+      <div className="sm:col-span-2">
+      <div>
+        <label
+          htmlFor="skill"
+          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >
+          Skill
+        </label>
+        <input
+          type="text"
+          
+          name="skill"
+          id="skill"
+          className="bg-gray-50 border mb-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+          
+        />
+      </div>
 
 
 
 
-
-
-
-
+        <label
+          htmlFor="bio"
+          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >
+          Bio
+        </label>
+        <textarea
+          id="bio"
+          rows={4}
+          className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+          placeholder="Write a bio..."
+         
+        />
 
         
 
 
 
 
+      </div>
+    </div>
+    <div className="flex items-center space-x-4">
+      <button
+        type="submit"
+        className="text-gray-900 bg-primary-700 border border-gray-900 hover:bg-gray-900 hover:text-white focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+      >
+        Save
+      </button>
+      <button
+        type="button"
+        className="text-red-600 inline-flex items-center hover:text-white border border-red-600 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900"
+      >
+        <svg
+          className="mr-1 -ml-1 w-5 h-5"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fillRule="evenodd"
+            d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+            clipRule="evenodd"
+          />
+        </svg>
+        Delete
+      </button>
+    </div>
+  </form>
+</>
+
+    
+
+
+
+
+
+
+  </div>
+</dialog>
+
+
+        </div>
+        
+      </div>
+      {userProfile? (<p className="block font-sans text-base antialiased font-light leading-relaxed text-blue-gray-900">
+        {userProfile.skill}  
+        </p>):(<p className="block font-sans text-base antialiased font-light leading-relaxed text-blue-gray-900">
+        Update your skill.
+        </p>)}
+    </div>
+  </div>
+  <div className="p-0 mb-6">
+    {userProfile? (<p className="block font-sans text-base antialiased font-light leading-relaxed text-inherit">
+      {userProfile.bio}
+    </p>):(<p className="block font-sans text-base antialiased font-light leading-relaxed text-inherit">
+      Update your bio.
+    </p>)}
+  </div>
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+
+  
+{/* </div> */}
+
+
+        {/* </div> */}
+
+        {/* <!-- Instructor Statistics --> */}
+        <div className="p-4 bg-white rounded shadow-lg">
+            <h2 className="text-2xl font-bold mb-2">Instructor Statistics</h2>
+            {/* <!-- Add statistics like courses, students, earnings, etc. here --> */}
+        </div>
+    </div>
+</div>
+
+
 
       </div>
     </div>
-  </div>
-</>
+  </>
 
 
 

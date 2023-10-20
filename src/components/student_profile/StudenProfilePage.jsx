@@ -6,9 +6,9 @@ import {baseUrlMedia} from './../../services/constants'
 
 
 const StudenProfilePage = () => {
-  let {studentProfile,user} = useContext(AuthContext)
+  let {userProfile,user} = useContext(AuthContext)
 
-  console.log(studentProfile,'---------------from studentpage')
+  console.log(userProfile,'---------------from studentpage')
 
     useEffect(()=>{
         initFlowbite();
@@ -51,12 +51,12 @@ const StudenProfilePage = () => {
 
 <div className="hero min-h-screen bg-base-200">
   <div className="hero-content flex-col lg:flex-row">
-    {studentProfile ? (<img className="max-w-sm rounded-lg shadow-2xl" src={`${baseUrlMedia+studentProfile.profile_photo}`} />)
-          :(<img src="" className="max-w-sm rounded-lg shadow-2xl" />)}
+    {userProfile ? (<img className="max-w-sm rounded-md shadow-2xl" src={`${baseUrlMedia+userProfile.profile_photo}`} />)
+          :(<img src="" className="max-w-sm rounded-md shadow-2xl" />)}
     <div>
-      {studentProfile ? (<h1 className="text-5xl font-bold">Hi! {user.first_name} {user.last_name}</h1>):('')}
-      {studentProfile ? (<p className='py-3 font-bold'>{studentProfile.state}, {studentProfile.country}</p>):('')}
-      {studentProfile ? (<p className="py-6">{studentProfile.bio}</p>):('')}
+      {userProfile ? (<h1 className="text-5xl font-bold">Hi! {user.first_name} {user.last_name}</h1>):('')}
+      {userProfile ? (<p className='py-3 font-bold'>{userProfile.state}, {userProfile.country}</p>):('')}
+      {userProfile ? (<p className="py-6">{userProfile.bio}</p>):('')}
       {/* <button className="btn btn-primary">Get Started</button> */}
 
  <button className="btn btn-primary" onClick={()=>document.getElementById('my_modal_3').showModal()}>Edit Bio</button>
@@ -82,7 +82,7 @@ const StudenProfilePage = () => {
                 type="text"
                 name="first_name"
                 id="first_name"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                 placeholder="First name"
               />
             </div>
@@ -98,7 +98,7 @@ const StudenProfilePage = () => {
                 name="last_name"
                 id="last_name"
                 // defaultValue="Google"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                 placeholder="Last name"
               />
             </div>
@@ -114,7 +114,7 @@ const StudenProfilePage = () => {
                 
                 name="state"
                 id="state"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                 placeholder="eg: kerala"
               />
             </div>
@@ -127,7 +127,7 @@ const StudenProfilePage = () => {
               </label>
               <select
                 id="country"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
               >
                 <option selected="">India</option>
                 <option value="TV">Russia</option>
@@ -146,7 +146,7 @@ const StudenProfilePage = () => {
               <textarea
                 id="description"
                 rows={4}
-                className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-md border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                 placeholder="Write a description..."
               />
             </div>
@@ -169,7 +169,7 @@ const StudenProfilePage = () => {
           <div className="flex items-center space-x-4">
             <button
               type="submit"
-              className="text-white bg-gray-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+              className="text-white bg-gray-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-md text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
             >
               Save
             </button>

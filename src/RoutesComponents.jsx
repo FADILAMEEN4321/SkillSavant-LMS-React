@@ -10,6 +10,10 @@ import AdminLoginPage from './components/admin_profile/AdminLoginPage.jsx';
 import StudentRoute from './protectedRoutes/StudentRoute.jsx';
 import InstructorProfilePage from './components/instructor_profile/InstructorProfilePage.jsx';
 import AdminUserManagement from './components/admin_profile/AdminUserManagement.jsx';
+import CourseListingPage from './components/course_related/CourseListingPage.jsx';
+import AdminDashboard from './components/admin_profile/AdminDashboard.jsx';
+import AdminInstructorManagement from './components/admin_profile/AdminInstructorManagement.jsx';
+import AdminRoute from './protectedRoutes/AdminRoute.jsx';
 
 
 
@@ -24,6 +28,8 @@ const RoutesComponents = () => {
         <Route path='/login' element={<LoginPage/>}></Route>
         <Route path='/signup' element={<SignupPage/>}></Route>
         <Route path='/profile' element={<StudentRoute Component={StudenProfilePage} />}></Route>
+        <Route path='/courses' element={<CourseListingPage/>}></Route>
+
 
 
         {/* Routes for Instructor */}
@@ -34,7 +40,9 @@ const RoutesComponents = () => {
 
         {/* Routes for Admin */}
         <Route path='/admin/login' element={<AdminLoginPage/>}></Route>
-        <Route path='/admin/user-management' element={<AdminUserManagement/>}></Route>
+        <Route path='/admin/dashboard' element={<AdminRoute Component={AdminDashboard} />}></Route>
+        <Route path='/admin/student-management' element={<AdminRoute Component={AdminUserManagement} />}></Route>
+        <Route path='/admin/instructor-management' element={<AdminRoute Component={AdminInstructorManagement} />}></Route>
     </Routes>
   )
 }

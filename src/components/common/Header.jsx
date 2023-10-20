@@ -5,12 +5,12 @@ import {baseUrlMedia} from './../../services/constants'
 import axios from './../../services/axios'
 
 const Header = () => {
-  let {logoutUser,user,authTokens,setStudentProfile,studentProfile} = useContext(AuthContext)
+  let {logoutUser,user,authTokens,setUserProfile,userProfile} = useContext(AuthContext)
   const [studentData, setStudentData] = useState(null)
 
   const handleLogout = () =>{
     setStudentData(null)
-    setStudentProfile(null)
+    setUserProfile(null)
     logoutUser()
   }
 
@@ -34,7 +34,7 @@ const Header = () => {
               const studentProfileData = response.data;
               console.log('from header----------->',studentProfileData)
               setStudentData(studentProfileData);
-              setStudentProfile(studentProfileData);
+              setUserProfile(studentProfileData);
             }
           }
           if(user.role === 'instructor'){
@@ -44,7 +44,7 @@ const Header = () => {
               const studentProfileData = response.data;
               console.log('from header----------->',studentProfileData)
               setStudentData(studentProfileData);
-              setStudentProfile(studentProfileData);
+              setUserProfile(studentProfileData);
             }
           }
           
@@ -94,23 +94,29 @@ const Header = () => {
 
   <ul className="menu menu-horizontal px-1 hidden lg:flex">
   {user ? (user.role === "student" && <li><Link to="/">Home</Link></li>) : <li><Link to="/">Home</Link></li>}
-  {user ? (user.role === "student" && <li tabIndex={0}>
-        <details>
-          <summary>Courses</summary>
-          <ul className="p-2">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
-        </details>
-      </li>) : <li tabIndex={0}>
-        <details>
-          <summary>Courses</summary>
-          <ul className="p-2">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
-        </details>
-      </li>}
+  {user ? (user.role === "student" && <li><Link to="/courses">Courses</Link></li>
+  // <li tabIndex={0}>
+  //       <details>
+  //         <summary>Courses</summary>
+  //         <ul className="p-2">
+  //           <li><a>Submenu 1</a></li>
+  //           <li><a>Submenu 2</a></li>
+  //         </ul>
+  //       </details>
+  //     </li>
+      
+      ) : 
+      // <li tabIndex={0}>
+      //   <details>
+      //     <summary>Courses</summary>
+      //     <ul className="p-2">
+      //       <li><a>Submenu 1</a></li>
+      //       <li><a>Submenu 2</a></li>
+      //     </ul>
+      //   </details>
+      // </li>
+      <li><Link to="/courses">Courses</Link></li>
+      }
 
   {user ? (user.role === "student" && <li><a>My learning</a></li>) : <li><a>My learning</a></li>}
 
@@ -148,7 +154,7 @@ const Header = () => {
         <li><a>Settings</a></li>
         <li><a onClick={handleLogout}>Logout</a></li>
       </ul>
-    </div>):(<Link to="/login" className="btn bg-blue-700 text-white hover:bg-blue-800" >Login</Link>)
+    </div>):(<Link to="/login" className="btn px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600" >Login</Link>)
 
     
 

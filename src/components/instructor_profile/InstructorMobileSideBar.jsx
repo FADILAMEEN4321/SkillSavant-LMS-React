@@ -1,29 +1,38 @@
-import React from 'react'
-import {Link} from 'react-router-dom';
-
+import React from "react";
+import { Link } from "react-router-dom";
 
 const InstructorMobileSideBar = () => {
   return (
     <div className="drawer md:hidden">
-    <input id="my-drawer" type="checkbox" className="drawer-toggle" />
-    <div className="drawer-content">
-      {/* Page content here */}
-      <label htmlFor="my-drawer" className="btn mb-4 drawer-button">
-      <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 17 14">
-      <path d="M16 2H1a1 1 0 0 1 0-2h15a1 1 0 1 1 0 2Zm0 6H1a1 1 0 0 1 0-2h15a1 1 0 1 1 0 2Zm0 6H1a1 1 0 0 1 0-2h15a1 1 0 0 1 0 2Z"/>
-  </svg>
-      </label>
-      
-    </div> 
-    <div className="drawer-side z-50">
-      <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
-      
-      <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
-      <div className="min-h-[80px] bg-blue-400 rounded-md mb-4 w-full"></div>
+      <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+      <div className="drawer-content">
+        {/* Page content here */}
+        <label htmlFor="my-drawer" className="btn mb-4 drawer-button">
+          <svg
+            class="w-6 h-6 text-gray-800 dark:text-white"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 17 14"
+          >
+            <path d="M16 2H1a1 1 0 0 1 0-2h15a1 1 0 1 1 0 2Zm0 6H1a1 1 0 0 1 0-2h15a1 1 0 1 1 0 2Zm0 6H1a1 1 0 0 1 0-2h15a1 1 0 0 1 0 2Z" />
+          </svg>
+        </label>
+      </div>
+      <div className="drawer-side z-50">
+        <label
+          htmlFor="my-drawer"
+          aria-label="close sidebar"
+          className="drawer-overlay"
+        ></label>
+
+        <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+          <div className="min-h-[80px] bg-blue-400 rounded-md mb-4 w-full"></div>
           <hr />
-        {/* Sidebar content here */}
-        <li>
-            <Link to=""
+          {/* Sidebar content here */}
+          <li>
+            <Link
+              to=""
               href="#"
               className="flex items-center p-2 text-gray-900 rounded-md dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
             >
@@ -41,7 +50,8 @@ const InstructorMobileSideBar = () => {
             </Link>
           </li>
           <li>
-            <Link to=""
+            <Link
+              to=""
               href="#"
               className="flex items-center p-2 text-gray-900 rounded-md dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
             >
@@ -61,7 +71,8 @@ const InstructorMobileSideBar = () => {
             </Link>
           </li>
           <li>
-            <Link to=""
+            <Link
+              to=""
               href="#"
               className="flex items-center p-2 text-gray-900 rounded-md dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
             >
@@ -97,13 +108,12 @@ const InstructorMobileSideBar = () => {
               <span className="flex-1 ml-3 whitespace-nowrap">Chat</span>
             </a>
           </li>
-  
-            <hr className='mt-4'/>
-      </ul>
-      
-    </div>
-  </div>
-  )
-}
 
-export default InstructorMobileSideBar
+          <hr className="mt-4" />
+        </ul>
+      </div>
+    </div>
+  );
+};
+
+export default InstructorMobileSideBar;

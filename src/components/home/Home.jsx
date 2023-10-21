@@ -1,22 +1,56 @@
-import React,{useContext} from 'react'
+import React,{useContext,useState,useEffect} from 'react'
 import CourseRow from './CourseRow'
 import AuthContext from '../../context/AuthContext'
+import { Fade, Slide } from "react-awesome-reveal";
+import {useTransition, animated} from '@react-spring/web'
+import shuffle from 'lodash.shuffle'
+import data from './data'
+import styles from './styles.module.css'
+
+
 
 
 const Home = () => {
+
+  const [rows, set] = useState(data);
+useEffect(() => {
+  const t = setInterval(() => set(shuffle), 3000);
+  return () => clearInterval(t);
+}, []);
+
+let height = 0;
+const transitions = useTransition(
+  rows.map(data => ({ ...data, y: (height += data.height) - data.height })),
+  {
+    key: (item) => item.name,
+    from: { height: 0, opacity: 0 },
+    leave: { height: 0, opacity: 0 },
+    enter: ({ y, height }) => ({ y, height, opacity: 1 }),
+    update: ({ y, height }) => ({ y, height }),
+  }
+);
+
+
+
+
+
+
+
 
   return (
     <>
     {/* // Hero-section */}
     <section className="bg-white dark:bg-gray-900 bg-center bg-no-repeat bg-cover bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')] dark:bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern-dark.svg')]" style={{backgroundImage: 'url(/hero-section.jpg)'}}>
+      
   <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 grid lg:grid-cols-2 gap-8 lg:gap-16">
     <div className="flex flex-col justify-center">
-      <h1 className="mb-4 text-4xl z-10 font-extrabold tracking-tight leading-none text-White md:text-5xl lg:text-6xl dark:text-white">
+      <Slide><h1 className="mb-4 text-4xl z-10 font-extrabold tracking-tight leading-none text-White md:text-5xl lg:text-6xl dark:text-white">
       Unlock Your Potential with Skill Savant
-      </h1>
+      </h1></Slide>
+      <Fade delay={1e3} cascade damping={1e-1}>
       <p className="mb-8 text-lg font-normal z-10 text-gray-400 lg:text-xl dark:text-gray-400">
       Explore a world of knowledge and enhance your skills from the comfort of your home. Start your journey to success today.
-      </p>
+      </p></Fade>
       <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
         <a
           href="#"
@@ -60,38 +94,43 @@ const Home = () => {
   </div>
 </section>
 
+
 {/* Skills icons */}
 <section class="bg-white py-8">
     <div class="container mx-auto px-4">
       <div class="overflow-x-hidden">
-        <div class="flex items-center justify-center space-x-11 overflow-x-auto ">
-          {/* <!-- Latest Course 1 --> */}
-          <div class="flex-shrink-0 w-48 h-28 bg-yellow-300 rounded-md shadow-md p-4">
-            
+      {/* <div class="flex items-center justify-center space-x-11 overflow-x-auto "> */}
+
+
+
+      {/* <div className={styles.list} style={{ height }}>
+      {transitions((style, item, t, index) => (
+        <animated.div className={styles.card} style={{ zIndex: data.length - index, ...style }}>
+          <div className={styles.cell}>
+            <div className={styles.details} style={{ backgroundImage: item.css }} />
           </div>
-  
-          {/* <!-- Latest Course 2 --> */}
-          <div class="flex-shrink-0 w-48 h-28 bg-red-500 rounded-md shadow-md p-4">
-            
+        </animated.div>
+      ))}
+    </div> */}
+
+<div className="flex items-center justify-between space-x-11 overflow-x-auto">
+      {transitions((style, item, t, index) => (
+        <animated.div className="mx-3.5">
+          <div className="flex-shrink-0 w-48 h-28 rounded-md shadow-md p-4" style={{ backgroundImage: item.css }}>
+            {/* <div className="flex-shrink-0 w-48 h-28 rounded-md shadow-md p-4"  />  */}
           </div>
-  
-          {/* <!-- Latest Course 3 --> */}
-          <div class="flex-shrink-0 w-48 h-28 bg-green-400 rounded-md shadow-md p-4">
-            
-          </div>
+        </animated.div>
+      ))}
+    </div>
+        
 
 
-          <div class="flex-shrink-0 w-48 h-28 bg-purple-500 rounded-md shadow-md p-4">
-            
-          </div>
 
 
-         
 
-         
-       
-          {/* <!-- Add more Latest Courses as needed --> */}
-        </div>
+
+{/* </div> */}
+
       </div>
     </div>
     {/* <div class="bg-gradient-to-b from-blue-100 to-transparent dark:from-blue-900 w-full h-full absolute top-0 left-0 z-0"></div> */}

@@ -10,7 +10,7 @@ import styles from "./styles.module.css";
 const Home = () => {
   const [rows, set] = useState(data);
   useEffect(() => {
-    const t = setInterval(() => set(shuffle), 3000);
+    const t = setInterval(() => set(shuffle), 2000);
     return () => clearInterval(t);
   }, []);
 
@@ -142,7 +142,8 @@ const Home = () => {
                 </animated.div>
               ))}
             </div>
-
+      
+      
             {/* </div> */}
           </div>
         </div>

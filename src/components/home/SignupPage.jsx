@@ -42,7 +42,7 @@ const SignupPage = () => {
     <section className="bg-center bg-cover bg-no-repeat bg-[url('/self-learning.jpg')]">
       <div className="w-full flex flex-wrap justify-center items-center py-24 px-6">
         {/* Text on the left */}
-        <div className="w-full sm:w-1/2 p-4 text-left">
+        <div className="w-full sm:w-1/2 p-  4 text-left">
           <h1 class="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
             <span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">
               Welcome to

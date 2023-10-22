@@ -38,7 +38,10 @@ export const AuthProvider = ({children}) => {
           } 
         } catch (error) {
         // console.log(respone.message) 
-        toast.error('Invalid Email or Password');
+        toast.error(<div>
+          <p className='text-md font-semibold'>Invaild Email or Password</p>
+          <p className='text-xs font-light text-red-600'>Check your credentials and please try again.</p>
+        </div>),{theme:"colored"};
           
          
         }

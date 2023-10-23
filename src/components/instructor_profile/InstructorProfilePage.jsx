@@ -3,7 +3,7 @@ import { initFlowbite } from "flowbite";
 import InstructorSideBar from "./InstructorSideBar";
 import InstructorMobileSideBar from "./InstructorMobileSideBar";
 import AuthContext from "./../../context/AuthContext";
-import { baseUrlMedia } from "./../../services/constants";
+
 
 const InstructorProfilePage = () => {
   let { userProfile, user } = useContext(AuthContext);
@@ -56,7 +56,7 @@ const InstructorProfilePage = () => {
                   <div className="relative flex items-center gap-4 pt-0 pb-8 mx-0 mt-4 overflow-hidden text-gray-700 bg-transparent shadow-none rounded-xl bg-clip-border">
                     {userProfile ? (
                       <img
-                        src={`${baseUrlMedia + userProfile.profile_photo}`}
+                        src={userProfile.profile_photo}
                         alt="tania andrew"
                         className="relative inline-block h-[75px] w-[75px] !rounded-full object-cover object-center"
                       />

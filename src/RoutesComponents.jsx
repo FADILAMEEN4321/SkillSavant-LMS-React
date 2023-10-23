@@ -14,6 +14,7 @@ import CourseListingPage from './components/course_related/CourseListingPage.jsx
 import AdminDashboard from './components/admin_profile/AdminDashboard.jsx';
 import AdminInstructorManagement from './components/admin_profile/AdminInstructorManagement.jsx';
 import AdminRoute from './protectedRoutes/AdminRoute.jsx';
+import InstructorCoursePage from './components/instructor_profile/InstructorCoursePage.jsx';
 
 
 
@@ -36,6 +37,7 @@ const RoutesComponents = () => {
         <Route path='/instructor/login' element={<InstructorLoginPage/>}></Route>
         <Route path='/instructor/signup' element={<InstructorSignupPage/>}></Route>
         <Route path='/instructor/profile' element={<InstructorProfilePage/>}></Route>
+        <Route path='/instructor/mycourses' element={<InstructorCoursePage/>}></Route>
 
 
         {/* Routes for Admin */}

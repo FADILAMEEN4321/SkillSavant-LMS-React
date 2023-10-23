@@ -195,7 +195,8 @@ const Header = () => {
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
               {studentData ? (
-                <img src={`${baseUrlMedia + studentData.profile_photo}`} />
+                // <img src={`${baseUrlMedia + studentData.profile_photo}`} />
+                <img src={studentData.profile_photo} />
               ) : (
                 <img src="" />
               )}

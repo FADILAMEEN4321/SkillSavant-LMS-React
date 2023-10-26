@@ -1,8 +1,44 @@
-import React from "react";
+import React,{useState, useEffect, useContext} from "react";
 import InstructorSideBar from "./InstructorSideBar";
 import InstructorMobileSideBar from "./InstructorMobileSideBar";
+import axios from './../../services/axios'
+import AuthContext from "../../context/AuthContext";
+
 
 const InstructorCoursePage = (props) => {
+
+  let {userProfile} = useContext(AuthContext)
+
+  const [courses,setCourses] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (userProfile) {
+        const instructorId = userProfile.id;
+        console.log('from instructor course page--->', instructorId);
+        // Set loading to true when starting the API call
+        setLoading(true);
+        try {
+          const response = await axios.get(`instructor-courses/${instructorId}/`);
+          console.log(response.data);
+          setCourses(response.data);
+        } catch (error) {
+          console.error('Error fetching courses', error);
+        } finally {
+          // Set loading to false when the API call is complete
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchData();
+  }, [userProfile]);
+
+
+
   return (
     <>
       {/* Main Content Container */}
@@ -232,203 +268,38 @@ const InstructorCoursePage = (props) => {
             <div className="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {/* Course Cards */}
 
-              <div class="flex-shrink-0 bg-white border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 rounded-md hover:bg-blue-100">
+              {loading? (
+              <p>Loading...</p>
+              ):(
+              courses.map((course)=>(
+                <div class="flex-shrink-0 bg-white border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 rounded-md hover:bg-blue-100">
                 <img
-                  src="https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg"
+                  src={course.cover_image}
                   alt="Image Alt Text"
                   class="w-full rounded-t-md object-top"
                 />
                 <div class="p-4">
-                  <p>20m</p>
+                  {/* <p>20m</p> */}
                   <h3 class="text-xl font-bold mb-2 dark:text-white tracking-tight text-gray-900 ">
-                    The Ultimate Guide to Chess: learn chess
+                    {course.title}
                   </h3>
                   {/* <p class="text-gray-600 mb-4">Description of Course 1.</p> */}
                   <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    Fadil ameen
+                    {course.subtitle}
                   </p>
-                </div>
-              </div>
 
-              <div class="flex-shrink-0 bg-white border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 rounded-md hover:bg-blue-100">
-                <img
-                  src="https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg"
-                  alt="Image Alt Text"
-                  class="w-full rounded-t-md object-top"
-                />
-                <div class="p-4">
-                  <p>20m</p>
-                  <h3 class="text-xl font-bold mb-2 dark:text-white tracking-tight text-gray-900 ">
-                    The Ultimate Guide to Chess: learn chess
-                  </h3>
-                  {/* <p class="text-gray-600 mb-4">Description of Course 1.</p> */}
-                  <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    Fadil ameen
-                  </p>
+                  {course.is_approved?(
+                    <span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">Approved</span>
+                  ):(
+                    <span class="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-yellow-300 border border-yellow-300">Pending</span>
+                  )}
                 </div>
               </div>
+              ))
+              )}
 
-              <div class="flex-shrink-0 bg-white border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 rounded-md hover:bg-blue-100">
-                <img
-                  src="https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg"
-                  alt="Image Alt Text"
-                  class="w-full rounded-t-md object-top"
-                />
-                <div class="p-4">
-                  <p>20m</p>
-                  <h3 class="text-xl font-bold mb-2 dark:text-white tracking-tight text-gray-900 ">
-                    The Ultimate Guide to Chess: learn chess
-                  </h3>
-                  {/* <p class="text-gray-600 mb-4">Description of Course 1.</p> */}
-                  <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    Fadil ameen
-                  </p>
-                </div>
-              </div>
+           
 
-              <div class="flex-shrink-0 bg-white border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 rounded-md hover:bg-blue-100">
-                <img
-                  src="https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg"
-                  alt="Image Alt Text"
-                  class="w-full rounded-t-md object-top"
-                />
-                <div class="p-4">
-                  <p>20m</p>
-                  <h3 class="text-xl font-bold mb-2 dark:text-white tracking-tight text-gray-900 ">
-                    The Ultimate Guide to Chess: learn chess
-                  </h3>
-                  {/* <p class="text-gray-600 mb-4">Description of Course 1.</p> */}
-                  <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    Fadil ameen
-                  </p>
-                </div>
-              </div>
-
-              <div class="flex-shrink-0 bg-white border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 rounded-md hover:bg-blue-100">
-                <img
-                  src="https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg"
-                  alt="Image Alt Text"
-                  class="w-full rounded-t-md object-top"
-                />
-                <div class="p-4">
-                  <p>20m</p>
-                  <h3 class="text-xl font-bold mb-2 dark:text-white tracking-tight text-gray-900 ">
-                    The Ultimate Guide to Chess: learn chess
-                  </h3>
-                  {/* <p class="text-gray-600 mb-4">Description of Course 1.</p> */}
-                  <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    Fadil ameen
-                  </p>
-                </div>
-              </div>
-
-              <div class="flex-shrink-0 bg-white border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 rounded-md hover:bg-blue-100">
-                <img
-                  src="https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg"
-                  alt="Image Alt Text"
-                  class="w-full rounded-t-md object-top"
-                />
-                <div class="p-4">
-                  <p>20m</p>
-                  <h3 class="text-xl font-bold mb-2 dark:text-white tracking-tight text-gray-900 ">
-                    The Ultimate Guide to Chess: learn chess
-                  </h3>
-                  {/* <p class="text-gray-600 mb-4">Description of Course 1.</p> */}
-                  <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    Fadil ameen
-                  </p>
-                </div>
-              </div>
-
-              <div class="flex-shrink-0 bg-white border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 rounded-md hover:bg-blue-100">
-                <img
-                  src="https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg"
-                  alt="Image Alt Text"
-                  class="w-full rounded-t-md object-top"
-                />
-                <div class="p-4">
-                  <p>20m</p>
-                  <h3 class="text-xl font-bold mb-2 dark:text-white tracking-tight text-gray-900 ">
-                    The Ultimate Guide to Chess: learn chess
-                  </h3>
-                  {/* <p class="text-gray-600 mb-4">Description of Course 1.</p> */}
-                  <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    Fadil ameen
-                  </p>
-                </div>
-              </div>
-
-              <div class="flex-shrink-0 bg-white border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 rounded-md hover:bg-blue-100">
-                <img
-                  src="https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg"
-                  alt="Image Alt Text"
-                  class="w-full rounded-t-md object-top"
-                />
-                <div class="p-4">
-                  <p>20m</p>
-                  <h3 class="text-xl font-bold mb-2 dark:text-white tracking-tight text-gray-900 ">
-                    The Ultimate Guide to Chess: learn chess
-                  </h3>
-                  {/* <p class="text-gray-600 mb-4">Description of Course 1.</p> */}
-                  <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    Fadil ameen
-                  </p>
-                </div>
-              </div>
-
-              <div class="flex-shrink-0 bg-white border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 rounded-md hover:bg-blue-100">
-                <img
-                  src="https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg"
-                  alt="Image Alt Text"
-                  class="w-full rounded-t-md object-top"
-                />
-                <div class="p-4">
-                  <p>20m</p>
-                  <h3 class="text-xl font-bold mb-2 dark:text-white tracking-tight text-gray-900 ">
-                    The Ultimate Guide to Chess: learn chess
-                  </h3>
-                  {/* <p class="text-gray-600 mb-4">Description of Course 1.</p> */}
-                  <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    Fadil ameen
-                  </p>
-                </div>
-              </div>
-
-              <div class="flex-shrink-0 bg-white border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 rounded-md hover:bg-blue-100">
-                <img
-                  src="https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg"
-                  alt="Image Alt Text"
-                  class="w-full rounded-t-md object-top"
-                />
-                <div class="p-4">
-                  <p>20m</p>
-                  <h3 class="text-xl font-bold mb-2 dark:text-white tracking-tight text-gray-900 ">
-                    The Ultimate Guide to Chess: learn chess
-                  </h3>
-                  {/* <p class="text-gray-600 mb-4">Description of Course 1.</p> */}
-                  <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    Fadil ameen
-                  </p>
-                </div>
-              </div>
-
-              <div class="flex-shrink-0 bg-white border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 rounded-md hover:bg-blue-100">
-                <img
-                  src="https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg"
-                  alt="Image Alt Text"
-                  class="w-full rounded-t-md object-top"
-                />
-                <div class="p-4">
-                  <p>20m</p>
-                  <h3 class="text-xl font-bold mb-2 dark:text-white tracking-tight text-gray-900 ">
-                    The Ultimate Guide to Chess: learn chess
-                  </h3>
-                  {/* <p class="text-gray-600 mb-4">Description of Course 1.</p> */}
-                  <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    Fadil ameen
-                  </p>
-                </div>
-              </div>
 
               {/* Repeat the above course card div for each course */}
             </div>

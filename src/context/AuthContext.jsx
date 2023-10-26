@@ -63,6 +63,8 @@ export const AuthProvider = ({children}) => {
             const decodedToken = jwt_decode(data.access);
             console.log(decodedToken)
             setUser(decodedToken);
+            setUserProfile(data.instructor_data)
+            console.log('inst-login',data.instructor_data)
             localStorage.setItem('authTokens', JSON.stringify(data));
             toast.success('You are successfully logged in.')
             navigate('/instructor/profile');
@@ -108,6 +110,7 @@ export const AuthProvider = ({children}) => {
     const logoutUser = () => {
         setAuthTokens(null)
         setUser(null)
+        setUserProfile(null)
         console.log('dnjdsfjd')
         localStorage.removeItem('authTokens')
         console.log('ddvsdvzd')

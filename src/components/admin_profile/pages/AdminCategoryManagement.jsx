@@ -1,14 +1,58 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
 import AdminMobileSideBar from "../features/AdminMobileSideBar";
 import { Link } from "react-router-dom";
 import AdminSideBar from "../features/AdminSideBar";
-import CategoryTable from '../features/CategoryTable';
-import SubCategoryTable from '../features/SubCategoryTable';
-import TagTable from '../features/TagTable';
-
+import CategoryTable from "../features/CategoryTable";
+import SubCategoryTable from "../features/SubCategoryTable";
+import TagTable from "../features/TagTable";
+import axios from "./../../../services/axios";
 
 const AdminCategoryManagement = () => {
-  
+  const [categories, setCategories] = useState([]);
+  const [subcategories, setSubcategories] = useState([]);
+  const [tags, setTags] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    axios
+      .get("admin/categories-list-create/")
+      .then((response) => {
+        console.log("from cat--->", response.data);
+        setCategories(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching categories:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get("admin/subcategories-list-create/")
+      .then((response) => {
+        console.log("subcat from cat--->", response.data);
+        setSubcategories(response.data);
+      })
+      .catch((error) => {
+        console.error("error fetching subcategories:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    setLoading(true);
+    axios
+      .get("admin/tags-list-create/")
+      .then((response) => {
+        console.log("tags from cat----->", response.data);
+        setTags(response.data);
+      })
+      .catch((error) => {
+        console.error("error while fetching tags:", error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
+
   return (
     <>
       {/* Main Content Container */}
@@ -34,26 +78,27 @@ const AdminCategoryManagement = () => {
             <div className="bg-cover bg-[url('/self-learning.jpg')] min-h-[200px] rounded-md" />
           </div>
           <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <CategoryTable
+                categories={categories}
+                setCategories={setCategories}
+                loading={loading}
+              />
 
+              <SubCategoryTable
+                subcategories={subcategories}
+                setSubcategories={setSubcategories}
+                loading={loading}
+                categories={categories}
+              />
 
-         <CategoryTable/>
-
-         <SubCategoryTable/>
-
-         <TagTable/>
-
-
-
-          </div>
-
-
-            
+              <TagTable tags={tags} setTags={setTags} loading={loading} subcategories={subcategories} />
+            </div>
           </div>
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default AdminCategoryManagement
+export default AdminCategoryManagement;

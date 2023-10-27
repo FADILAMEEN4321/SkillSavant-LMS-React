@@ -4,10 +4,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
 
-const CategoryTable = () => {
-  const [categories, setCategories] = useState([]);
-  const [loading, setLoading] = useState(true);
-
+const CategoryTable = ({ categories, setCategories, loading }) => {
   // Define validation schema using Yup
   const validationSchema = Yup.object().shape({
     categoryName: Yup.string()
@@ -70,23 +67,6 @@ const CategoryTable = () => {
       });
   };
 
-  useEffect(() => {
-    setLoading(true);
-
-    axios
-      .get("admin/categories-list-create/")
-      .then((response) => {
-        console.log(response.data);
-        setCategories(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching categories:", error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, []);
-
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-md bg-white">
       <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -109,7 +89,7 @@ const CategoryTable = () => {
               />
             </svg>
             Create New Category
-          </button> 
+          </button>
           <dialog id="my_modal_3" className="modal">
             <div className="modal-box">
               <form method="dialog">

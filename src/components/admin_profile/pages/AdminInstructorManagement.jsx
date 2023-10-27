@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import AdminSideBar from "./AdminSideBar";
+import AdminSideBar from "../features/AdminSideBar";
 import { initFlowbite } from "flowbite";
-import axios from "./../../services/axios";
-import AdminMobileSideBar from "./AdminMobileSideBar";
+import axios from "../../../services/axios";
+import AdminMobileSideBar from "../features/AdminMobileSideBar";
 
 const AdminInstructorManagement = () => {
   const [instructors, setInstructors] = useState([]);

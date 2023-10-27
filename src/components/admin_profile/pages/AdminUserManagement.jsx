@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import AdminSideBar from "./AdminSideBar";
+import AdminSideBar from "../features/AdminSideBar";
 import { initFlowbite } from "flowbite";
-import axios from "./../../services/axios";
+import axios from "../../../services/axios";
 import { Link } from "react-router-dom";
-import AdminMobileSideBar from "./AdminMobileSideBar";
+import AdminMobileSideBar from "../features/AdminMobileSideBar";
 
 const AdminUserManagement = () => {
   const [students, setStudents] = useState([]);

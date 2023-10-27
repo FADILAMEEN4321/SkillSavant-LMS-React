@@ -6,13 +6,14 @@ import SignupPage from './components/home/SignupPage';
 import StudenProfilePage from './components/student_profile/StudenProfilePage.jsx';
 import InstructorLoginPage from './components/instructor_profile/InstructorLoginPage.jsx';
 import InstructorSignupPage from './components/instructor_profile/InstructorSignupPage.jsx';
-import AdminLoginPage from './components/admin_profile/AdminLoginPage.jsx';
+import AdminLoginPage from './components/admin_profile/pages/AdminLoginPage.jsx';
 import StudentRoute from './protectedRoutes/StudentRoute.jsx';
 import InstructorProfilePage from './components/instructor_profile/InstructorProfilePage.jsx';
-import AdminUserManagement from './components/admin_profile/AdminUserManagement.jsx';
+import AdminUserManagement from './components/admin_profile/pages/AdminUserManagement.jsx';
 import CourseListingPage from './components/course_related/CourseListingPage.jsx';
-import AdminDashboard from './components/admin_profile/AdminDashboard.jsx';
-import AdminInstructorManagement from './components/admin_profile/AdminInstructorManagement.jsx';
+import AdminDashboard from './components/admin_profile/pages/AdminDashboard.jsx';
+import AdminInstructorManagement from './components/admin_profile/pages/AdminInstructorManagement.jsx';
+import AdminCategoryManagement from './components/admin_profile/pages/AdminCategoryManagement.jsx';
 import AdminRoute from './protectedRoutes/AdminRoute.jsx';
 import InstructorCoursePage from './components/instructor_profile/InstructorCoursePage.jsx';
 
@@ -45,6 +46,7 @@ const RoutesComponents = () => {
         <Route path='/admin/dashboard' element={<AdminRoute Component={AdminDashboard} />}></Route>
         <Route path='/admin/student-management' element={<AdminRoute Component={AdminUserManagement} />}></Route>
         <Route path='/admin/instructor-management' element={<AdminRoute Component={AdminInstructorManagement} />}></Route>
+        <Route path='/admin/category-management' element={<AdminRoute Component={AdminCategoryManagement} />}></Route>
     </Routes>
   )
 }

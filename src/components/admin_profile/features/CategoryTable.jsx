@@ -109,7 +109,7 @@ const CategoryTable = () => {
               />
             </svg>
             Create New Category
-          </button>
+          </button> 
           <dialog id="my_modal_3" className="modal">
             <div className="modal-box">
               <form method="dialog">

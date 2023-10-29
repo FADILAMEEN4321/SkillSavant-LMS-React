@@ -4,18 +4,22 @@ import Home from './components/home/Home.jsx';
 import LoginPage from './components/home/LoginPage';
 import SignupPage from './components/home/SignupPage';
 import StudenProfilePage from './components/student_profile/StudenProfilePage.jsx';
-import InstructorLoginPage from './components/instructor_profile/InstructorLoginPage.jsx';
-import InstructorSignupPage from './components/instructor_profile/InstructorSignupPage.jsx';
+import InstructorLoginPage from './components/instructor_profile/pages/InstructorLoginPage.jsx'
+import InstructorSignupPage from './components/instructor_profile/pages/InstructorSignupPage.jsx'
 import AdminLoginPage from './components/admin_profile/pages/AdminLoginPage.jsx';
 import StudentRoute from './protectedRoutes/StudentRoute.jsx';
-import InstructorProfilePage from './components/instructor_profile/InstructorProfilePage.jsx';
+import InstructorProfilePage from './components/instructor_profile/pages/InstructorProfilePage.jsx';
 import AdminUserManagement from './components/admin_profile/pages/AdminUserManagement.jsx';
 import CourseListingPage from './components/course_related/CourseListingPage.jsx';
 import AdminDashboard from './components/admin_profile/pages/AdminDashboard.jsx';
 import AdminInstructorManagement from './components/admin_profile/pages/AdminInstructorManagement.jsx';
 import AdminCategoryManagement from './components/admin_profile/pages/AdminCategoryManagement.jsx';
 import AdminRoute from './protectedRoutes/AdminRoute.jsx';
-import InstructorCoursePage from './components/instructor_profile/InstructorCoursePage.jsx';
+import InstructorCoursePage from './components/instructor_profile/pages/InstructorCoursePage.jsx';
+import InstructorCourseDetailPage from './components/instructor_profile/pages/InstructorCourseDetailPage.jsx';
+import PendingCoursesPage from './components/admin_profile/pages/PendingCoursesPage.jsx';
+import PendingCourseDetailPage from './components/admin_profile/pages/PendingCourseDetailPage.jsx';
+import ApprovedCoursePage from './components/admin_profile/pages/ApprovedCoursePage.jsx';
 
 
 
@@ -39,6 +43,8 @@ const RoutesComponents = () => {
         <Route path='/instructor/signup' element={<InstructorSignupPage/>}></Route>
         <Route path='/instructor/profile' element={<InstructorProfilePage/>}></Route>
         <Route path='/instructor/mycourses' element={<InstructorCoursePage/>}></Route>
+        <Route path='/instructor/mycourses/:courseId' element={<InstructorCourseDetailPage/>} />
+
 
 
         {/* Routes for Admin */}
@@ -47,6 +53,10 @@ const RoutesComponents = () => {
         <Route path='/admin/student-management' element={<AdminRoute Component={AdminUserManagement} />}></Route>
         <Route path='/admin/instructor-management' element={<AdminRoute Component={AdminInstructorManagement} />}></Route>
         <Route path='/admin/category-management' element={<AdminRoute Component={AdminCategoryManagement} />}></Route>
+        <Route path='/admin/pending-courses' element={<AdminRoute Component={PendingCoursesPage} />}></Route>
+        <Route path='/admin/pending-courses/:courseId' element={<AdminRoute Component={PendingCourseDetailPage} />}></Route>
+        <Route path='/admin/approved-courses' element={<AdminRoute Component={ApprovedCoursePage} />}></Route>
+
     </Routes>
   )
 }

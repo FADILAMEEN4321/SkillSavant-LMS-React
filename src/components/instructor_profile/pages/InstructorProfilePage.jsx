@@ -1,8 +1,9 @@
 import React, { useEffect, useContext } from "react";
 import { initFlowbite } from "flowbite";
-import InstructorSideBar from "./InstructorSideBar";
-import InstructorMobileSideBar from "./InstructorMobileSideBar";
-import AuthContext from "./../../context/AuthContext";
+import InstructorSideBar from "../features/InstructorSideBar";
+// import InstructorMobileSideBar from "./InstructorMobileSideBar";
+import InstructorMobileSideBar from "../features/InstructorMobileSideBar";
+import AuthContext from "../../../context/AuthContext";
 
 
 const InstructorProfilePage = () => {

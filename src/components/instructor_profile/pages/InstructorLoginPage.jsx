@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import AuthContext from "../../context/AuthContext";
+import AuthContext from "../../../context/AuthContext";
 
 const InstructorLoginPage = () => {
   let { loginInstructor } = useContext(AuthContext);
@@ -10,13 +10,13 @@ const InstructorLoginPage = () => {
       <div className="w-full flex flex-wrap justify-center items-center py-24 px-6">
         {/* Text on the left */}
         <div className="w-full sm:w-1/2 p-4 text-left">
-          <h1 class="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
-            <span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">
+          <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">
               Welcome to
             </span>
             Skill Savant
           </h1>
-          <p class="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">
+          <p className="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">
             Discover a world of knowledge and unlock your potential.
           </p>
         </div>

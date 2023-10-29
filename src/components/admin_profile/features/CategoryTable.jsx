@@ -39,6 +39,7 @@ const CategoryTable = ({ categories, setCategories, loading }) => {
       })
       .catch((error) => {
         console.error("error while creating category:", error);
+        
       })
       .finally(() => {
         setSubmitting(false);

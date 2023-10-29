@@ -6,7 +6,7 @@ import Footer from './components/common/Footer';
 import {AuthProvider} from './context/AuthContext';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import InstructorProfilePage from './components/instructor_profile/InstructorProfilePage';
+
 
 
 function App() {

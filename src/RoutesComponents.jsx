@@ -1,8 +1,10 @@
 import React from 'react'
 import {Route, Routes} from 'react-router-dom';
-import Home from './components/home/Home.jsx';
-import LoginPage from './components/home/LoginPage';
-import SignupPage from './components/home/SignupPage';
+
+
+import Home from './components/home/pages/Home'
+import LoginPage from './components/home/pages/LoginPage';
+import SignupPage from './components/home/pages/SignupPage';
 import StudenProfilePage from './components/student_profile/StudenProfilePage.jsx';
 import InstructorLoginPage from './components/instructor_profile/pages/InstructorLoginPage.jsx'
 import InstructorSignupPage from './components/instructor_profile/pages/InstructorSignupPage.jsx'

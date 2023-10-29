@@ -1,18 +1,60 @@
 import React, { useContext, useState, useEffect } from "react";
-import CourseRow from "./CourseRow";
-import AuthContext from "../../context/AuthContext";
+import CourseRow from "../features/CourseRow";
+import AuthContext from "../../../context/AuthContext";
 import { Fade, Slide } from "react-awesome-reveal";
 import { useTransition, animated } from "@react-spring/web";
 import shuffle from "lodash.shuffle";
-import data from "./data";
+import data from "../features/data";
 import styles from "./styles.module.css";
+import axios from './../../../services/axios';
+
+
 
 const Home = () => {
   const [rows, set] = useState(data);
+  const [popularCourses, setPopularCourses] = useState([]);
+  const [latestCourses, setLatestCourses] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+
   useEffect(() => {
     const t = setInterval(() => set(shuffle), 2000);
     return () => clearInterval(t);
   }, []);
+
+  useEffect(()=>{
+    //URLs for API endpoints
+    const popularCoursesUrl = 'popular-courses/';
+    const latestCoursesUrl = 'latest-courses/';
+
+    // Array of promises for the API requests
+    const requests = [
+      axios.get(popularCoursesUrl),
+      axios.get(latestCoursesUrl),
+    ]
+
+    // Use Promise.all to wait for both requests to complete
+    Promise.all(requests)
+    .then((responses)=>{
+      const popularCoursesData = responses[0].data;
+      const latestCoursesData = responses[1].data;
+
+      setPopularCourses(popularCoursesData);
+      setLatestCourses(latestCoursesData);
+    })
+    .catch((error)=>{
+      console.log('Error fetching data:', error)
+    })
+    .finally(()=>{
+      setLoading(false)
+    })
+
+  },[])
+
+
+
+
+
 
   let height = 0;
   const transitions = useTransition(
@@ -93,42 +135,6 @@ const Home = () => {
       <section class="bg-white py-8">
         <div class="container mx-auto px-4">
           <div class="overflow-x-hidden">
-            {/* <div class="flex items-center justify-center space-x-11 overflow-x-auto "> */}
-
-            {/* <div className={styles.list} style={{ height }}>
-      {transitions((style, item, t, index) => (
-        <animated.div className={styles.card} style={{ zIndex: data.length - index, ...style }}>
-          <div className={styles.cell}>
-            <div className={styles.details} style={{ backgroundImage: item.css }} />
-          </div>
-        </animated.div>
-      ))}
-    </div> */}
-
-            {/* Older code for icons just for to know*/}
-
-            {/* <div class="flex items-center justify-center space-x-11 overflow-x-auto ">
-          <div class="flex-shrink-0 w-48 h-28 bg-yellow-300 rounded-md shadow-md p-4">
-            
-          </div>
-  
-          
-          <div class="flex-shrink-0 w-48 h-28 bg-red-500 rounded-md shadow-md p-4">
-            
-          </div>
-  
-          <div class="flex-shrink-0 w-48 h-28 bg-green-400 rounded-md shadow-md p-4">
-            
-          </div>
-
-
-          <div class="flex-shrink-0 w-48 h-28 bg-purple-500 rounded-md shadow-md p-4">
-            
-          </div>
-
-
-         
-        </div> */}
 
             <div className="flex items-center justify-between space-x-11 overflow-x-auto">
               {transitions((style, item, t, index) => (
@@ -150,14 +156,22 @@ const Home = () => {
         {/* <div class="bg-gradient-to-b from-blue-100 to-transparent dark:from-blue-900 w-full h-full absolute top-0 left-0 z-0"></div> */}
       </section>
 
+
       <CourseRow
         title="Popular Courses"
         subtitle="Checkout all the popular courses."
+        courses={popularCourses}
+        loading={loading}
       />
+
       <CourseRow
         title="Latest Releases"
         subtitle="Checkout all the Latest Releases."
+        courses={latestCourses}
+        loading={loading}
       />
+
+
 
       <div class="w-full bg-slate-500 h-72 relative">
         {/* <!-- Background Image --> */}

@@ -12,7 +12,7 @@ import AdminLoginPage from './components/admin_profile/pages/AdminLoginPage.jsx'
 import StudentRoute from './protectedRoutes/StudentRoute.jsx';
 import InstructorProfilePage from './components/instructor_profile/pages/InstructorProfilePage.jsx';
 import AdminUserManagement from './components/admin_profile/pages/AdminUserManagement.jsx';
-import CourseListingPage from './components/course_related/CourseListingPage.jsx';
+import CourseListingPage from './components/course_related/pages/CourseListingPage.jsx';
 import AdminDashboard from './components/admin_profile/pages/AdminDashboard.jsx';
 import AdminInstructorManagement from './components/admin_profile/pages/AdminInstructorManagement.jsx';
 import AdminCategoryManagement from './components/admin_profile/pages/AdminCategoryManagement.jsx';
@@ -22,6 +22,7 @@ import InstructorCourseDetailPage from './components/instructor_profile/pages/In
 import PendingCoursesPage from './components/admin_profile/pages/PendingCoursesPage.jsx';
 import PendingCourseDetailPage from './components/admin_profile/pages/PendingCourseDetailPage.jsx';
 import ApprovedCoursePage from './components/admin_profile/pages/ApprovedCoursePage.jsx';
+import CoursedetailPage from './components/course_related/pages/CoursedetailPage';
 
 
 
@@ -37,6 +38,7 @@ const RoutesComponents = () => {
         <Route path='/signup' element={<SignupPage/>}></Route>
         <Route path='/profile' element={<StudentRoute Component={StudenProfilePage} />}></Route>
         <Route path='/courses' element={<CourseListingPage/>}></Route>
+        <Route path='/courses/:courseId' element={<CoursedetailPage/>}></Route>
 
 
 

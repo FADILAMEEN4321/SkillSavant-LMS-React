@@ -1,6 +1,7 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 
 const CourseSideBar = () => {
+
   return (
     <div className="drawer md:hidden">
       <input id="my-drawer" type="checkbox" className="drawer-toggle" />

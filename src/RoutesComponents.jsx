@@ -23,6 +23,7 @@ import PendingCoursesPage from './components/admin_profile/pages/PendingCoursesP
 import PendingCourseDetailPage from './components/admin_profile/pages/PendingCourseDetailPage.jsx';
 import ApprovedCoursePage from './components/admin_profile/pages/ApprovedCoursePage.jsx';
 import CoursedetailPage from './components/course_related/pages/CoursedetailPage';
+import ApprovedCourseDetailPage from './components/admin_profile/pages/ApprovedCourseDetailPage';
 
 
 
@@ -60,6 +61,8 @@ const RoutesComponents = () => {
         <Route path='/admin/pending-courses' element={<AdminRoute Component={PendingCoursesPage} />}></Route>
         <Route path='/admin/pending-courses/:courseId' element={<AdminRoute Component={PendingCourseDetailPage} />}></Route>
         <Route path='/admin/approved-courses' element={<AdminRoute Component={ApprovedCoursePage} />}></Route>
+        <Route path='/admin/approved-courses/:courseId' element={<AdminRoute Component={ApprovedCourseDetailPage} />}></Route>
+
 
     </Routes>
   )

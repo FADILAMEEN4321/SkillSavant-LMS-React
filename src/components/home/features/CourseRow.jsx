@@ -1,4 +1,5 @@
 import React from "react";
+import {motion} from "framer-motion";
 
 const CourseRow = ({ title, subtitle, courses, loading }) => {
   return (
@@ -15,7 +16,8 @@ const CourseRow = ({ title, subtitle, courses, loading }) => {
 
             {loading ? (<p>loading...</p>):(
               courses.map((course)=>(
-                <div class="flex-shrink-0 w-64 bg-white border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 rounded-md hover:bg-blue-100">
+                // <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.2 }}>
+                  <div class="flex-shrink-0 w-64 bg-white border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 rounded-md hover:bg-blue-100">
               <img
                 src={course.cover_image}
                 alt="Image Alt Text"
@@ -32,11 +34,15 @@ const CourseRow = ({ title, subtitle, courses, loading }) => {
                 </p>
               </div>
             </div>
+                // </motion.div>
+
+                
+
+
+              
 
               ))
             )}
-
-
 
 
 

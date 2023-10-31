@@ -72,7 +72,7 @@ const ApprovedCoursePage = () => {
                 <p>loading...</p>
                ):(
                 approvedCourses.map((course)=>(
-                  <Link to={`/admin/pending-courses/${course.id}`} >
+                  <Link to={`/admin/approved-courses/${course.id}`} >
                 <div key={course.id} className="flex-shrink-0 bg-white border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 rounded-md hover:bg-blue-100">
                <img
                  src={course.cover_image}
@@ -88,9 +88,15 @@ const ApprovedCoursePage = () => {
                  <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                  {course.subtitle}
                  </p>
+                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                 instructor: {course.instructor_first_name} {course.instructor_last_name}
+                 </p>
 
-                 
-                   <span className="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-yellow-300 border border-yellow-300">Pending</span>
+                 {course.is_approved?(
+                    <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">Approved</span>
+                  ):(
+                    <span className="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-yellow-300 border border-yellow-300">Pending</span>
+                  )}
                 
                </div>
              </div>

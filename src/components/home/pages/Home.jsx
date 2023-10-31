@@ -119,14 +119,6 @@ const Home = () => {
             </div>
           </div>
           <div>
-            {/* <iframe
-        className="mx-auto w-full lg:max-w-xl h-64 rounded-md sm:h-96 shadow-xl"
-        src="https://www.youtube.com/embed/KaLxCiilHns"
-        title="YouTube video player"
-        frameBorder={0}
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen=""
-      />  */}
           </div>
         </div>
       </section>

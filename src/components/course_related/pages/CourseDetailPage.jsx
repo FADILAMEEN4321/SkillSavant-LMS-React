@@ -51,30 +51,21 @@ const CoursedetailPage = () => {
       {loading ? (
         <p>loading...</p>
       ):(
-        // <ReactPlayer 
-        // loop={true}
-        // playing={true}
-        // controls={true}
-        // url={courseDetails.modules[0] ? (courseDetails.modules[0].video_url):('') } 
-        // height="320px" width="500px" 
-        // style={{
-        //   margin: '0 auto',
-        //   width: '100%',
-        //   maxWidth: '44rem', // Equivalent to lg:max-w-xl in Tailwind
-        //   height: '16rem', // Equivalent to h-64 in Tailwind
-        //   borderRadius: '1rem', // Equivalent to rounded-lg in Tailwind
-        //   boxShadow: '0 1rem 3rem rgba(0, 0, 0, 0.12)' // Equivalent to shadow-xl in Tailwind
-        // }} />
+        <ReactPlayer 
+        loop={true}
+        playing={true}
+        controls={true}
+        url={courseDetails.modules[0] ? (courseDetails.modules[0].video_url):('') } 
+        height="320px" width="500px" 
+        style={{
+          margin: '0 auto',
+          width: '100%',
+          maxWidth: '44rem', // Equivalent to lg:max-w-xl in Tailwind
+          height: '16rem', // Equivalent to h-64 in Tailwind
+          borderRadius: '1rem', // Equivalent to rounded-lg in Tailwind
+          boxShadow: '0 1rem 3rem rgba(0, 0, 0, 0.12)' // Equivalent to shadow-xl in Tailwind
+        }} />
 
-
-        <iframe
-        className="mx-auto w-full lg:max-w-xl h-64 rounded-lg sm:h-96 shadow-xl"
-        src={courseDetails.modules[0] ? (courseDetails.modules[0].video_url):('') }
-        title="YouTube video player"
-        frameBorder={0}
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen="true"
-      />
       )}
 
     <div className="flex flex-col justify-center">
@@ -92,9 +83,14 @@ const CoursedetailPage = () => {
         {courseDetails.subtitle}
       </p>
       )}
-      <FaUser className="text-white"/>
-      <FaLayerGroup className="text-white" />
-      <FaDollarSign className="text-white" />
+  
+    <div className="container mb-3">
+    <div className='grid grid-cols-1 md:grid-cols-3 gap-1 items-center justify-between'>
+    <p className="text-green-500 font-semibold text-lg">Instructor: {courseDetails.instructor_first_name} {courseDetails.instructor_last_name}</p>
+    <p className="text-green-500 font-semibold text-lg">level: {courseDetails.level}</p>
+    <p className="text-green-500 font-semibold text-lg">price: {courseDetails.price}</p>
+    </div>
+    </div>
 
 
 

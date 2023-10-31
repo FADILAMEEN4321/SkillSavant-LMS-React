@@ -142,10 +142,10 @@ const AdminUserManagement = () => {
                           >
                             {student.user.first_name}
                           </th>
-                          <td className="px-6 py-4">
+                          <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {student.user.last_name}
                           </td>
-                          <td className="px-6 py-4">{student.user.email}</td>
+                          <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{student.email}</td>
                           <td className="px-6 py-4">
                             {student.user.is_blocked ? (
                               <button

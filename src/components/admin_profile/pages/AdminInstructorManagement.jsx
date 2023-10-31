@@ -10,7 +10,7 @@ const AdminInstructorManagement = () => {
   useEffect(() => {
     initFlowbite();
     axios
-      .get("admin/instructors")
+      .get("admin/instructors-listing/")
       .then((response) => {
         setInstructors(response.data);
       })
@@ -96,7 +96,7 @@ const AdminInstructorManagement = () => {
                       Email
                     </th>
                     <th scope="col" className="px-6 py-3">
-                      Action
+                      Skill
                     </th>
                   </tr>
                 </thead>
@@ -113,21 +113,12 @@ const AdminInstructorManagement = () => {
                           >
                             {instructor.user.first_name}
                           </th>
-                          <td className="px-6 py-4">
+                          <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {instructor.user.last_name}
                           </td>
-                          <td className="px-6 py-4">{instructor.user.email}</td>
-                          <td className="px-6 py-4">
-                            <button
-                              type="button"
-                              class="text-white bg-gradient-to-r from-green-400
-              via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none
-              focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg
-              dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 
-              py-2.5 text-center mr-2 mb-2"
-                            >
-                              Unblock
-                            </button>
+                          <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{instructor.email}</td>
+                          <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {instructor.skill}
                           </td>
                         </tr>
                       ))

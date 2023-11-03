@@ -134,7 +134,7 @@ const CoursedetailPage = () => {
     </div>
   </div>
 </section>
-
+ 
 
 
   {/* Module Listing */}
@@ -145,25 +145,26 @@ const CoursedetailPage = () => {
         Lessons in this course
       </h3>
       <h3 className="text-xl text-gray-900 font-semibold">
-        6 Lessons (2h:00m)
+        {/* 6 Lessons (2h:00m) */}
       </h3>
     </div>
     <hr />
     <div className="container mx-auto mt-4 mb-4">
-      <div className="container p-3 flex items-center justify-between hover:border hover:border-gray-900 rounded-md">
+      {loading ? (
+        <p>loading...</p>
+      ):(
+        courseDetails.modules.map((module)=>(
+          <div key={module.id} className="container p-3 flex items-center justify-between hover:border hover:border-gray-900 rounded-md">
         <h3 className="text-lg font-bold text-gray-900">
-          1. Intoduction to ML
+        {module.module_order}. {module.module_title}
         </h3>
-        <h3 className="text-lg text-gray-900 font-semibold">2h:00m</h3>
+        <h3 className="text-lg text-gray-900 font-semibold">{module.duration}m</h3>
       </div>
-      <div className="container p-3 flex items-center justify-between hover:border hover:border-gray-900 rounded-md">
-        <h3 className="text-lg font-bold text-gray-900">2. Python basics</h3>
-        <h3 className="text-lg text-gray-900 font-semibold">2h:00m</h3>
-      </div>
-      <div className="container p-3 flex items-center justify-between hover:border hover:border-gray-900 rounded-md">
-        <h3 className="text-lg font-bold text-gray-900">3. Lets practice.</h3>
-        <h3 className="text-lg text-gray-900 font-semibold">2h:00m</h3>
-      </div>
+        ))
+
+      )}
+      
+      
     </div>
     <hr />
   </div>

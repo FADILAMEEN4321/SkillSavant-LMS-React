@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import axios from "./../../../services/axios";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
 import { FaLayerGroup } from "react-icons/fa";
 import { FaDollarSign } from "react-icons/fa";
@@ -11,6 +11,8 @@ const CoursedetailPage = () => {
   const { courseId } = useParams();
   const [courseDetails, setCourseDetails] = useState({});
   const [loading, setLoading] = useState(true);
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     axios
@@ -26,6 +28,23 @@ const CoursedetailPage = () => {
         setLoading(false);
       });
   }, []);
+
+
+  const onClickVerifyCourse = async (courseId) => {
+    try {
+      const response = await axios.get(`verify-course/${courseId}/`);
+      console.log(response.data, response.status)
+      if (response.status === 200){
+        navigate(`/courses/enroll/${courseId}`)
+      }
+      
+    } catch (error) {
+      console.error(error);
+      
+    }
+  }
+  
+
 
   return (
     <>
@@ -104,27 +123,17 @@ const CoursedetailPage = () => {
             </div>
 
             <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
-              <a
-                href="#"
-                className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
-              >
-                Enroll now
-                <svg
-                  className="w-3.5 h-3.5 ml-2"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 14 10"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M1 5h12m0 0L9 1m4 4L9 9"
-                  />
-                </svg>
-              </a>
+
+            <button 
+            onClick={()=>onClickVerifyCourse(courseDetails.id)}
+            type="button" 
+            class="text-white bg-gradient-to-r from-purple-500 to-pink-500 
+            hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200
+             dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center
+              mr-2 mb-2">Enroll</button>
+
+
+              
               <a
                 href="#"
                 className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-gray-900 rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"

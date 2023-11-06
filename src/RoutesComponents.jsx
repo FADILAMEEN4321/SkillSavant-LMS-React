@@ -22,7 +22,7 @@ import InstructorCourseDetailPage from './components/instructor_profile/pages/In
 import PendingCoursesPage from './components/admin_profile/pages/PendingCoursesPage.jsx';
 import PendingCourseDetailPage from './components/admin_profile/pages/PendingCourseDetailPage.jsx';
 import ApprovedCoursePage from './components/admin_profile/pages/ApprovedCoursePage.jsx';
-import CoursedetailPage from './components/course_related/pages/CoursedetailPage';
+import CoursedetailPage from './components/course_related/pages/CourseDetailPage.jsx';
 import ApprovedCourseDetailPage from './components/admin_profile/pages/ApprovedCourseDetailPage';
 import EnrollmentPage from './components/course_related/pages/EnrollmentPage.jsx';
 

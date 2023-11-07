@@ -169,9 +169,7 @@ const Header = () => {
               </li>
             )
           ) : (
-            <li>
-              <a>My learning</a>
-            </li>
+           ''
           )}
 
           {user ? (
@@ -182,9 +180,9 @@ const Header = () => {
             </li>
           )}
 
-          {user && (
+          {userProfile && (
             <li>
-              <a>{user.email}</a>
+              <a>{userProfile.email}</a>
             </li>
           )}
         </ul>

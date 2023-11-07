@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import ReactPlayer from "react-player";
 import axios from "./../../../services/axios";
 import { useParams, useNavigate } from "react-router-dom";
@@ -6,9 +6,12 @@ import { FaUser } from "react-icons/fa";
 import { FaLayerGroup } from "react-icons/fa";
 import { FaDollarSign } from "react-icons/fa";
 import { BiLock } from "react-icons/bi";
+import AuthContext from "../../../context/AuthContext";
 
 const CoursedetailPage = () => {
   const { courseId } = useParams();
+  const { user,userProfile } = useContext(AuthContext);
+
   const [courseDetails, setCourseDetails] = useState({});
   const [loading, setLoading] = useState(true);
 
@@ -31,17 +34,27 @@ const CoursedetailPage = () => {
 
 
   const onClickVerifyCourse = async (courseId) => {
-    try {
-      const response = await axios.get(`verify-course/${courseId}/`);
-      console.log(response.data, response.status)
-      if (response.status === 200){
-        navigate(`/courses/enroll/${courseId}`)
+
+    if(!user){
+      navigate('/login')
+    }else{
+      try {
+        const response = await axios.get(`verify-course/${courseId}/${userProfile.id}`);
+        console.log(response.data, response.status)
+        if (response.status === 200){
+          navigate(`/courses/enroll/${courseId}`)
+        }
+        
+      } catch (error) {
+        if(error){
+          console.log(error.response.data);
+          alert(error.response.data.message)
+        }
+        
       }
-      
-    } catch (error) {
-      console.error(error);
-      
     }
+
+    
   }
   
 

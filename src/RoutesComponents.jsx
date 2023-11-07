@@ -25,6 +25,7 @@ import ApprovedCoursePage from './components/admin_profile/pages/ApprovedCourseP
 import CoursedetailPage from './components/course_related/pages/CourseDetailPage.jsx';
 import ApprovedCourseDetailPage from './components/admin_profile/pages/ApprovedCourseDetailPage';
 import EnrollmentPage from './components/course_related/pages/EnrollmentPage.jsx';
+import CourseLearningPage from './components/course_related/pages/CourseLearningPage.jsx';
 
 
 
@@ -42,6 +43,7 @@ const RoutesComponents = () => {
         <Route path='/courses' element={<CourseListingPage/>}></Route>
         <Route path='/courses/:courseId' element={<CoursedetailPage/>}></Route>
         <Route path='/courses/enroll/:courseId' element={<EnrollmentPage/>}></Route>
+        <Route path='/enrolled-course/:courseId' element={<CourseLearningPage/>}></Route>
 
 
 

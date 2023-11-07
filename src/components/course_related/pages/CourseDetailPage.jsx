@@ -46,7 +46,7 @@ const CoursedetailPage = () => {
         }
         
       } catch (error) {
-        if(error){
+        if(error.response.data){
           console.log(error.response.data);
           alert(error.response.data.message)
         }
@@ -185,7 +185,7 @@ const CoursedetailPage = () => {
                   <span>{module.module_order}. {module.module_title}</span>
                 </h3> */}
                 <div className="flex items-center">
-                  <BiLock size={23} color="black" />
+                   🔒
                   <h3 className="text-lg font-bold text-gray-900 ml-2">
                     {module.module_order}. {module.module_title}
                   </h3>

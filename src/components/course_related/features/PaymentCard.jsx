@@ -4,10 +4,12 @@ import axios from "./../../../services/axios";
 import AuthContext from "../../../context/AuthContext";
 
 
+
 const PaymentCard = ({ loading, courseDetails }) => {
 
     const [Razorpay] = useRazorpay();
     const {userProfile} = useContext(AuthContext)
+    const razorpayKeyID = import.meta.env.VITE_APP_RAZORPAY_KEY_ID;
 
     const completeEnrollment = (paymentID,orderID,signature) =>{
         console.log(courseDetails.id,userProfile.id,paymentID,orderID,signature,courseDetails.price)
@@ -50,11 +52,11 @@ const PaymentCard = ({ loading, courseDetails }) => {
             const order_id = response.data.data.id
 
             const options = {
-                key: "rzp_test_XIU51B7eXlouTx", // Enter the Key ID generated from the Dashboard
+                key: razorpayKeyID, 
                 name: "Skill Savant",
                 description: "Test Transaction",
                 image: "https://example.com/your_logo",
-                order_id: order_id, //This is a sample Order ID. Pass the `id` obtained in the response of createOrder().
+                order_id: order_id, 
                 handler: function (response) {
                   alert(response.razorpay_payment_id);
                   alert(response.razorpay_order_id);
@@ -74,7 +76,7 @@ const PaymentCard = ({ loading, courseDetails }) => {
                   address: "Razorpay Corporate Office",
                 },
                 theme: {
-                  color: "#3399cc",
+                  color: "#008080",
                 },
               };
             

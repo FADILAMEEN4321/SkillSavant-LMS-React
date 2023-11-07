@@ -123,18 +123,18 @@ const Header = () => {
           {user ? (
             user.role === "student" && (
               <li>
-                <Link to="/">Home</Link>
+                <Link to="/">🏡 Home</Link>
               </li>
             )
           ) : (
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/">🏡 Home</Link>
             </li>
           )}
           {user ? (
             user.role === "student" && (
               <li>
-                <Link to="/courses">Courses</Link>
+                <Link to="/courses">📚 Courses</Link>
               </li>
             )
           ) : (
@@ -158,14 +158,14 @@ const Header = () => {
             //   </details>
             // </li>
             <li>
-              <Link to="/courses">Courses</Link>
+              <Link to="/courses">📚 Courses</Link>
             </li>
           )}
 
           {user ? (
             user.role === "student" && (
               <li>
-                <a>My learning</a>
+                <a>🤹 My learning</a>
               </li>
             )
           ) : (
@@ -176,13 +176,13 @@ const Header = () => {
             ""
           ) : (
             <li>
-              <Link to="/instructor/login">Teach On Skill Savant</Link>
+              <Link to="/instructor/login">👩‍🏫 Teach On Skill Savant</Link>
             </li>
           )}
 
           {userProfile && (
             <li>
-              <a>{userProfile.email}</a>
+              <a>👋 Hi, {userProfile.email}</a>
             </li>
           )}
         </ul>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AdminSideBar from "../features/AdminSideBar";
 import { initFlowbite } from "flowbite";
-import axios from "../../../services/axios";
+import {axiosInstance} from "../../../services/axios";
 import AdminMobileSideBar from "../features/AdminMobileSideBar";
 
 const AdminInstructorManagement = () => {
@@ -9,7 +9,7 @@ const AdminInstructorManagement = () => {
 
   useEffect(() => {
     initFlowbite();
-    axios
+    axiosInstance
       .get("admin/instructors-listing/")
       .then((response) => {
         setInstructors(response.data);

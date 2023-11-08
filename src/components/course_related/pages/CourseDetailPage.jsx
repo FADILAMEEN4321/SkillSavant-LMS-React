@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import ReactPlayer from "react-player";
-import axios from "./../../../services/axios";
+import {axiosInstance} from "./../../../services/axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
 import { FaLayerGroup } from "react-icons/fa";
@@ -10,15 +10,15 @@ import AuthContext from "../../../context/AuthContext";
 
 const CoursedetailPage = () => {
   const { courseId } = useParams();
-  const { user,userProfile } = useContext(AuthContext);
+  const { user, userProfile } = useContext(AuthContext);
 
   const [courseDetails, setCourseDetails] = useState({});
   const [loading, setLoading] = useState(true);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
-    axios
+    axiosInstance
       .get(`single-course-details/${courseId}/`)
       .then((response) => {
         console.log(response.data);
@@ -32,32 +32,26 @@ const CoursedetailPage = () => {
       });
   }, []);
 
-
   const onClickVerifyCourse = async (courseId) => {
-
-    if(!user){
-      navigate('/login')
-    }else{
+    if (!user) {
+      navigate("/login");
+    } else {
       try {
-        const response = await axios.get(`verify-course/${courseId}/${userProfile.id}`);
-        console.log(response.data, response.status)
-        if (response.status === 200){
-          navigate(`/courses/enroll/${courseId}`)
+        const response = await axiosInstance.get(
+          `verify-course/${courseId}/${userProfile.id}`
+        );
+        console.log(response.data, response.status);
+        if (response.status === 200) {
+          navigate(`/courses/enroll/${courseId}`);
         }
-        
       } catch (error) {
-        if(error.response.data){
+        if (error.response.data) {
           console.log(error.response.data);
-          alert(error.response.data.message)
+          alert(error.response.data.message);
         }
-        
       }
     }
-
-    
-  }
-  
-
+  };
 
   return (
     <>
@@ -136,17 +130,17 @@ const CoursedetailPage = () => {
             </div>
 
             <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
-
-            <button 
-            onClick={()=>onClickVerifyCourse(courseDetails.id)}
-            type="button" 
-            class="text-white bg-gradient-to-r from-purple-500 to-pink-500 
+              <button
+                onClick={() => onClickVerifyCourse(courseDetails.id)}
+                type="button"
+                class="text-white bg-gradient-to-r from-purple-500 to-pink-500 
             hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200
              dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center
-              mr-2 mb-2">Enroll</button>
+              mr-2 mb-2"
+              >
+                Enroll
+              </button>
 
-
-              
               <a
                 href="#"
                 className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-gray-900 rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
@@ -185,11 +179,12 @@ const CoursedetailPage = () => {
                   <span>{module.module_order}. {module.module_title}</span>
                 </h3> */}
                 <div className="flex items-center">
-                   🔒
+                  🔒
                   <h3 className="text-lg font-bold text-gray-900 ml-2">
                     {module.module_order}. {module.module_title}
                   </h3>
                 </div>
+
 
                 <h3 className="text-lg text-gray-900 font-semibold">
                   {module.duration}m

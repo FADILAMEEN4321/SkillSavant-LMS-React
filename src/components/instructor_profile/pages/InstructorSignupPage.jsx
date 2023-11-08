@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "../../../services/axios";
+import {axiosInstance} from "../../../services/axios";
 import { toast } from "react-toastify";
 
 const InstructorSignupPage = () => {
@@ -22,7 +22,7 @@ const InstructorSignupPage = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("instructor-signup/", formData);
+      const response = await axiosInstance.post("instructor-signup/", formData);
 
       if (response.status === 201) {
         // Signup successful, you can redirect to the login page or show a success message

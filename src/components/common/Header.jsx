@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import { baseUrlMedia } from "./../../services/constants";
-import axios from "./../../services/axios";
+import {axiosInstance} from "./../../services/axios";
 
 const Header = () => {
   let { logoutUser, user, authTokens, setUserProfile, userProfile } =
@@ -30,7 +30,7 @@ const Header = () => {
           };
           if (user.role === "student") {
             console.log("if condition---yes");
-            const response = await axios.get(
+            const response = await axiosInstance.get(
               `student-profile-view-update/${user_id}/`,
               { headers }
             );
@@ -43,7 +43,7 @@ const Header = () => {
           }
           if (user.role === "instructor") {
             console.log("if condition---yes admin");
-            const response = await axios.get(
+            const response = await axiosInstance.get(
               `instructor-profile-view-update/${user_id}/`,
               { headers }
             );

@@ -6,7 +6,8 @@ import { useTransition, animated } from "@react-spring/web";
 import shuffle from "lodash.shuffle";
 import data from "../features/data";
 import styles from "./styles.module.css";
-import axios from './../../../services/axios';
+import {axiosInstance} from './../../../services/axios';
+// import Typed from 'react-typed';
 
 
 
@@ -29,8 +30,8 @@ const Home = () => {
 
     // Array of promises for the API requests
     const requests = [
-      axios.get(popularCoursesUrl),
-      axios.get(latestCoursesUrl),
+      axiosInstance.get(popularCoursesUrl),
+      axiosInstance.get(latestCoursesUrl),
     ]
 
     // Use Promise.all to wait for both requests to complete
@@ -79,8 +80,14 @@ const Home = () => {
           <div className="flex flex-col justify-center">
             <Slide>
               <h1 className="mb-4 text-4xl z-10 font-extrabold tracking-tight leading-none text-White md:text-5xl lg:text-6xl dark:text-white">
-                Unlock Your Potential with Skill Savant
+                Unlock Your Potential with
               </h1>
+              {/* <Typed 
+          className="mb-4 text-4xl z-10 font-extrabold tracking-tight leading-none text-White md:text-5xl lg:text-6xl dark:text-white"
+        strings={['skills.']}
+        typeSpeed={120}
+        backSpeed={140}
+        loop/> */}
             </Slide>
             <Fade delay={1e3} cascade damping={1e-1}>
               <p className="mb-8 text-lg font-normal z-10 text-gray-400 lg:text-xl dark:text-gray-400">

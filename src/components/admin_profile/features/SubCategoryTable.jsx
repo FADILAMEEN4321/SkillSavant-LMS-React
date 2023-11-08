@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "./../../../services/axios";
+import {axiosInstance} from "./../../../services/axios";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
@@ -24,7 +24,7 @@ const SubCategoryTable = ({
   const onSubmit = (values,{ setSubmitting, resetForm}) => {
     // setSubmitting(true);
     console.log("values fromsub--->", values);
-    axios
+    axiosInstance
     .post('admin/subcategories-list-create/',{name:values.subCategoryName,category:values.category})
     .then((response)=>{
       console.log('======>',response.data)
@@ -56,7 +56,7 @@ const SubCategoryTable = ({
 
 
   const handleDelete = (subCategoryId) => {
-    axios
+    axiosInstance
       .delete(`admin/subcategories-retrieve-update-destroy/${subCategoryId}/`)
       .then((response) => {
         console.log("Category deleted:", subCategoryId);

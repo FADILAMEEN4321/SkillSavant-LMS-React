@@ -14,6 +14,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@material-tailwind/react": "^2.1.2",
+    "@react-pdf/renderer": "^3.1.14",
     "@react-spring/web": "^9.7.3",
     "@reduxjs/toolkit": "^1.9.7",
     "axios": "^1.5.1",
@@ -45,6 +46,8 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "postcss": "^8.4.31",
+    "prettier": "^3.0.3",
+    "prettier-plugin-tailwindcss": "^0.5.7",
     "tailwindcss": "^3.3.3",
     "vite": "^4.4.5"
   }

@@ -2,7 +2,7 @@ import React,{useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import CourseSideBar from "../features/CourseSideBar";
 import CourseCard from "../features/CourseCard";
-import axios from './../../../services/axios';
+import {axiosInstance} from './../../../services/axios';
 
 const CourseListingPage = () => {
 
@@ -19,8 +19,8 @@ const CourseListingPage = () => {
 
     // Array of promises for the API requests
     const requests = [
-      axios.get(categoriesSubCategoriesUrl),
-      axios.get(tagsUrl),
+      axiosInstance.get(categoriesSubCategoriesUrl),
+      axiosInstance.get(tagsUrl),
     ]
 
     // Use Promise.all to wait for both requests to complete

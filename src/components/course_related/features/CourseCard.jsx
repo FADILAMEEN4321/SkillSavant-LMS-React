@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from "react";
-import axios from './../../../services/axios';
+import {axiosInstance} from './../../../services/axios';
 import { Link } from "react-router-dom";
 
 const CourseCard = () => {
@@ -8,7 +8,7 @@ const CourseCard = () => {
   
     
     useEffect(()=>{
-      axios
+      axiosInstance
       .get('all-courses/')
       .then((response)=>{
         console.log(response.data);

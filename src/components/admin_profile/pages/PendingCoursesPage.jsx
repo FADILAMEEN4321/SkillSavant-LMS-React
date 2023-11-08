@@ -2,7 +2,7 @@ import React,{useEffect, useState} from 'react';
 import AdminSideBar from './../features/AdminSideBar';
 import AdminMobileSideBar from './../features/AdminMobileSideBar';
 import {Link} from 'react-router-dom';
-import axios from './../../../services/axios';
+import {axiosInstance} from './../../../services/axios';
 
 const PendingCoursesPage = () => {
 
@@ -10,7 +10,7 @@ const PendingCoursesPage = () => {
   const [loading, setLoading] = useState(true)
 
   useEffect(()=>{
-    axios
+    axiosInstance
     .get('admin/pending-courses/')
     .then((response)=>{
       console.log(response.data)

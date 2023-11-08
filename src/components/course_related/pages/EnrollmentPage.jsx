@@ -1,7 +1,7 @@
 import React,{useEffect, useState} from "react";
 import { FaChalkboardTeacher, FaGraduationCap, FaClock } from "react-icons/fa";
 import { useParams } from "react-router-dom";
-import axios from './../../../services/axios';
+import {axiosInstance} from './../../../services/axios';
 import PaymentCard from "../features/PaymentCard";
 
 
@@ -12,7 +12,7 @@ const EnrollmentPage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios
+    axiosInstance
       .get(`single-course-details/${courseId}/`)
       .then((response) => {
         console.log(response.data);

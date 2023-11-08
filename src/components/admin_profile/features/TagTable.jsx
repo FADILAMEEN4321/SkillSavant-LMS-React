@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "./../../../services/axios";
+import {axiosInstance} from "./../../../services/axios";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
@@ -19,7 +19,7 @@ const TagTable = ({ tags, setTags, loading, subcategories }) => {
   const onSubmit = (values,{ setSubmitting, resetForm}) => {
     // setSubmitting(true);
     console.log("values fromtag--->", values);
-    axios
+    axiosInstance
     .post('admin/tags-list-create/',{name:values.tagName,subcategory:values.subCategory})
     .then((response)=>{
       console.log('======>',response.data)
@@ -51,7 +51,7 @@ const TagTable = ({ tags, setTags, loading, subcategories }) => {
 
 
   const handleDelete = (tagId) => {
-    axios
+    axiosInstance
       .delete(`admin/tags-retrieve-update-destroy/${tagId}/`)
       .then((response) => {
         console.log("Category deleted:", tagId);

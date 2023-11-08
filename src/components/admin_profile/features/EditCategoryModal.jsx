@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "./../../../services/axios";
+import {axiosInstance} from "./../../../services/axios";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
@@ -21,7 +21,7 @@ const EditCategoryModal = ({ category,setCategories }) => {
     // setSubmitting(true);
     console.log("Form submitted with values:", values);
     
-    axios
+    axiosInstance
       .put(`admin/categories-retrieve-update-destroy/${category.id}/`, { name: values.categoryName })
       .then((response) => {
         console.log("category--table- creation-->", response.data);

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AdminSideBar from "../features/AdminSideBar";
 import { initFlowbite } from "flowbite";
-import axios from "../../../services/axios";
+import {axiosInstance} from "../../../services/axios";
 import { Link } from "react-router-dom";
 import AdminMobileSideBar from "../features/AdminMobileSideBar";
 
@@ -11,7 +11,7 @@ const AdminUserManagement = () => {
   const toggleBlock = (user) => {
     const newStatus = !user.user.is_blocked;
 
-    axios
+    axiosInstance
       .post(`admin/students-block-unblock/${user.user.id}/`)
       .then((response) => {
         const updatedStudents = students.map((student) => {
@@ -36,7 +36,7 @@ const AdminUserManagement = () => {
   useEffect(() => {
     initFlowbite();
 
-    axios
+    axiosInstance
       .get("admin/students/")
       .then((response) => {
         // console.log('API Response:', response.data);

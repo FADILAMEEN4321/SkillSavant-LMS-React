@@ -4,7 +4,7 @@ import AdminMobileSideBar from './../features/AdminMobileSideBar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLayerGroup, faTag, faDollarSign, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import {useParams} from 'react-router-dom';
-import axios from './../../../services/axios';
+import {axiosInstance} from './../../../services/axios';
 
 
 const PendingCourseDetailPage = () => {
@@ -14,7 +14,7 @@ const PendingCourseDetailPage = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(()=>{
-        axios
+      axiosInstance
         .get(`courses-details/${courseId}/`)
         .then((response)=>{
             console.log(response.data)
@@ -33,7 +33,7 @@ const PendingCourseDetailPage = () => {
 
     const handleApprovalToggle = async (courseId) =>{
       try{
-        const response = await axios.put(`admin/course-approval-toggle/${courseId}/`)
+        const response = await axiosInstance.put(`admin/course-approval-toggle/${courseId}/`)
         if(response.data){
             console.log(response.data)
             setCourse(response.data)

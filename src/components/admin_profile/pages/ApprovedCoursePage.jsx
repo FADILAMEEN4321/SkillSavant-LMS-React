@@ -2,7 +2,7 @@ import React,{useEffect, useState} from 'react';
 import AdminMobileSideBar from '../features/AdminMobileSideBar';
 import AdminSideBar from '../features/AdminSideBar';
 import {Link} from 'react-router-dom';
-import axios from './../../../services/axios';
+import {axiosInstance} from './../../../services/axios';
 
 const ApprovedCoursePage = () => {
     const [approvedCourses, setApprovedCourses] = useState([])
@@ -10,7 +10,7 @@ const ApprovedCoursePage = () => {
 
 
     useEffect(()=>{
-        axios
+      axiosInstance
         .get('admin/approved-courses/')
         .then((response)=>{
             console.log(response.data)

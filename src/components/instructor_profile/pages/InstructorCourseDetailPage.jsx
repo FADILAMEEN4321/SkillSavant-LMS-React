@@ -4,7 +4,7 @@ import InstructorSideBar from '../features/InstructorSideBar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLayerGroup, faTag, faDollarSign, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { useParams } from 'react-router-dom';
-import axios from './../../../services/axios';
+import {axiosInstance} from './../../../services/axios';
 import ModuleCreationModal from '../features/ModuleCreationModal';
 
 
@@ -16,7 +16,7 @@ const InstructorCourseDetailPage = () => {
   const [loading,setLoading] = useState(true);
 
   useEffect(()=>{
-    axios
+    axiosInstance
     .get(`courses-details/${courseId}/`)
     .then((response)=>{
       console.log(response.data)

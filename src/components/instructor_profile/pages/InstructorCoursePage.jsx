@@ -1,7 +1,7 @@
 import React,{useState, useEffect, useContext} from "react";
 import InstructorSideBar from "../features/InstructorSideBar";
 import InstructorMobileSideBar from "../features/InstructorMobileSideBar";
-import axios from '../../../services/axios'
+import {axiosInstance, axiosAuthorized} from '../../../services/axios'
 import AuthContext from "../../../context/AuthContext";
 import CourseCreationModal from "../features/CourseCreationModal";
 import {Link} from 'react-router-dom';
@@ -9,7 +9,7 @@ import {Link} from 'react-router-dom';
 
 const InstructorCoursePage = (props) => {
 
-  let {userProfile} = useContext(AuthContext)
+  let {userProfile,authTokens} = useContext(AuthContext)
 
   const [courses,setCourses] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -24,7 +24,8 @@ const InstructorCoursePage = (props) => {
         // Set loading to true when starting the API call
         setLoading(true);
         try {
-          const response = await axios.get(`instructor-courses/${instructorId}/`);
+        
+          const response = await axiosAuthorized.get(`instructor-courses/${instructorId}/`);
           console.log(response.data);
           setCourses(response.data);
         } catch (error) {

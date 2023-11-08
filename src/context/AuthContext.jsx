@@ -1,7 +1,7 @@
 import {createContext,useState,useEffect} from 'react';
 import jwt_decode from 'jwt-decode';
 import { useNavigate } from "react-router-dom";
-import axios from '../services/axios'
+import {axiosInstance} from '../services/axios'
 import { toast } from 'react-toastify';
 
 const AuthContext = createContext()
@@ -20,7 +20,7 @@ export const AuthProvider = ({children}) => {
         e.preventDefault();
       
         try {
-          const response = await axios.post('student-login/', {
+          const response = await axiosInstance.post('student-login/', {
             email: e.target.email.value,
             password: e.target.password.value,
           });
@@ -51,7 +51,7 @@ export const AuthProvider = ({children}) => {
         e.preventDefault();
       
         try {
-          const response = await axios.post('instructor-login/', {
+          const response = await axiosInstance.post('instructor-login/', {
             email: e.target.email.value,
             password: e.target.password.value,
           });
@@ -80,7 +80,7 @@ export const AuthProvider = ({children}) => {
         e.preventDefault();
       
         try {
-          const response = await axios.post('admin-login/', {
+          const response = await axiosInstance.post('admin-login/', {
             email: e.target.email.value,
             password: e.target.password.value,
           });

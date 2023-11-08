@@ -1,5 +1,5 @@
 import React,{useEffect,useState,useContext} from 'react';
-import axios from './../../../services/axios';
+import {axiosInstance} from './../../../services/axios';
 import {courseCreationSchema} from './../../../formValidations/courseCreationSchema';
 import { useFormik } from 'formik';
 import AuthContext from './../../../context/AuthContext';
@@ -15,7 +15,7 @@ const CourseCreationModal = ({setCourses}) => {
     let {userProfile} = useContext(AuthContext)
 
     useEffect(()=>{
-        axios
+      axiosInstance
         .get('admin/subcategories-list-create/')
         .then((response)=>{
             setSubCategories(response.data)
@@ -26,7 +26,7 @@ const CourseCreationModal = ({setCourses}) => {
     },[])
 
     useEffect(()=>{
-        axios
+      axiosInstance
         .get('admin/tags-list-create/')
         .then((response)=>{
             console.log(response.data)
@@ -69,7 +69,7 @@ const CourseCreationModal = ({setCourses}) => {
         console.log('from---courese-crea-->',userProfile.id)
 
         try{
-          const response = await axios.post('courses/create/',formData,{
+          const response = await axiosInstance.post('courses/create/',formData,{
             headers:{
                 'Content-Type': 'multipart/form-data',
             }

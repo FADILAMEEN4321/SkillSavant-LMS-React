@@ -1,12 +1,14 @@
 import React,{useContext} from "react";
 import useRazorpay from "react-razorpay";
-import axios from "./../../../services/axios";
+import {axiosInstance} from "./../../../services/axios";
 import AuthContext from "../../../context/AuthContext";
+import {useNavigate} from 'react-router-dom';
 
 
 
 const PaymentCard = ({ loading, courseDetails }) => {
 
+    const navigate = useNavigate()
     const [Razorpay] = useRazorpay();
     const {userProfile} = useContext(AuthContext)
     const razorpayKeyID = import.meta.env.VITE_APP_RAZORPAY_KEY_ID;
@@ -14,7 +16,7 @@ const PaymentCard = ({ loading, courseDetails }) => {
     const completeEnrollment = (paymentID,orderID,signature) =>{
         console.log(courseDetails.id,userProfile.id,paymentID,orderID,signature,courseDetails.price)
 
-        axios({
+        axiosInstance({
             method: 'post',
             url: 'enrollment-completion/',
             data: {
@@ -29,6 +31,7 @@ const PaymentCard = ({ loading, courseDetails }) => {
         .then((response)=>{
             console.log(response.data)
             alert('enrollment successfull.')
+            navigate(`/enrolled-course/${courseDetails.id}`)
         })
         .catch((error)=>{
             console.log(error)
@@ -41,7 +44,7 @@ const PaymentCard = ({ loading, courseDetails }) => {
         const amount = courseDetails.price
         const currency = "INR"
 
-        axios
+        axiosInstance
         .post('razorpay_order/create/',{
             amount,
             currency

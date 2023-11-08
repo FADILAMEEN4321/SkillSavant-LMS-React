@@ -1,7 +1,7 @@
 import React from 'react'
 import {moduleCreationSchema} from './../../../formValidations/moduleCreationSchema';
 import { useFormik } from 'formik';
-import axios from './../../../services/axios';
+import {axiosInstance} from './../../../services/axios';
 
 
 
@@ -30,7 +30,7 @@ const ModuleCreationModal = ({course, setModules}) => {
         console.log('from---courese-crea-->',course.id)
 
         try{
-          const response = await axios.post('modules/create/',formData,{
+          const response = await axiosInstance.post('modules/create/',formData,{
             headers:{
                 'Content-Type': 'multipart/form-data',
             }

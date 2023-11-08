@@ -5,7 +5,7 @@ import AdminSideBar from "../features/AdminSideBar";
 import CategoryTable from "../features/CategoryTable";
 import SubCategoryTable from "../features/SubCategoryTable";
 import TagTable from "../features/TagTable";
-import axios from "./../../../services/axios";
+import {axiosInstance} from "./../../../services/axios";
 
 const AdminCategoryManagement = () => {
   const [categories, setCategories] = useState([]);
@@ -14,7 +14,7 @@ const AdminCategoryManagement = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios
+    axiosInstance
       .get("admin/categories-list-create/")
       .then((response) => {
         console.log("from cat--->", response.data);
@@ -26,7 +26,7 @@ const AdminCategoryManagement = () => {
   }, []);
 
   useEffect(() => {
-    axios
+    axiosInstance
       .get("admin/subcategories-list-create/")
       .then((response) => {
         console.log("subcat from cat--->", response.data);
@@ -39,7 +39,7 @@ const AdminCategoryManagement = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios
+    axiosInstance
       .get("admin/tags-list-create/")
       .then((response) => {
         console.log("tags from cat----->", response.data);

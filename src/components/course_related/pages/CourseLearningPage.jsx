@@ -20,7 +20,11 @@ const CourseLearningPage = () => {
       console.log(response.data)
       setCourseData(response.data)
       console.log('---->modules====',response.data.modules[0])
-      setCurrentModule(response.data.modules[0])
+      console.log('---->modules====',response.data.modules)
+      if(response.data.modules){
+        setCurrentModule(response.data.modules[0])
+      }
+      
 
     })
     .catch((error)=>{

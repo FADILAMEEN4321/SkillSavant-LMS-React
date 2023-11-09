@@ -1,5 +1,5 @@
 import React,{useEffect,useState,useContext} from 'react';
-import {axiosInstance} from './../../../services/axios';
+import {axiosInstance, axiosAuthorized} from './../../../services/axios';
 import {courseCreationSchema} from './../../../formValidations/courseCreationSchema';
 import { useFormik } from 'formik';
 import AuthContext from './../../../context/AuthContext';
@@ -69,7 +69,7 @@ const CourseCreationModal = ({setCourses}) => {
         console.log('from---courese-crea-->',userProfile.id)
 
         try{
-          const response = await axiosInstance.post('courses/create/',formData,{
+          const response = await axiosAuthorized.post('courses/create/',formData,{
             headers:{
                 'Content-Type': 'multipart/form-data',
             }

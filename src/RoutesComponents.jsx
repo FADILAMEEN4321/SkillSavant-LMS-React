@@ -5,7 +5,7 @@ import {Route, Routes} from 'react-router-dom';
 import Home from './components/home/pages/Home'
 import LoginPage from './components/home/pages/LoginPage';
 import SignupPage from './components/home/pages/SignupPage';
-import StudenProfilePage from './components/student_profile/StudenProfilePage.jsx';
+import StudenProfilePage from './components/student_profile/pages/StudenProfilePage.jsx';
 import InstructorLoginPage from './components/instructor_profile/pages/InstructorLoginPage.jsx'
 import InstructorSignupPage from './components/instructor_profile/pages/InstructorSignupPage.jsx'
 import AdminLoginPage from './components/admin_profile/pages/AdminLoginPage.jsx';
@@ -26,6 +26,7 @@ import CoursedetailPage from './components/course_related/pages/CourseDetailPage
 import ApprovedCourseDetailPage from './components/admin_profile/pages/ApprovedCourseDetailPage';
 import EnrollmentPage from './components/course_related/pages/EnrollmentPage.jsx';
 import CourseLearningPage from './components/course_related/pages/CourseLearningPage.jsx';
+import MylearningPage from './components/student_profile/pages/MylearningPage.jsx'
 
 
 
@@ -44,6 +45,7 @@ const RoutesComponents = () => {
         <Route path='/courses/:courseId' element={<CoursedetailPage/>}></Route>
         <Route path='/courses/enroll/:courseId' element={<EnrollmentPage/>}></Route>
         <Route path='/enrolled-course/:courseId' element={<CourseLearningPage/>}></Route>
+        <Route path='/MyLearning' element={<MylearningPage/>}></Route>
 
 
 

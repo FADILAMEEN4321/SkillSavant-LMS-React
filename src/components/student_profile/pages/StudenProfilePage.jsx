@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import { initFlowbite } from "flowbite";
-import AuthContext from "../../context/AuthContext";
-import { baseUrlMedia } from "./../../services/constants";
+import AuthContext from "../../../context/AuthContext";
+
 
 const StudenProfilePage = () => {
   let { userProfile, user } = useContext(AuthContext);
@@ -66,7 +66,7 @@ const StudenProfilePage = () => {
           {userProfile ? (
             <img
               className="max-w-sm rounded-md shadow-2xl"
-              src={`${baseUrlMedia + userProfile.profile_photo}`}
+              src={userProfile.profile_photo}
             />
           ) : (
             <img src="" className="max-w-sm rounded-md shadow-2xl" />

@@ -22,9 +22,9 @@ const OverviewSection = ({courseData,currentModule, loading}) => {
             ):(
                 <div>
                 <div className="mb-3 bg-lime-200 p-3 rounded-md">
-                  <h4 className="text-2xl font-bold">{currentModule.module_order}: {currentModule.module_title}</h4>
+                  <h4 className="text-2xl font-bold">{currentModule ? (currentModule.module_order):('')}: {currentModule ? (currentModule.module_title):('')}</h4>
                   <p className="mb-3 text-left text-gray-500 dark:text-gray-400">
-                    {currentModule.description}
+                    {currentModule ? (currentModule.description):('')}
                   </p>
                 </div>
               </div>

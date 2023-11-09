@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
-import { baseUrlMedia } from "./../../services/constants";
 import {axiosInstance} from "./../../services/axios";
 
 const Header = () => {
@@ -165,7 +164,7 @@ const Header = () => {
           {user ? (
             user.role === "student" && (
               <li>
-                <a>🤹 My learning</a>
+                <Link to="/MyLearning">🤹 My learning</Link>
               </li>
             )
           ) : (

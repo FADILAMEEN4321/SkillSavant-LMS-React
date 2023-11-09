@@ -86,10 +86,10 @@ const CourseLearningPage = () => {
 
         {/* Right Side (Vertically Scrollable Modules List) */}
         <div className="w-2/4 hidden md:block">
-          <div className="bg-green-100 h-screen rounded-md p-4 shadow-lg ">
+          <div className="bg-gray-100 h-screen rounded-md p-4 shadow-lg ">
             {/* Modules List */}
-            <div className="mb-3">
-              <h2 className="text-2xl font-bold">Course Modules</h2>
+            <div className="mb-3 bg-gray-900 p-2 rounded-md">
+              <h2 className="text-xl text-white font-bold">Course Modules</h2>
             </div>
             <hr className="mb-2" />
             {
@@ -101,9 +101,9 @@ const CourseLearningPage = () => {
                 {/* Module Item (You can repeat this structure for each module) */}
                 <div className="px-2 py-2 border-b hover:rounded-md hover:bg-slate-200 flex items-center justify-between">
                   <div onClick={()=>setCurrentModule(module)}>
-                    <h2 className="text-xl font-semibold hover:cursor-pointer">
-                      <span className="text-sm">{module.module_order}. </span> {module.module_title}{" "}
-                      <span className="text-sm text-gray-500">[🕝 20m]</span>
+                    <h2 className="text-[15px] font-semibold hover:cursor-pointer">
+                      <span className="text-[14px]">{module.module_order}. </span> {module.module_title}{" "}
+                      <span className="text-sm text-gray-500">[🕝 {module.duration}m]</span>
                     </h2>
                   </div>
                   {module.notes ? (

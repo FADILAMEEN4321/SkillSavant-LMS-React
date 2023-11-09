@@ -16,8 +16,8 @@ const MyLearningTabs = ({ children }) => {
           <button
             key={child.props.label}
             className={`${
-              activeTab === child.props.label ? 'border-b-2 border-black' : ''
-            } ml-4 text-gray-700 font-medium py-2`}
+              activeTab === child.props.label ? 'border-b-2 border-black rounded-t-md bg-gray-200' : ''
+            } p-3 ml-1 text-gray-700 font-medium py-2 hover:rounded-t-md hover:bg-gray-200`}
             onClick={e => handleClick(e, child.props.label)}
           >
             {child.props.label}

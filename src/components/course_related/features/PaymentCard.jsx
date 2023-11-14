@@ -3,6 +3,7 @@ import useRazorpay from "react-razorpay";
 import {axiosInstance} from "./../../../services/axios";
 import AuthContext from "../../../context/AuthContext";
 import {useNavigate} from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 
@@ -30,7 +31,7 @@ const PaymentCard = ({ loading, courseDetails }) => {
         })
         .then((response)=>{
             console.log(response.data)
-            alert('enrollment successfull.')
+            toast.success('You are successfully enrolled.')
             navigate(`/enrolled-course/${courseDetails.id}`)
         })
         .catch((error)=>{
@@ -61,9 +62,6 @@ const PaymentCard = ({ loading, courseDetails }) => {
                 image: "https://example.com/your_logo",
                 order_id: order_id, 
                 handler: function (response) {
-                  alert(response.razorpay_payment_id);
-                  alert(response.razorpay_order_id);
-                  alert(response.razorpay_signature);
                   completeEnrollment(
                     response.razorpay_payment_id,
                     response.razorpay_order_id,

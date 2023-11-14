@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import {axiosInstance} from './../../../services/axios';
 import { Tabs, Tab } from './../features/Tabs';
 import DiscussionRoom from "../features/DiscussionRoom";
+import { Editor } from "novel";
 
 
 const CourseLearningPage = () => {
@@ -66,6 +67,14 @@ const CourseLearningPage = () => {
         <Tab label="💬 Discussion Room">
         
         <DiscussionRoom/>
+
+        </Tab>
+        <Tab label="🗒️ Take Notes">
+        
+        <div className="container min-h-screen">
+        <Editor className="relative min-h-[500px] w-full max-w-screen-lg border-stone-200 bg-white sm:mb-[calc(20vh)] sm:rounded-lg sm:border sm:shadow-lg"/>
+
+        </div>
 
         </Tab>
      

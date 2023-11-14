@@ -25,7 +25,7 @@ const InstructorCoursePage = (props) => {
         setLoading(true);
         try {
         
-          const response = await axiosAuthorized.get(`instructor-courses/${instructorId}/`);
+          const response = await axiosInstance.get(`instructor-courses/${instructorId}/`);
           console.log(response.data);
           setCourses(response.data);
         } catch (error) {

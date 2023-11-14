@@ -1,4 +1,4 @@
-import {createContext,useState,useEffect} from 'react';
+import {createContext,useState,useEffect,useContext} from 'react';
 import jwt_decode from 'jwt-decode';
 import { useNavigate } from "react-router-dom";
 import {axiosInstance} from '../services/axios'
@@ -14,6 +14,7 @@ export const AuthProvider = ({children}) => {
     let [authTokens, setAuthTokens] = useState(()=> localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null)
     let [user, setUser] = useState(()=> localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')) : null)
     let [userProfile, setUserProfile] = useState(null);
+    let [loading, setLoading] = useState(true)
     
 
     const loginUser = async (e) => {
@@ -37,7 +38,7 @@ export const AuthProvider = ({children}) => {
             navigate('/');
           } 
         } catch (error) {
-        // console.log(respone.message) 
+        console.log(error) 
         toast.error(<div>
           <p className='text-md font-semibold'>Invaild Email or Password</p>
           <p className='text-xs font-light text-red-600'>Check your credentials and please try again.</p>
@@ -129,6 +130,14 @@ export const AuthProvider = ({children}) => {
         loginInstructor:loginInstructor,
         loginAdmin:loginAdmin,
     }
+
+    useEffect(()=>{
+      if(authTokens){
+        setUser(jwt_decode(authTokens.access))
+      }
+      setLoading(false)
+
+    },[authTokens,loading])
 
     return(
         <AuthContext.Provider value={contextData}>

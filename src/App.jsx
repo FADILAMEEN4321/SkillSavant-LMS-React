@@ -6,21 +6,25 @@ import Footer from './components/common/Footer';
 import {AuthProvider} from './context/AuthContext';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+
 
 
 
 function App() {
 
-
+const googleClientId = import.meta.env.VITE_APP_GOOGLE_CLIENT_ID
 
   return (
     <Router>
+      <GoogleOAuthProvider clientId={googleClientId} >
       <AuthProvider>
       <Header/>
       <RoutesComponents/>
       <Footer/>
       <ToastContainer />
       </AuthProvider>
+      </GoogleOAuthProvider>
     </Router>
   )
 }

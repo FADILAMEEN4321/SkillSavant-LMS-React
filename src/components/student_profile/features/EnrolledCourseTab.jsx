@@ -1,27 +1,25 @@
-import React,{useEffect, useState} from "react";
-import {axiosAuthorized} from './../../../services/axios';
-import {Link} from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { axiosInstance, axiosAuthorized } from "./../../../services/axios";
+import { Link } from "react-router-dom";
 
 const EnrolledCourseTab = () => {
-    const [enrolledCourses, setEnrolledCourses] = useState([]);
-    const [loading, setLoading] = useState(true);
+  const [enrolledCourses, setEnrolledCourses] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-    useEffect(()=>{
-        axiosAuthorized
-        .get('enrolled-courses/')
-        .then((response)=>{
-            console.log(response.data)
-            setEnrolledCourses(response.data)
-        })
-        .catch((error)=>{
-            console.log(error)
-        })
-        .finally(()=>{
-            setLoading(false)
-        })
-
-    },[])
-
+  useEffect(() => {
+    axiosInstance
+      .get("enrolled-courses/")
+      .then((response) => {
+        console.log(response.data);
+        setEnrolledCourses(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
 
   return (
     <>
@@ -29,55 +27,71 @@ const EnrolledCourseTab = () => {
         <div className="pl-2 pr-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           <>
             {loading ? (
-                <p>loading...</p>
-            ):(
-                enrolledCourses.map((enrolled)=>(
-                    <>
-                {/* Course Card */}
-            <Link to={`/enrolled-course/${enrolled.course.id}`}>
-            <div key={enrolled.id} className="max-w-xs mx-auto bg-white shadow-xl rounded-lg overflow-hidden m-4">
-            {/* Course Image */}
-            <img
-              className="object-cover w-full h-48"
-              src={enrolled.course.cover_image}
-              alt="Course Image"
-            />
+              <p>loading...</p>
+            ) : (
+              enrolledCourses.map((enrolled) => (
+                <>
+                  {/* Course Card */}
 
-            {/* Course Details */}
-            <div className="p-4">
-              {/* Course Title */}
-              <h2 className="text-xl font-bold mb-2">{enrolled.course.title}</h2>
+                  <Link to={`/enrolled-course/${enrolled.course.id}`}>
+                    <div
+                      key={enrolled.id}
+                      className="w-[300px] hover:drop-shadow-xl transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-80 duration-300 mx-auto bg-white shadow-xl rounded-lg overflow-hidden m-4"
+                    >
+                      {/* h-[338px] */}
+                      {/* Course Image */}
+                      <img
+                        className="object-cover w-full h-48"
+                        src={enrolled.course.cover_image}
+                        alt="Course Image"
+                      />
 
-              {/* Hours */}
-              <div className="flex items-center text-[14px] text-gray-500 mb-1">
-                <span>🕤 10 h 20 m</span>
-              </div>
-              <div className="flex items-center justify-between mb-4">
-                {/* Instructor Name */}
-                <p className="text-[14px] text-gray-500">👨‍⚖️ {enrolled.course.instructor_first_name} {enrolled.course.instructor_last_name}</p>
-                {/* <p className="mb-1">❤️</p> */}
-              </div>
+                      {/* Course Details */}
+                      <div className="p-4">
+                        {/* Course Title */}
+                        {/* <h2 className="text-xl font-bold mb-2">{course.title}</h2> */}
 
-              <div>
-                <div className="w-full bg-gray-200 rounded-full dark:bg-gray-700">
-                  <div
-                    className="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full"
-                    style={{ width: "45%" }}
-                  >
-                    {" "}
-                    45%
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-            </Link>
+                        <h2
+                          className="line-clamp-2 uppercase hover:line-clamp-none text-md font-extrabold mb-2 overflow-hidden"
+                          // title={course.title} // Adding a tooltip using the title attribute
+                        >
+                          {enrolled.course.title}
+                        </h2>
+                        {/* Hours */}
+                        <div className="flex items-center  mb-1">
+                          <span className="text-[17px]">🕤</span>
+                          <span className="text-[14px] text-gray-500">
+                            {" "}
+                            10 h 20 m
+                          </span>
+                        </div>
+                        <div className="flex items-center justify-between mb-2">
+                          {/* Instructor Name */}
+                          <p className="text-[14px] text-gray-500">
+                            <span className="text-[17px]">👨‍⚖️</span>
+                            {enrolled.course.instructor_first_name}{" "}
+                            {enrolled.course.instructor_last_name}
+                          </p>
+                        </div>
+
+                        <div>
+                          <div className="w-full bg-gray-200 rounded-full dark:bg-gray-700">
+                            <div
+                              className="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full"
+                              style={{ width: "45%" }}
+                            >
+                              {" "}
+                              45%
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
                 </>
-                ))
+              ))
             )}
           </>
-
-
         </div>
       </div>
     </>

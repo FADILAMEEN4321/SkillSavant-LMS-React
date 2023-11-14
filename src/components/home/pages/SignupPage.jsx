@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import {axiosInstance} from "../../../services/axios";
+import { axiosInstance } from "../../../services/axios";
 import { toast } from "react-toastify";
+import { GoogleLogin } from '@react-oauth/google';
+import jwt_decode from 'jwt-decode';
+
+
 
 const SignupPage = () => {
   const [formData, setFormData] = useState({
@@ -37,6 +41,10 @@ const SignupPage = () => {
       toast.error("something went wrong.");
     }
   };
+
+
+
+
 
   return (
     <section className="bg-center bg-cover bg-no-repeat bg-[url('/self-learning.jpg')]">
@@ -166,7 +174,19 @@ const SignupPage = () => {
               </Link>
             </div>
           </form>
+          <GoogleLogin
+  onSuccess={credentialResponse => {
+    console.log(credentialResponse);
+    console.log(jwt_decode(credentialResponse.credential));
+    const decodedCred = jwt_decode(credentialResponse.credential)
+ 
+  }}
+  onError={() => {
+    console.log('Login Failed');
+  }}
+/>;
         </div>
+       
       </div>
     </section>
   );

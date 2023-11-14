@@ -5,8 +5,11 @@ import AuthContext from "./../../../context/AuthContext";
 const LoginPage = () => {
   let { loginUser } = useContext(AuthContext);
 
+
   return (
+    
     <section className="bg-center bg-cover bg-no-repeat bg-[url('/self-learning.jpg')]">
+      
       <div className="w-full flex flex-wrap justify-center items-center py-24 px-6">
         {/* Text on the left */}
         <div className="w-full sm:w-1/2 p-4 text-left">
@@ -100,6 +103,10 @@ const LoginPage = () => {
               </Link>
             </div>
           </form>
+
+         
+
+
         </div>
       </div>
     </section>

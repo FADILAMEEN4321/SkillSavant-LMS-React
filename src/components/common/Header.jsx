@@ -1,7 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
-import {axiosInstance} from "./../../services/axios";
+import { axiosInstance } from "./../../services/axios";
+
 
 const Header = () => {
   let { logoutUser, user, authTokens, setUserProfile, userProfile } =
@@ -91,30 +92,107 @@ const Header = () => {
           >
             {/* <li><a>Item 1</a></li> */}
             <li>
-              <a>Courses</a>
               <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
+                {user ? (
+                  user.role === "student" && (
+                    <li>
+                      <Link to="/">
+                        {" "}
+                        <span className="text-[15px] text-black">🏡 Home</span>
+                      </Link>
+                    </li>
+                  )
+                ) : (
+                  <li>
+                    <Link to="/"><span className="text-[15px] text-black">🏡 Home</span></Link>
+                  </li>
+                )}
+                {user ? (
+                  user.role === "student" && (
+                    <li>
+                      <Link to="/courses">
+                        <span className="text-[15px] text-black">
+                          📚 Courses
+                        </span>
+                      </Link>
+                    </li>
+                  )
+                ) : (
+                  // <li tabIndex={0}>
+                  //       <details>
+                  //         <summary>Courses</summary>
+                  //         <ul className="p-2">
+                  //           <li><a>Submenu 1</a></li>
+                  //           <li><a>Submenu 2</a></li>
+                  //         </ul>
+                  //       </details>
+                  //     </li>
+
+                  // <li tabIndex={0}>
+                  //   <details>
+                  //     <summary>Courses</summary>
+                  //     <ul className="p-2">
+                  //       <li><a>Submenu 1</a></li>
+                  //       <li><a>Submenu 2</a></li>
+                  //     </ul>
+                  //   </details>
+                  // </li>
+                  <li>
+                    <Link to="/courses">
+                      <span className="text-[15px] text-black">📚 Courses</span>
+                    </Link>
+                  </li>
+                )}
+
+                {user
+                  ? user.role === "student" && (
+                      <li>
+                        <Link to="/MyLearning">
+                          <span className="text-[15px] text-black">
+                            🤹 My learning{" "}
+                          </span>
+                        </Link>
+                      </li>
+                    )
+                  : ""}
+
+                {user ? (
+                  ""
+                ) : (
+                  <li>
+                    <Link to="/instructor/login">
+                      <span className="text-[15px] text-black">
+                        👩‍🏫 Teach On Skill Savant
+                      </span>
+                    </Link>
+                  </li>
+                )}
+
+                {userProfile && (
+                  <li>
+                    <a>
+                      <span className="text-[15px] text-black">
+                        👋 Hi, {userProfile.first_name}
+                      </span>
+                    </a>
+                  </li>
+                )}
               </ul>
-            </li>
-            <li>
-              <a>Teach On DL</a>
             </li>
           </ul>
         </div>
         <a className="btn btn-ghost normal-case text-xl mr-6">Skill Savant</a>
-        <div className="form-control">
-          {/* md:w-auto */}
-          <input
-            type="text"
-            placeholder="Search Courses..."
-            className="input input-bordered w-26 md:w-auto hidden md:flex"
-          />
-        </div>
+        <div className="form-control w-full hidden md:flex rounded-md relative">
+  <input
+    type="text"
+    placeholder="Search Courses..."
+    className="input input-bordered md:w-auto hidden rounded-md md:flex bg-transparent"
+  />
+  <div className="absolute right-2 rounded-md p-1 bg-gray-200 hover:bg-gray-300 text-[17px] top-1/2 transform -translate-y-1/2 cursor-pointer">
+  🔍
+  </div>
+</div>
+
       </div>
       <div className="navbar-center hidden lg:flex"></div>
       <div className="navbar-end">
@@ -122,7 +200,10 @@ const Header = () => {
           {user ? (
             user.role === "student" && (
               <li>
-                <Link to="/">🏡 Home</Link>
+                <Link to="/">
+                  {" "}
+                  <span className="text-[15px] text-black">🏡 Home</span>
+                </Link>
               </li>
             )
           ) : (
@@ -133,7 +214,9 @@ const Header = () => {
           {user ? (
             user.role === "student" && (
               <li>
-                <Link to="/courses">📚 Courses</Link>
+                <Link to="/courses">
+                  <span className="text-[15px] text-black">📚 Courses</span>
+                </Link>
               </li>
             )
           ) : (
@@ -157,31 +240,43 @@ const Header = () => {
             //   </details>
             // </li>
             <li>
-              <Link to="/courses">📚 Courses</Link>
+              <Link to="/courses">
+                <span className="text-[15px] text-black">📚 Courses</span>
+              </Link>
             </li>
           )}
 
-          {user ? (
-            user.role === "student" && (
-              <li>
-                <Link to="/MyLearning">🤹 My learning</Link>
-              </li>
-            )
-          ) : (
-           ''
-          )}
+          {user
+            ? user.role === "student" && (
+                <li>
+                  <Link to="/MyLearning">
+                    <span className="text-[15px] text-black">
+                      🤹 My learning{" "}
+                    </span>
+                  </Link>
+                </li>
+              )
+            : ""}
 
           {user ? (
             ""
           ) : (
             <li>
-              <Link to="/instructor/login">👩‍🏫 Teach On Skill Savant</Link>
+              <Link to="/instructor/login">
+                <span className="text-[15px] text-black">
+                  👩‍🏫 Teach On Skill Savant
+                </span>
+              </Link>
             </li>
           )}
 
           {userProfile && (
             <li>
-              <a>👋 Hi, {userProfile.email}</a>
+              <a>
+                <span className="text-[15px] text-black">
+                  👋 Hi, {userProfile.first_name}
+                </span>
+              </a>
             </li>
           )}
         </ul>
@@ -192,7 +287,6 @@ const Header = () => {
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
               {studentData ? (
-                // <img src={`${baseUrlMedia + studentData.profile_photo}`} />
                 <img src={studentData.profile_photo} />
               ) : (
                 <img src="" />
@@ -224,6 +318,8 @@ const Header = () => {
         >
           Login
         </Link>
+
+       
       )}
     </div>
   );

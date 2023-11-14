@@ -7,7 +7,10 @@ import shuffle from "lodash.shuffle";
 import data from "../features/data";
 import styles from "./styles.module.css";
 import {axiosInstance} from './../../../services/axios';
+import ScrollToTop from "../../common/ScrollToTop";
+import ScrollIndicator from "../../common/ScrollIndicator";
 // import Typed from 'react-typed';
+
 
 
 
@@ -18,10 +21,10 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
 
 
-  useEffect(() => {
-    const t = setInterval(() => set(shuffle), 2000);
-    return () => clearInterval(t);
-  }, []);
+  // useEffect(() => {
+  //   const t = setInterval(() => set(shuffle), 2000);
+  //   return () => clearInterval(t);
+  // }, []);
 
   useEffect(()=>{
     //URLs for API endpoints
@@ -69,19 +72,26 @@ const Home = () => {
     }
   );
 
+
+
+
   return (
     <>
       {/* // Hero-section */}
+      
       <section
-        className="bg-white dark:bg-gray-900 bg-center bg-no-repeat bg-cover bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')] dark:bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern-dark.svg')]"
-        style={{ backgroundImage: "url(/hero-section.jpg)" }}
+      // bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')]
+        className="bg-gradient-to-r from-pink-900 to-blue-900 bg-green-900 dark:bg-gray-900 bg-center bg-no-repeat bg-cover"
+        // style={{ backgroundImage: "url(/hero-section.jpg)" }}
       >
         <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 grid lg:grid-cols-2 gap-8 lg:gap-16">
           <div className="flex flex-col justify-center">
             <Slide>
-              <h1 className="mb-4 text-4xl z-10 font-extrabold tracking-tight leading-none text-White md:text-5xl lg:text-6xl dark:text-white">
-                Unlock Your Potential with
+              <h1 className="mb-4 text-4xl z-10 font-extrabold tracking-tight leading-none text-blue-200 md:text-5xl lg:text-6xl dark:text-white">
+                Unlock Your Potential with Skill Savant <span className="animate-bounce">🚀</span>
+
               </h1>
+              
               {/* <Typed 
           className="mb-4 text-4xl z-10 font-extrabold tracking-tight leading-none text-White md:text-5xl lg:text-6xl dark:text-white"
         strings={['skills.']}
@@ -90,7 +100,7 @@ const Home = () => {
         loop/> */}
             </Slide>
             <Fade delay={1e3} cascade damping={1e-1}>
-              <p className="mb-8 text-lg font-normal z-10 text-gray-400 lg:text-xl dark:text-gray-400">
+              <p className="mb-8 text-lg font-normal z-10 text-gray-300 lg:text-xl dark:text-gray-400">
                 Explore a world of knowledge and enhance your skills from the
                 comfort of your home. Start your journey to success today.
               </p>
@@ -98,7 +108,7 @@ const Home = () => {
             <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
               <a
                 href="#"
-                className="inline-flex z-10 justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-md bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
+                className="inline-flex z-10 justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-md bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
               >
                 Get started
                 <svg
@@ -119,7 +129,7 @@ const Home = () => {
               </a>
               <a
                 href="#"
-                className="inline-flex z-10 justify-center items-center py-3 px-5 text-base font-medium text-center text-gray-900 rounded-md border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+                className="inline-flex z-10 justify-center items-center py-3 px-5 text-base font-medium text-center text-gray-900 rounded-md border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 hover:text-black text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
               >
                 Learn more
               </a>
@@ -129,6 +139,8 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+
 
       {/* Skills icons */}
       <section class="bg-white py-8">
@@ -155,12 +167,16 @@ const Home = () => {
         {/* <div class="bg-gradient-to-b from-blue-100 to-transparent dark:from-blue-900 w-full h-full absolute top-0 left-0 z-0"></div> */}
       </section>
 
+      
+
 
       <CourseRow
         title="Popular Courses"
         subtitle="Checkout all the popular courses."
         courses={popularCourses}
         loading={loading}
+        setPopularCourses={setPopularCourses}
+        setLatestCourses={setLatestCourses}
       />
 
       <CourseRow
@@ -168,6 +184,8 @@ const Home = () => {
         subtitle="Checkout all the Latest Releases."
         courses={latestCourses}
         loading={loading}
+        setLatestCourses={setLatestCourses}
+        setPopularCourses={setPopularCourses}
       />
 
 
@@ -186,6 +204,7 @@ const Home = () => {
           </button>
         </div>
       </div>
+      <ScrollToTop/>
     </>
   );
 };

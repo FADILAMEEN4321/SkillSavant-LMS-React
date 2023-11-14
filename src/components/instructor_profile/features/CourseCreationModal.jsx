@@ -69,7 +69,7 @@ const CourseCreationModal = ({setCourses}) => {
         console.log('from---courese-crea-->',userProfile.id)
 
         try{
-          const response = await axiosAuthorized.post('courses/create/',formData,{
+          const response = await axiosInstance.post('courses/create/',formData,{
             headers:{
                 'Content-Type': 'multipart/form-data',
             }

@@ -26,8 +26,19 @@ const removeFavourites = async (studentId, courseId) =>{
 }
 
 
+const fetchFavCourses = async (studentId) =>{
+    try{
+        const response = await axiosInstance.get(`list-all-favourite-courses/${studentId}/`)
+        return response
+    }catch(error){
+        throw error;
+    }
+}
+
+
 
 
 
 export {addToFavourites, 
-        removeFavourites};
+        removeFavourites,
+        fetchFavCourses,};

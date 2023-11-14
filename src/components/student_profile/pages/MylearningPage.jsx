@@ -1,6 +1,7 @@
 import React from 'react'
 import {MyLearningTabs,Tab} from '../features/MyLearningTabs'
 import EnrolledCourseTab from '../features/EnrolledCourseTab'
+import FavouritesCoursesTab from '../features/FavouritesCoursesTab'
 
 const MylearningPage = () => {
   return (
@@ -35,7 +36,7 @@ const MylearningPage = () => {
 
         <Tab label="🔥 Favourite courses">
         
-        <div className="container min-h-screen"></div>
+        <FavouritesCoursesTab/>
 
         </Tab>
 

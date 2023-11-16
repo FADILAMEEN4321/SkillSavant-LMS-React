@@ -66,7 +66,7 @@ const CourseLearningPage = () => {
 
         <Tab label="💬 Discussion Room">
         
-        <DiscussionRoom/>
+        <DiscussionRoom enrolledCourseId={courseId}/>
 
         </Tab>
         <Tab label="🗒️ Take Notes">

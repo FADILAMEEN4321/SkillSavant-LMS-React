@@ -3,6 +3,10 @@ import ReactPlayer from "react-player";
 
 const LearningReactPlayer = ({currentModule, loading}) => {
 
+  const handleVideoEnd = () =>{
+    console.log('video has ended......')
+  }
+
   return (
     <div classname="h-85 bg-gray-300 rounded-md">
       <ReactPlayer
@@ -11,6 +15,7 @@ const LearningReactPlayer = ({currentModule, loading}) => {
         width="100%"
         height="100%"
         controls
+        onEnded={handleVideoEnd}
       />
     </div>
   );

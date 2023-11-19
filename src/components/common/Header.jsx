@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import { axiosInstance } from "./../../services/axios";
+import SkillGPT from "./SkillGPT";
 
 
 const Header = () => {
@@ -156,6 +157,20 @@ const Header = () => {
                     )
                   : ""}
 
+               {user
+                  ? user.role === "student" && (
+                      <li>
+                        <Link to="/MyLearning">
+                          <span className="text-[15px] text-black">
+                            🤹 My learning{" "}
+                          </span>
+                        </Link>
+                      </li>
+                    )
+                  : ""}
+
+
+
                 {user ? (
                   ""
                 ) : (
@@ -257,6 +272,25 @@ const Header = () => {
                 </li>
               )
             : ""}
+
+
+             {user
+            ? user.role === "student" && (
+                <li onClick={()=>document.getElementById('skillGPT').showModal()}>
+                  
+                    <span className="text-[15px] text-black">
+                      🤹 skillGPT{" "}
+                    </span>
+                    
+                  
+                </li>
+                
+
+              )
+            : ""}
+
+
+
 
           {user ? (
             ""

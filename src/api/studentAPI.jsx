@@ -39,6 +39,8 @@ const fetchFavCourses = async (studentId) =>{
 
 
 
-export {addToFavourites, 
-        removeFavourites,
-        fetchFavCourses,};
+export {
+    addToFavourites, 
+    removeFavourites,
+    fetchFavCourses,
+};

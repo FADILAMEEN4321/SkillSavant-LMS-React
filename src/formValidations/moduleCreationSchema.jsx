@@ -23,7 +23,7 @@ export const moduleCreationSchema = Yup.object().shape({
           if (value) {
             return value.size <= 100 * 1024 * 1024; // 100MB in bytes
           }
-          return true; // Return true if the file is not selected
+          return true; 
         }
       ),
     

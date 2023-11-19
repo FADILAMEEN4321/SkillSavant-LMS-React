@@ -10,6 +10,8 @@ import {axiosInstance} from './../../../services/axios';
 import ScrollToTop from "../../common/ScrollToTop";
 import ScrollIndicator from "../../common/ScrollIndicator";
 // import Typed from 'react-typed';
+import AiLearningPathIcon from './../../common/AiLearningPathIcon';
+import SkillGPT from "../../common/SkillGPT";
 
 
 
@@ -129,7 +131,7 @@ const Home = () => {
               </a>
               <a
                 href="#"
-                className="inline-flex z-10 justify-center items-center py-3 px-5 text-base font-medium text-center text-gray-900 rounded-md border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 hover:text-black text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+                className="inline-flex z-10 justify-center items-center py-3 px-5 text-base font-medium text-center rounded-md border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 hover:text-black text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
               >
                 Learn more
               </a>
@@ -204,6 +206,7 @@ const Home = () => {
           </button>
         </div>
       </div>
+      <SkillGPT/>
       <ScrollToTop/>
     </>
   );

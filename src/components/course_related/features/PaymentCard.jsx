@@ -4,6 +4,7 @@ import {axiosInstance} from "./../../../services/axios";
 import AuthContext from "../../../context/AuthContext";
 import {useNavigate} from 'react-router-dom';
 import { toast } from 'react-toastify';
+import {razorPayKeyId} from './../../../services/constants';
 
 
 
@@ -12,7 +13,8 @@ const PaymentCard = ({ loading, courseDetails }) => {
     const navigate = useNavigate()
     const [Razorpay] = useRazorpay();
     const {userProfile} = useContext(AuthContext)
-    const razorpayKeyID = import.meta.env.VITE_APP_RAZORPAY_KEY_ID;
+    // const razorpayKeyID = import.meta.env.VITE_APP_RAZORPAY_KEY_ID;
+    const razorpayKeyID = razorPayKeyId
 
     const completeEnrollment = (paymentID,orderID,signature) =>{
         console.log(courseDetails.id,userProfile.id,paymentID,orderID,signature,courseDetails.price)

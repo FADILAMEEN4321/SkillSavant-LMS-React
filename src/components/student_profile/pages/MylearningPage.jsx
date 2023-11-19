@@ -37,7 +37,7 @@ const MylearningPage = () => {
         <Tab label="🔥 Favourite courses">
         
         <FavouritesCoursesTab/>
-
+ 
         </Tab>
 
      

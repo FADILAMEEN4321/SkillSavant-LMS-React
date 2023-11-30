@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {axiosInstance} from './../../services/axios'
 
 const SkillGPT = () => {
-  const [learningPath, setLearnigPath] = useState("");
+  const [learningPath, setLearnigPath] = useState();
   const [courseName, setCourseName] = useState('');
   const [loading, setLoading] = useState(false)
 
@@ -78,10 +78,11 @@ const SkillGPT = () => {
             </form>
             
 
-            <div className="bg-gray-200 rounded-md">
-                <p className="text-[17px] p-3 font-normal">
-                {learningPath}
-                </p>
+            <div className="bg-gray-200 p-4 rounded-md">
+                
+                {/* {learningPath} */}
+                <div dangerouslySetInnerHTML={{ __html: learningPath }} />
+               
             </div>
 
 

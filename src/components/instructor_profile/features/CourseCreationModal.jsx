@@ -11,6 +11,7 @@ const CourseCreationModal = ({setCourses}) => {
     const [subCategories, setSubCategories] = useState([])
     const [tags, setTags] = useState([])
     const [loading, setLoading] = useState(true)
+    const [creating,setCreating] = useState(false)
 
     let {userProfile} = useContext(AuthContext)
 
@@ -52,6 +53,7 @@ const CourseCreationModal = ({setCourses}) => {
     }
 
     const onSubmit = async (values, { setSubmitting }) =>{
+      setCreating(true)    
 
         const formData = {
             title:values.title,
@@ -80,18 +82,17 @@ const CourseCreationModal = ({setCourses}) => {
           // Show a success toast
           const newCourse = response.data;
           setCourses((prevCourses) => [...prevCourses, newCourse]);
-          // document.getElementById("my_modal_4").close();
-          alert('Course created successfully!');
+          document.getElementById("my_modal_6").close();
+          toast.success('Course created successfully!');
+          setCreating(false)
           console.log(response.data)
-        } else {
-          // Handle cases where the API returns success but with an error message
-          alert('An error occurred while creating the course.');
         }
 
 
         }catch(error){
-          // toast.error('An error occurred while creating the course.');
+          toast.error('An error occurred while creating the course.');
           console.error('Error:', error);
+          setCreating(false)
         }
 
       
@@ -115,11 +116,11 @@ const CourseCreationModal = ({setCourses}) => {
     <>
     {/* You can open the modal using document.getElementById('ID').showModal() method */}
     <button
-              className="ml-5 text-white inline-flex items-center bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+              className="ml-5 text-white inline-flex items-center bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-md text-sm px-5 py-2.5 text-center mr-2 mb-2"
               onClick={() => document.getElementById("my_modal_6").showModal()}
             >
               <svg
-                className="mr-1 -ml-1 w-6 h-6"
+                className="mr-1 ml-1 w-6 h-6"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -132,12 +133,20 @@ const CourseCreationModal = ({setCourses}) => {
               </svg>
               Create New Course
             </button>
+
+
+
+
+
             <dialog id="my_modal_6" className="modal">
               <div className="modal-box">
                 <form method="dialog">
                   {/* if there is a button in form, it will close the modal */}
                   <button
-                   onClick={()=>formik.resetForm()}
+                   onClick={()=>{
+                    formik.resetForm()
+                    setCreating(false)
+                  }}
                    className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
                     ✕
                   </button>
@@ -164,7 +173,7 @@ const CourseCreationModal = ({setCourses}) => {
                         required
                       />
                       {formik.touched.title && formik.errors.title && (
-                        <div className="text-red-500">
+                        <div className="text-red-500 text-sm">
                           {formik.errors.title}
                         </div>
                       )}
@@ -188,7 +197,7 @@ const CourseCreationModal = ({setCourses}) => {
                         required
                       />
                       {formik.touched.subtitle && formik.errors.subtitle && (
-                        <div className="text-red-500">
+                        <div className="text-red-500 text-sm">
                           {formik.errors.subtitle}
                         </div>
                       )}
@@ -228,7 +237,7 @@ const CourseCreationModal = ({setCourses}) => {
                         )}
                       </select>
                       {formik.touched.category && formik.errors.category && (
-                        <div className="text-red-500">
+                        <div className="text-red-500 text-sm">
                           {formik.errors.category}
                         </div>
                       )}
@@ -255,7 +264,7 @@ const CourseCreationModal = ({setCourses}) => {
                         <option value="Advanced">Advanced</option>
                       </select>
                       {formik.touched.level && formik.errors.level && (
-                        <div className="text-red-500">
+                        <div className="text-red-500 text-sm">
                           {formik.errors.level}
                         </div>
                       )}
@@ -283,6 +292,8 @@ const CourseCreationModal = ({setCourses}) => {
                         ):(
                             <>
                           <option value="">Select a Tag</option>
+                          
+
                             {tags.map((tag) => (
                               
                               <option key={tag.id} value={tag.id}>
@@ -297,7 +308,7 @@ const CourseCreationModal = ({setCourses}) => {
                         
                       </select>
                       {formik.touched.tag && formik.errors.tag && (
-                        <div className="text-red-500">
+                        <div className="text-red-500 text-sm">
                           {formik.errors.tag}
                         </div>
                       )}
@@ -318,11 +329,11 @@ const CourseCreationModal = ({setCourses}) => {
                         onBlur={formik.handleBlur}
                         value={formik.values.price}
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="$2999"
+                        placeholder="₨ 3000"
                         required=""
                       />
                       {formik.touched.price && formik.errors.price && (
-                        <div className="text-red-500">
+                        <div className="text-red-500 text-sm">
                           {formik.errors.price}
                         </div>
                       )}
@@ -347,7 +358,7 @@ const CourseCreationModal = ({setCourses}) => {
     
                       />
                       {formik.touched.description && formik.errors.description && (
-                        <div className="text-red-500">
+                        <div className="text-red-500 text-sm">
                           {formik.errors.description}
                         </div>
                       )}
@@ -372,7 +383,7 @@ const CourseCreationModal = ({setCourses}) => {
                         className="border border-gray-500 rounded-md font-medium text-gray-400"
                       />
                       {formik.touched.cover_image && formik.errors.cover_image && (
-                        <div className="text-red-500">
+                        <div className="text-red-500 text-sm">
                           {formik.errors.cover_image}
                         </div>
                       )}
@@ -380,24 +391,31 @@ const CourseCreationModal = ({setCourses}) => {
                   </div>
 
                  <div className="container">
-                 <button type="submit" className="relative p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
-                    
-                    <span className="relative inline-flex items-center px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                    <svg
-                    className="mr-1 -ml-1 w-6 h-6"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                   Create
-                    </span>
-                  </button>
+               
+
+{creating ? (
+  <button disabled type="button" class="py-2.5 px-5 me-2 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 inline-flex items-center">
+  <svg aria-hidden="true" role="status" class="inline w-4 h-4 me-3 text-gray-200 animate-spin dark:text-gray-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+  <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="#1C64F2"/>
+  </svg>
+  creating...
+  </button>
+
+
+
+):(
+  <button  type="submit" class="py-2.5 px-5 me-2 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 inline-flex items-center">
+ 
+  + create
+  </button>
+  
+)}
+
+
+
+
+
                  </div>
 
                   

@@ -9,6 +9,7 @@ import {
     InstructorProfilePage,
     InstructorSignupPage
 } from './../components/instructor_profile/index';
+import InstructorChat from '../components/instructor_profile/pages/InstructorChat';
 
 
 const InstructorRoutes = () => {
@@ -32,7 +33,11 @@ const InstructorRoutes = () => {
 
     <Route path='/mycourses/:courseId' 
     element={<PrivateRoute element={<InstructorCourseDetailPage/>} roles={['instructor']}/>}>
-    </Route> 
+    </Route>
+
+    <Route path='/chat' 
+    element={<PrivateRoute element={<InstructorChat/>} roles={['instructor']}/>}>
+    </Route>  
 
 
 </Routes>

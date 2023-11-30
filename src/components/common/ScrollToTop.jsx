@@ -27,14 +27,14 @@ const ScrollToTop = () => {
   }, []);
 
   return isVisible ? (
-    <div className="fixed bottom-5 right-5 animate-bounce">
+    <div className="fixed bottom-5 right-5">
       <div
         type="button"
         onClick={scrollUp}
         // className='bg-gray-900 hover:bg-red-500 inline-flex items-center rounded-full p-3 shadow-sm'
         className={SrollToTopClassnames(
           isVisible ? "opacity-100" : "opacity-0",
-          "bg-red-600 hover:bg-red-700 focus:ring-red-500 inline-flex items-center rounded-full p-3 text-white shadow-sm transition-opacity focus:outline-none focus:ring-2 focus:ring-offset-2"
+          "bg-blue-200 hover:bg-blue-300 focus:ring-red-500 inline-flex items-center rounded-full p-3 text-white shadow-sm transition-opacity focus:outline-none focus:ring-2 focus:ring-offset-2"
         )}
       >
         <svg

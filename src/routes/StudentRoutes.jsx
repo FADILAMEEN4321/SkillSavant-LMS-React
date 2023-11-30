@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import PrivateRoute from '../PrivateRoute';
+import NotFoundPage from './../components/common/NotFoundPage';
 
 import {
     Home,
@@ -48,6 +49,8 @@ const StudentRoutes = () => {
         <Route path='/MyLearning' 
         element={<PrivateRoute element={<MylearningPage/>} roles={['student']}/>}>
         </Route>
+
+        <Route path="*" element={<NotFoundPage/>}></Route>
         
     </Routes>
   )

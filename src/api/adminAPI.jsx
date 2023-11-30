@@ -1,4 +1,4 @@
-import {axiosInstance} from './../services/axios'
+import {axiosInstance} from './../services/axios';
 
 const fetchSales = async() =>{
     try{

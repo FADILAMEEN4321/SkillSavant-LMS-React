@@ -1,11 +1,11 @@
 import * as Yup from 'yup';
 
 export const moduleCreationSchema = Yup.object().shape({
-  module_title: Yup.string().required('Module title is required'),
-  module_order: Yup.number().required('Module order is required'),
-  duration: Yup.number().required('Duration is required'),
+  module_title: Yup.string().required('* Module title is required.'),
+  module_order: Yup.number().required('* Module order is required.'),
+  // duration: Yup.number().required('Duration is required'),
   video_url: Yup.mixed()
-    .required('Video file is required')
+    .required('* Video file is required.')
     .test(
       'fileFormat',
       'Invalid file format. Only .mp4 files are allowed.',

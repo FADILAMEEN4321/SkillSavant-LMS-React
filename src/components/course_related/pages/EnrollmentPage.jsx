@@ -30,7 +30,7 @@ const EnrollmentPage = () => {
   
   return (
     <>
-      <div className="container mx-auto mt-4 mb-4">
+      {/* <div className="container mx-auto mt-4 mb-4">
 
         <div className="bg-blue-200 p-6 rounded-md shadow-lg">
 
@@ -99,66 +99,6 @@ const EnrollmentPage = () => {
               )}
 
 
-            </div>
-
-            <div className="flex-1 mt-4">
-
-              <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 dark:bg-gray-800 dark:border-gray-700">
-                <h5 className="mb-2 text-base font-semibold text-gray-900 md:text-xl dark:text-white">
-                  Benefits
-                </h5>
-                <p className="text-sm font-normal text-gray-500 dark:text-gray-400">
-                  You can know the amount you need to pay with tax.
-                </p>
-                <div className="border-b border-gray-300 dark:border-gray-600 mt-2 mb-4"></div>
-
-                <ul role="list" className="space-y-5 my-7">
-                  <li className="flex space-x-3 items-center">
-                    <svg
-                      className="flex-shrink-0 w-4 h-4 text-blue-600 dark:text-blue-500"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
-                    </svg>
-                    <span className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
-                      Lifetime access to the course
-                    </span>
-                  </li>
-                  <li className="flex space-x-3">
-                    <svg
-                      className="flex-shrink-0 w-4 h-4 text-blue-600 dark:text-blue-500"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
-                    </svg>
-                    <span className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
-                      Downloadable course materials
-                    </span>
-                  </li>
-                  <li className="flex space-x-3">
-                    <svg
-                      className="flex-shrink-0 w-4 h-4 text-blue-600 dark:text-blue-500"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
-                    </svg>
-                    <span className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
-                      Access to community forum
-                    </span>
-                  </li>
-                </ul>
-
-                <div></div>
-              </div>
 
               
             </div>
@@ -170,7 +110,70 @@ const EnrollmentPage = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
+
+
+
+<div class="container mx-auto px-4 py-8">
+        <h1 class="text-5xl font-bold text-center text-gray-800 mb-6">{courseDetails.title}</h1>
+        <h2 class="text-2xl text-center text-gray-700 mb-12">{courseDetails.subtitle}</h2>
+        <div class="flex flex-wrap -mx-2 justify-center">
+
+
+          {loading ? (''):(
+            <div class="w-full md:w-1/3 px-2 mb-6 md:mb-0">
+            <div class="bg-white rounded-lg p-8 shadow-xl">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-6">Course Details</h3>
+                <p class="text-gray-700 mb-8">Get all the details you need to join the course and start your journey.</p>
+                <div class="flex items-center text-gray-800 mb-4">
+                    <i class="fas fa-chalkboard-teacher mr-3 text-lg"></i>
+                    <span class="text-lg">Instructor: {courseDetails.instructor_first_name} {courseDetails.instructor_last_name}</span>
+                </div>
+                <div class="flex items-center text-gray-800 mb-4">
+                    <i class="fas fa-layer-group mr-3 text-lg"></i>
+                    <span class="text-lg">Level: {courseDetails.level}</span>
+                </div>
+                <div class="flex items-center text-gray-800">
+                    <i class="fas fa-hourglass-half mr-3 text-lg"></i>
+                    <span class="text-lg">Duration: {courseDetails.duration}</span>
+                </div>
+            </div>
+        </div>
+          )}
+            
+
+
+
+
+            <div class="w-full md:w-1/3 px-2 mb-6 md:mb-0">
+                <div class="bg-white rounded-lg p-8 shadow-xl">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-6">Benefits</h3>
+                    <p class="text-gray-700 mb-8">Discover the advantages of enrolling in our kickboxing course.</p>
+                    <ul class="text-gray-800">
+                        <li class="flex items-center mb-4">
+                            <i class="fas fa-infinity mr-3 text-lg text-blue-600"></i>
+                            <span class="text-lg">Lifetime access to the course</span>
+                        </li>
+                        <li class="flex items-center mb-4">
+                            <i class="fas fa-download mr-3 text-lg text-blue-600"></i>
+                            <span class="text-lg">Downloadable course materials</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-users mr-3 text-lg text-blue-600"></i>
+                            <span class="text-lg">Access to community forum</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <PaymentCard loading={loading} courseDetails={courseDetails} />
+            
+        </div>
+    </div>
+
+
+
+
     </>
   );
 };

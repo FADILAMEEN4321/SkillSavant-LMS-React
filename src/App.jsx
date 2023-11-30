@@ -7,7 +7,9 @@ import {AuthProvider} from './context/AuthContext';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { GoogleOAuthProvider } from '@react-oauth/google';
-import { googleClientId } from './services/constants'
+import { googleClientId } from './services/constants';
+import '@mantine/core/styles.css';
+import { MantineProvider } from '@mantine/core';
 
 
 
@@ -17,6 +19,7 @@ function App() {
 
   return (
     <Router>
+      <MantineProvider>
       <GoogleOAuthProvider clientId={googleClientId} >
       <AuthProvider>
       <Header/> 
@@ -25,6 +28,7 @@ function App() {
       <ToastContainer />
       </AuthProvider>
       </GoogleOAuthProvider>
+      </MantineProvider>
     </Router>
   )
 }

@@ -8,7 +8,10 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [require('flowbite/plugin'),require("daisyui"),],
+  plugins: [require('flowbite/plugin')({
+    charts: true,
+  }),require("daisyui"), require('tailwind-scrollbar'),],
+  
 
   daisyui: {
     themes: ["light", "dark", "cupcake"],

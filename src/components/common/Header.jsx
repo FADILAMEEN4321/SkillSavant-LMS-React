@@ -200,13 +200,17 @@ const Header = () => {
         <div className="form-control w-full hidden md:flex rounded-md relative">
   <input
     type="text"
-    placeholder="Search Courses..."
+    placeholder="What you want to learn ?"
     className="input input-bordered md:w-auto hidden rounded-md md:flex bg-transparent"
   />
-  <div className="absolute right-2 rounded-md p-1 bg-gray-200 hover:bg-gray-300 text-[17px] top-1/2 transform -translate-y-1/2 cursor-pointer">
-  🔍
+  <div className="absolute btn btn-sm right-2 rounded-md p-2 bg-gray-200 hover:bg-gray-300 text-[17px] top-1/2 transform -translate-y-1/2 cursor-pointer">
+  <i class="fas fa-search text-gray-900"></i>
   </div>
 </div>
+
+
+
+
 
       </div>
       <div className="navbar-center hidden lg:flex"></div>

@@ -32,7 +32,7 @@ const RoutesComponents = () => {
       />
      
 
-      <Route path="*" element={<NotFoundPage/>}></Route>
+     
 
     </Routes>
   )

@@ -3,15 +3,14 @@ import CourseRow from "../features/CourseRow";
 import AuthContext from "../../../context/AuthContext";
 import { Fade, Slide } from "react-awesome-reveal";
 import { useTransition, animated } from "@react-spring/web";
-import shuffle from "lodash.shuffle";
 import data from "../features/data";
-import styles from "./styles.module.css";
 import {axiosInstance} from './../../../services/axios';
 import ScrollToTop from "../../common/ScrollToTop";
 import ScrollIndicator from "../../common/ScrollIndicator";
 // import Typed from 'react-typed';
 import AiLearningPathIcon from './../../common/AiLearningPathIcon';
 import SkillGPT from "../../common/SkillGPT";
+import './home.css'
 
 
 
@@ -23,10 +22,7 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
 
 
-  // useEffect(() => {
-  //   const t = setInterval(() => set(shuffle), 2000);
-  //   return () => clearInterval(t);
-  // }, []);
+
 
   useEffect(()=>{
     //URLs for API endpoints
@@ -62,19 +58,6 @@ const Home = () => {
 
 
 
-  let height = 0;
-  const transitions = useTransition(
-    rows.map((data) => ({ ...data, y: (height += data.height) - data.height })),
-    {
-      key: (item) => item.name,
-      from: { height: 0, opacity: 0 },
-      leave: { height: 0, opacity: 0 },
-      enter: ({ y, height }) => ({ y, height, opacity: 1 }),
-      update: ({ y, height }) => ({ y, height }),
-    }
-  );
-
-
 
 
   return (
@@ -94,12 +77,7 @@ const Home = () => {
 
               </h1>
               
-              {/* <Typed 
-          className="mb-4 text-4xl z-10 font-extrabold tracking-tight leading-none text-White md:text-5xl lg:text-6xl dark:text-white"
-        strings={['skills.']}
-        typeSpeed={120}
-        backSpeed={140}
-        loop/> */}
+             
             </Slide>
             <Fade delay={1e3} cascade damping={1e-1}>
               <p className="mb-8 text-lg font-normal z-10 text-gray-300 lg:text-xl dark:text-gray-400">
@@ -144,30 +122,73 @@ const Home = () => {
 
 
 
-      {/* Skills icons */}
-      <section class="bg-white py-8">
-        <div class="container mx-auto px-4">
-          <div class="overflow-x-hidden">
-
-            <div className="flex items-center justify-between space-x-11 overflow-x-auto">
-              {transitions((style, item, t, index) => (
-                <animated.div className="mx-3.5">
-                  <div
-                    className="flex-shrink-0 w-48 h-28 rounded-md shadow-md p-4"
-                    style={{ backgroundImage: item.css }}
-                  >
-                    {/* <div className="flex-shrink-0 w-48 h-28 rounded-md shadow-md p-4"  />  */}
-                  </div>
-                </animated.div>
-              ))}
+     <section>
+     <div class="scrolling-wrapper">
+        <div class="scrolling-content">
+            <div class="card rounded-md bg-gradient-to-r from-blue-500 to-indigo-600 p-4 text-white">
+                <i class="fas fa-brain fa-2x"></i>
+                <h3 class="text-lg font-semibold mt-2">Critical Thinking</h3>
+                <p class="text-sm">Enhance problem-solving and decision-making skills.</p>
             </div>
-      
-      
-            {/* </div> */}
-          </div>
+            <div class="card rounded-md bg-gradient-to-r from-green-500 to-teal-400 p-4 text-white">
+                <i class="fas fa-music fa-2x"></i>
+                <h3 class="text-lg font-semibold mt-2">Music</h3>
+                <p class="text-sm">Learn instruments, theory, and composition.</p>
+            </div>
+            <div class="card rounded-md bg-gradient-to-r from-yellow-400 to-orange-500 p-4 text-white">
+                <i class="fas fa-code fa-2x"></i>
+                <h3 class="text-lg font-semibold mt-2">Coding</h3>
+                <p class="text-sm">Master programming languages and development techniques.</p>
+            </div>
+            <div class="card rounded-md bg-gradient-to-r from-red-500 to-pink-500 p-4 text-white">
+                <i class="fas fa-fist-raised fa-2x"></i>
+                <h3 class="text-lg font-semibold mt-2">Martial Arts</h3>
+                <p class="text-sm">Develop self-defense skills and discipline.</p>
+            </div>
+            <div class="card rounded-md bg-gradient-to-r from-purple-500 to-indigo-400 p-4 text-white">
+                <i class="fas fa-comments fa-2x"></i>
+                <h3 class="text-lg font-semibold mt-2">Public Speaking</h3>
+                <p class="text-sm">Improve oratory skills and confidence.</p>
+            </div>
+           
+            <div class="card rounded-md bg-gradient-to-r from-blue-500 to-indigo-600 p-4 text-white">
+                <i class="fas fa-brain fa-2x"></i>
+                <h3 class="text-lg font-semibold mt-2">Critical Thinking</h3>
+                <p class="text-sm">Enhance problem-solving and decision-making skills.</p>
+            </div>
+            <div class="card rounded-md bg-gradient-to-r from-green-500 to-teal-400 p-4 text-white">
+                <i class="fas fa-music fa-2x"></i>
+                <h3 class="text-lg font-semibold mt-2">Music</h3>
+                <p class="text-sm">Learn instruments, theory, and composition.</p>
+            </div>
+            <div class="card rounded-md bg-gradient-to-r from-yellow-400 to-orange-500 p-4 text-white">
+                <i class="fas fa-code fa-2x"></i>
+                <h3 class="text-lg font-semibold mt-2">Coding</h3>
+                <p class="text-sm">Master programming languages and development techniques.</p>
+            </div>
+            <div class="card rounded-md bg-gradient-to-r from-red-500 to-pink-500 p-4 text-white">
+                <i class="fas fa-fist-raised fa-2x"></i>
+                <h3 class="text-lg font-semibold mt-2">Martial Arts</h3>
+                <p class="text-sm">Develop self-defense skills and discipline.</p>
+            </div>
+            <div class="card rounded-md bg-gradient-to-r from-purple-500 to-indigo-400 p-4 text-white">
+                <i class="fas fa-comments fa-2x"></i>
+                <h3 class="text-lg font-semibold mt-2">Public Speaking</h3>
+                <p class="text-sm">Improve oratory skills and confidence.</p>
+            </div>
         </div>
-        {/* <div class="bg-gradient-to-b from-blue-100 to-transparent dark:from-blue-900 w-full h-full absolute top-0 left-0 z-0"></div> */}
-      </section>
+    </div>
+     </section>
+
+
+
+
+      
+
+      
+
+
+
 
       
 
@@ -192,20 +213,61 @@ const Home = () => {
 
 
 
-      <div class="w-full bg-slate-500 h-72 relative">
-        {/* <!-- Background Image --> */}
-        <div class="h-full bg-cover bg-center bg-[url('/self-learning.jpg')]"></div>
-
-        {/* <!-- Overlay Text and Button --> */}
-        <div class="absolute inset-0 bg-opacity-60 bg-black"></div>
-        <div class="absolute inset-0 flex flex-col items-center justify-center text-white text-center">
-          <h2 class="text-3xl font-semibold mb-2">Overlay Text</h2>
-          <p class="mb-4">Additional information or description here.</p>
-          <button class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
-            Button
-          </button>
-        </div>
+<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    {/* First card */}
+    <div className="rounded-md shadow-lg p-6 bg-gradient-to-br from-indigo-800 via-purple-800 to-pink-600 text-white">
+      <div className="flex flex-col items-start">
+        <h2 className="text-xl font-semibold mb-2 flex items-center">
+          🧠 <span className="ml-2">Personalized Learning Paths with AI</span>
+        </h2>
+        <p className="mb-4">
+        Specify your desired course, and receive a personalized learning path meticulously curated just for you by an advanced GPT-4 AI model.
+        </p>
+        <a className="font-semibold flex items-center" href="#">
+          Create your path
+          <i className="fas fa-arrow-right ml-2" />
+        </a>
       </div>
+    </div>
+    {/* Second card */}
+    <div className="rounded-md shadow-lg p-6 bg-gradient-to-br from-gray-600 to-gray-900 text-white">
+      <div className="flex flex-col items-start">
+        <h2 className="text-xl font-semibold mb-2 flex items-center">
+          🎧 <span className="ml-2">AI-Powered Video Transcripts</span>
+        </h2>
+        <p className="mb-4">
+          Access accurate, AI-generated transcripts for all video courses with
+          OpenAI's Whisper model.
+        </p>
+        <a className="font-semibold flex items-center" href="#">
+          View transcripts
+          <i className="fas fa-arrow-right ml-2" />
+        </a>
+      </div>
+    </div>
+    {/* Third card */}
+    <div className="rounded-md shadow-lg p-6 bg-gradient-to-br from-teal-700 to-indigo-900 text-white">
+      <div className="flex flex-col items-start">
+        <h2 className="text-xl font-semibold mb-2 flex items-center">
+          🏆 <span className="ml-2">Dynamic AI Certificates</span>
+        </h2>
+        <p className="mb-4">
+          Celebrate course completion with unique, AI-generated certificates
+          from Stable Diffusion model.
+        </p>
+        <a className="font-semibold flex items-center" href="#">
+          Get certified
+          <i className="fas fa-arrow-right ml-2" />
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
       <SkillGPT/>
       <ScrollToTop/>
     </>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import AuthContext from './../../../context/AuthContext';
-import { fetchPreviousChats } from './../../../api/studentAPI'
+import { fetchPreviousChats } from './../../../api/studentAPI';
+import {websocket_Url} from './../../../services/constants';
 
 const DiscussionRoom = ({ enrolledCourseId }) => {
 
@@ -32,7 +33,7 @@ const DiscussionRoom = ({ enrolledCourseId }) => {
 
 
     // Establish WebSocket connection
-    const ws = new WebSocket(`ws://127.0.0.1:8000/ws/chat/${enrolledCourseId}/`);
+    const ws = new WebSocket(`ws://${websocket_Url}/ws/chat/${enrolledCourseId}/`);
     
     ws.onopen = () => {
       console.log('WebSocket connection opened');

@@ -38,24 +38,21 @@ const ApprovedCoursePage = () => {
           {/* for mobile */}
           <AdminMobileSideBar/>
 
-          <div className="relative container bg-blue-700 min-h-[200px] rounded-md mb-4">
-            <div className="absolute inset-0 bg-opacity-60 bg-black rounded-md" />
+      
+
+          <div className="relative container bg-gray-900 min-h-[150px] rounded-md mb-4">
+            <div className="absolute inset-0 bg-opacity-60 bg-gray-900 rounded-md" />
             <div className="absolute left-0 top-0 bottom-0 p-4 text-white">
-              {/* Your text content here */}
-              <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">
-                  Lets's Teach the
-                </span>{" "}
-                World.
-              </h1>
-              <p className="text-lg font-normal text-gray-200 lg:text-xl dark:text-gray-400">
-                Here at Flowbite we focus on markets where technology,
-                innovation.
-              </p>
-              {/* <p className="mt-2">All Students of Skill savant</p> */}
+              
+              
+              <h1 class="mb-3 text-3xl font-extrabold leading-none tracking-tight capitalize text-white md:text-3xl lg:text-4xl dark:text-white">Approved <span class="underline underline-offset-3 decoration-8 decoration-green-400 dark:decoration-blue-600">courses.</span></h1>
+  
+  <p class="text-sm font-normal capitalize text-gray-200 lg:text-lg">Manage all Approved courses of skill savant.</p>
             </div>
-            <div className="bg-cover bg-[url('/self-learning.jpg')] min-h-[200px] rounded-md" />
+            {/* <div className="bg-cover bg-[url('/self-learning.jpg')] min-h-[200px] rounded-md" /> */}
           </div>
+
+
 
           <div className="container">
 

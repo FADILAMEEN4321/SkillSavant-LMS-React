@@ -5,7 +5,7 @@ const SalesDetailsModal = ({sale}) => {
     <>
     <button 
         onClick={()=>document.getElementById(`sales_details_modal${sale.id}`).showModal()}
-        className='bg-blue-700 hover:bg-blue-800 p-2 px-5 text-center text-white rounded-md font-semibold'>
+        className='btn btn-sm btn-accent'>
           view details
         </button>
 

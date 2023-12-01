@@ -1,10 +1,10 @@
 import React,{useEffect,useState} from 'react'
 import AdminSideBar from './../features/AdminSideBar';
 import AdminMobileSideBar from './../features/AdminMobileSideBar';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLayerGroup, faTag, faDollarSign, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import {useParams} from 'react-router-dom';
 import {axiosInstance} from './../../../services/axios';
+import {toast} from 'react-toastify';
+import PlayButton from '../../instructor_profile/features/PlayButton';
 
 
 const PendingCourseDetailPage = () => {
@@ -37,7 +37,7 @@ const PendingCourseDetailPage = () => {
         if(response.data){
             console.log(response.data)
             setCourse(response.data)
-            alert('approved successfully')
+            toast.success('Course approved successfully')
         } 
       }catch(error){
         console.error('Error:', error);
@@ -70,111 +70,102 @@ const PendingCourseDetailPage = () => {
   <div className="container mx-auto ">
 
   <div className="relative container bg-blue-700 min-h-[200px] rounded-md mb-4">
-            <div className="absolute inset-0 bg-opacity-60 bg-black rounded-md" />
-            <div className="absolute left-0 top-0 bottom-0 p-4 text-white">
-              {/* Your text content here */}
-             
-              {loading ? (
-                <p>loading...</p>
-              ):(
-                  <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">
-                    {course.title}
-                  </span>{" "}
-                  {/* World. */}
-                </h1>
-              )}
-            
-             
-                {loading ? (
+                  <div className="absolute inset-0 bg-opacity-60 bg-black rounded-md" />
+                  <div className="absolute left-0 top-0 bottom-0 p-4 text-white">
+                    {/* Your text content here */}
+
+                    {loading ? (
+                      <p>loading...</p>
+                    ) : (
+                      <>
+                        <h1 class="mb-3 text-2xl font-extrabold leading-none tracking-tight capitalize text-white md:text-2xl lg:text-3xl dark:text-white">
+                          {course.title}
+                          <span class="underline underline-offset-3 decoration-8 decoration-green-400 dark:decoration-blue-600"></span>
+                        </h1>
+
+                        <p class="text-sm font-normal capitalize text-gray-200 lg:text-lg">
+                          {course.subtitle}
+                        </p>
+                      </>
+                    )}
+                  </div>
+
+                  {loading ? (
                     <p>loading...</p>
-                ):(
-                    <p className="text-lg font-normal text-gray-200 lg:text-xl dark:text-gray-400">
-                    {course.subtitle}
-                  </p>
-                )}
-           
-              {/* <p className="mt-2">All Students of Skill savant</p> */}
-            </div>
-            {/* bg-[url('/self-learning.jpg')]  */}
-            {loading ? (
-                <p>loading...</p>
-            ):(
-                <div className="bg-cover min-h-[200px] rounded-md" style={{backgroundImage: `url('${course.cover_image}')`,backgroundPosition: 'center center',}} />
-            )}
-          </div>
+                  ) : (
+                    <div
+                      className="bg-cover min-h-[200px] rounded-md"
+                      style={{
+                        backgroundImage: `url('${course.cover_image}')`,
+                        backgroundPosition: "center center",
+                      }}
+                    />
+                  )}
+                </div>
 
 
 
 
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-
-    <div className="p-7 bg-green-200 rounded min-h-[120px] shadow-lg">
-    <div className="text-green-600 text-4xl mb-2">
-      <i className="fas fa-layer-group"></i>
-      <FontAwesomeIcon icon={faLayerGroup} />
-    </div>
-    <div className="text-lg font-semibold text-green-800">Level</div>
-   
-      {loading ? (
-        <p>loading...</p>
-      ):(
-        <div className="text-gray-600">{course.level}</div>
-      )}
-  
-        
-
-    </div>
-    <div className="p-7 bg-blue-200 rounded min-h-[120px] shadow-lg">
-    <div className="text-blue-600 text-4xl mb-2">
-      <i className="fas fa-tag"></i>
-      <FontAwesomeIcon icon={faTag} />
-    </div>
-    <div className="text-lg font-semibold text-blue-800">Category</div>
-  
-      {loading ? (
-        <p>loading...</p>
-      ):(
-        <div className="text-gray-600">{course.subcategory.name}</div>
-      )}
-
-
-    </div>
-    <div className="p-7 bg-red-200 rounded min-h-[120px] shadow-lg">
-    <div className="text-red-600 text-4xl mb-2">
-      <i className="fas fa-dollar-sign"></i>
-      <FontAwesomeIcon icon={faDollarSign} />
-    </div>
-    <div className="text-lg font-semibold text-red-800">Price</div>
-   
-      {loading ? (
-        <p>loading...</p>
-      ):(
-        <div className="text-gray-600">${course.price}</div>
-      )}
-        
-
-
-    </div>
-    <div className="p-7 bg-yellow-200 rounded min-h-[120px] shadow-lg">
-    <div className="text-yellow-600 text-4xl mb-2">
-      <i className="fas fa-check-circle"></i>
-      <FontAwesomeIcon icon={faCheckCircle} />
-    </div>
-    <div className="text-lg font-semibold text-yellow-800">Status</div>
-    
-      {loading ? (
-        <p>loading..</p>
-      ):(
-        <div className="text-gray-600">{course.is_approved ? ('Approved'):('Pending')}</div>
-      )}
-
-
-
-
-    </div>
-        
-    </div>
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+                  <div className="p-3 bg-green-200 rounded hover:cursor-pointer shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-70 duration-300">
+                    <div className="text-green-600 text-1xl mb-1">
+                      <i className="fas fa-layer-group"></i>
+                    
+                    </div>
+                    <div className="text-lg font-bold text-green-800">
+                      Level
+                    </div>
+                    {loading ? (
+                      <p>loading..</p>
+                    ) : (
+                      <div className="text-gray-600">{course.level}</div>
+                    )}
+                  </div>
+                  <div className="p-3 bg-blue-200 rounded  shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-70 duration-300">
+                    <div className="text-blue-600 text-1xl mb-1">
+                      <i className="fas fa-tag"></i>
+                      
+                    </div>
+                    <div className="text-lg font-bold text-blue-800">
+                      Category
+                    </div>
+                    {loading ? (
+                      <p>loading...</p>
+                    ) : (
+                      <div className="text-gray-600">
+                        {course.subcategory.name}
+                      </div>
+                    )}
+                  </div>
+                  <div className="p-3 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-70 duration-300 bg-red-200 rounded shadow-lg">
+                    <div className="text-red-600 text-1xl mb-1">
+                      <i className="fas fa-dollar-sign"></i>
+                     
+                    </div>
+                    <div className="text-lg font-bold text-red-800">Price</div>
+                    {loading ? (
+                      <p>loading...</p>
+                    ) : (
+                      <div className="text-gray-600">{course.price}</div>
+                    )}
+                  </div>
+                  <div className="p-3 bg-yellow-200 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-70 duration-300">
+                    <div className="text-yellow-600 text-1xl mb-1">
+                      <i className="fas fa-check-circle"></i>
+                      
+                    </div>
+                    <div className="text-lg font-bold text-yellow-800">
+                      Status
+                    </div>
+                    {loading ? (
+                      <p>loading...</p>
+                    ) : (
+                      <div className="text-gray-600 font-normal">
+                        {course.is_approved ? "Approved" : "Pending"}
+                      </div>
+                    )}
+                  </div>
+                </div>
 
 
 
@@ -188,10 +179,7 @@ const PendingCourseDetailPage = () => {
       ):(
          course.is_approved ? (''):(
             <button onClick={()=>handleApprovalToggle(course.id)}
-        type="button" class="text-white bg-gradient-to-br from-pink-500
-         to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none
-          focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg 
-          text-sm px-5 py-2.5 text-center mr-2 mb-2">
+        type="button" class="btn btn-sm btn-accent text-black">
             Approve course
             </button>
         )
@@ -207,10 +195,11 @@ const PendingCourseDetailPage = () => {
         ):(
            modules.map((module)=>(
             <div key={module.id} className="container p-3 flex items-center justify-between hover:border hover:border-gray-900 rounded-md">
-            <h3 className="text-lg font-bold text-gray-900">
+            <h3 className="text-lg font-semibold text-gray-900">
               {module.module_order}. {module.module_title} 
             </h3>
             <div>
+              <PlayButton module={module}/>
             {module.duration}m
             </div>
           </div>

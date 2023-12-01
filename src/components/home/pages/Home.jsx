@@ -7,10 +7,10 @@ import data from "../features/data";
 import {axiosInstance} from './../../../services/axios';
 import ScrollToTop from "../../common/ScrollToTop";
 import ScrollIndicator from "../../common/ScrollIndicator";
-// import Typed from 'react-typed';
 import AiLearningPathIcon from './../../common/AiLearningPathIcon';
 import SkillGPT from "../../common/SkillGPT";
 import './home.css'
+import {Link} from 'react-router-dom';
 
 
 
@@ -86,9 +86,10 @@ const Home = () => {
               </p>
             </Fade>
             <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
-              <a
-                href="#"
-                className="inline-flex z-10 justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-md bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
+            <Fade delay={1e3} cascade damping={1e-1}>
+              <Link
+                to="/courses"
+                className="inline-flex z-10 justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-md bg-gray-950 hover:bg-transparent hover:border hover:border-gary-950 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
               >
                 Get started
                 <svg
@@ -106,13 +107,9 @@ const Home = () => {
                     d="M1 5h12m0 0L9 1m4 4L9 9"
                   />
                 </svg>
-              </a>
-              <a
-                href="#"
-                className="inline-flex z-10 justify-center items-center py-3 px-5 text-base font-medium text-center rounded-md border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 hover:text-black text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
-              >
-                Learn more
-              </a>
+              </Link>
+              </Fade>
+           
             </div>
           </div>
           <div>

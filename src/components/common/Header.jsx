@@ -91,7 +91,7 @@ const Header = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
-            {/* <li><a>Item 1</a></li> */}
+            
             <li>
               <ul className="p-2">
                 {user ? (
@@ -119,25 +119,7 @@ const Header = () => {
                     </li>
                   )
                 ) : (
-                  // <li tabIndex={0}>
-                  //       <details>
-                  //         <summary>Courses</summary>
-                  //         <ul className="p-2">
-                  //           <li><a>Submenu 1</a></li>
-                  //           <li><a>Submenu 2</a></li>
-                  //         </ul>
-                  //       </details>
-                  //     </li>
-
-                  // <li tabIndex={0}>
-                  //   <details>
-                  //     <summary>Courses</summary>
-                  //     <ul className="p-2">
-                  //       <li><a>Submenu 1</a></li>
-                  //       <li><a>Submenu 2</a></li>
-                  //     </ul>
-                  //   </details>
-                  // </li>
+                 
                   <li>
                     <Link to="/courses">
                       <span className="text-[15px] text-black">📚 Courses</span>
@@ -146,18 +128,6 @@ const Header = () => {
                 )}
 
                 {user
-                  ? user.role === "student" && (
-                      <li>
-                        <Link to="/MyLearning">
-                          <span className="text-[15px] text-black">
-                            🤹 My learning{" "}
-                          </span>
-                        </Link>
-                      </li>
-                    )
-                  : ""}
-
-               {user
                   ? user.role === "student" && (
                       <li>
                         <Link to="/MyLearning">
@@ -183,21 +153,15 @@ const Header = () => {
                   </li>
                 )}
 
-                {userProfile && (
-                  <li>
-                    <a>
-                      <span className="text-[15px] text-black">
-                        👋 Hi, {userProfile.first_name}
-                      </span>
-                    </a>
-                  </li>
-                )}
+               
               </ul>
             </li>
           </ul>
         </div>
         <a className="btn btn-ghost normal-case text-xl mr-6">Skill Savant</a>
-        <div className="form-control w-full hidden md:flex rounded-md relative">
+        {/* {user ? (
+          user.role === 'student' && (
+            <div className="form-control w-full hidden md:flex rounded-md relative">
   <input
     type="text"
     placeholder="What you want to learn ?"
@@ -207,6 +171,39 @@ const Header = () => {
   <i class="fas fa-search text-gray-900"></i>
   </div>
 </div>
+          )
+        ):('')} */}
+
+
+{user ? (
+  user.role === 'student' && (
+    <div className="form-control w-full hidden md:flex rounded-md relative">
+      <input
+        type="text"
+        placeholder="What you want to learn ?"
+        className="input input-bordered md:w-auto hidden rounded-md md:flex bg-transparent"
+      />
+      <div className="absolute btn btn-sm right-2 rounded-md p-2 bg-gray-200 hover:bg-gray-300 text-[17px] top-1/2 transform -translate-y-1/2 cursor-pointer">
+        <i className="fas fa-search text-gray-900"></i>
+      </div>
+    </div>
+  )
+) : (
+  ''
+)}
+
+{!user && (
+  <div className="form-control w-full hidden md:flex rounded-md relative">
+    <input
+      type="text"
+      placeholder="What you want to learn?"
+      className="input input-bordered md:w-auto hidden rounded-md md:flex bg-transparent"
+    />
+    <div className="absolute btn btn-sm right-2 rounded-md p-2 bg-gray-200 hover:bg-gray-300 text-[17px] top-1/2 transform -translate-y-1/2 cursor-pointer">
+      <i className="fas fa-search text-gray-900"></i>
+    </div>
+  </div>
+)}
 
 
 
@@ -327,7 +324,7 @@ const Header = () => {
               {studentData ? (
                 <img src={studentData.profile_photo} />
               ) : (
-                <img src="" />
+                <div className="w-10 rounded-full bg-gradient-to-br from-teal-500 to-indigo-900 btn btn-ghost btn-circle avatar"></div>
               )}
             </div>
           </label>
@@ -335,15 +332,15 @@ const Header = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
-            <li>
+            {user && user.role === 'student' &&(
+              <li>
               <Link to="/profile" className="justify-between">
                 Profile
                 <span className="badge">New</span>
               </Link>
             </li>
-            <li>
-              <a>Settings</a>
-            </li>
+            )}
+           
             <li>
               <a onClick={handleLogout}>Logout</a>
             </li>
@@ -352,7 +349,7 @@ const Header = () => {
       ) : (
         <Link
           to="/login"
-          className="btn px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          className="btn px-4 py-1 bg-gray-800 border-none text-white rounded hover:bg-gray-950"
         >
           Login
         </Link>

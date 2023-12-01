@@ -1,12 +1,29 @@
 import React, { useEffect, useState } from "react";
 import AdminSideBar from "../features/AdminSideBar";
-import { initFlowbite } from "flowbite";
 import {axiosInstance} from "../../../services/axios";
 import { Link } from "react-router-dom";
 import AdminMobileSideBar from "../features/AdminMobileSideBar";
-
+import { toast } from 'react-toastify';
+ 
 const AdminUserManagement = () => {
   const [students, setStudents] = useState([]);
+  const [allStudents, setAllStudents] = useState([]);
+
+  const handleSearchInput = (searchQuery) => {
+    const searchedList = allStudents.filter((student)=>{
+      const fullName = `${student.user.first_name} ${student.user.last_name}`
+      return fullName.toLowerCase().startsWith(searchQuery.toLowerCase());
+    });
+
+    // Update the state with the filtered list
+    console.log(searchedList)
+    setStudents(searchedList);
+
+  }
+
+
+
+
 
   const toggleBlock = (user) => {
     const newStatus = !user.user.is_blocked;
@@ -27,20 +44,24 @@ const AdminUserManagement = () => {
           return student;
         });
         setStudents(updatedStudents);
+        toast.success("Successfully done")
+
       })
       .catch((error) => {
         console.error("Error toggling block/unblock:", error);
+        toast.error("Error while blocking or unblocking student.")
       });
   };
 
   useEffect(() => {
-    initFlowbite();
+
 
     axiosInstance
       .get("admin/students/")
       .then((response) => {
         // console.log('API Response:', response.data);
         setStudents(response.data);
+        setAllStudents(response.data)
         // console.log('student-data---',students)
       })
       .catch((error) => {
@@ -63,30 +84,24 @@ const AdminUserManagement = () => {
           {/* for mobile */}
           <AdminMobileSideBar />
 
-          <div className="relative container bg-blue-700 min-h-[200px] rounded-md mb-4">
-            <div className="absolute inset-0 bg-opacity-60 bg-black rounded-md" />
+          <div className="relative container bg-gray-900 min-h-[150px] rounded-md mb-4">
+            <div className="absolute inset-0 bg-opacity-60 bg-gray-900 rounded-md" />
             <div className="absolute left-0 top-0 bottom-0 p-4 text-white">
-              {/* Your text content here */}
-              <h2 className="text-3xl font-bold mt-4 text-green-500">
-                Student Management
-              </h2>
-              <p className="mt-2">All Students of Skill savant</p>
+              
+              
+              <h1 class="mb-3 text-3xl font-extrabold leading-none tracking-tight capitalize text-white md:text-3xl lg:text-4xl dark:text-white">Student <span class="underline underline-offset-3 decoration-8 decoration-green-400 dark:decoration-blue-600">Management.</span></h1>
+  
+  <p class="text-sm font-normal capitalize text-gray-200 lg:text-lg">Manage all Students of Skill savant.</p>
             </div>
-            <div className="bg-cover bg-[url('/self-learning.jpg')] min-h-[200px] rounded-md" />
+            {/* <div className="bg-cover bg-[url('/self-learning.jpg')] min-h-[200px] rounded-md" /> */}
           </div>
           <div className="container">
             <div className="relative overflow-x-auto shadow-md sm:rounded-md">
               <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <caption className="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
-                  Our products
-                  <p className="mt-1 mb-5 text-sm font-normal text-gray-500 dark:text-gray-400">
-                    Browse a list of Flowbite products designed to help you work
-                    and play, stay organized, get answers, keep in touch, grow
-                    your business, and more.
-                  </p>
-                  <label for="table-search" class="sr-only">
-                    Search
-                  </label>
+                  
+                  
+                 
                   <div class="relative mt-1">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                       <svg
@@ -108,8 +123,9 @@ const AdminUserManagement = () => {
                     <input
                       type="text"
                       id="table-search"
-                      class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-md w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="Search for items"
+                      class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-md w-80 bg-gray-50 focus:ring-green-900 focus:border-green-600 dark:bg-gray-600 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="Search for students..."
+                      onChange={(e)=>handleSearchInput(e.target.value)}
                     />
                   </div>
                 </caption>
@@ -151,11 +167,7 @@ const AdminUserManagement = () => {
                               <button
                                 onClick={() => toggleBlock(student)}
                                 type="button"
-                                class="text-white bg-gradient-to-r from-green-400
-            via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none
-            focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg
-            dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 
-            py-2.5 text-center mr-2 mb-2"
+                                class="btn btn-sm btn-success"
                               >
                                 Unblock
                               </button>
@@ -163,11 +175,7 @@ const AdminUserManagement = () => {
                               <button
                                 onClick={() => toggleBlock(student)}
                                 type="button"
-                                class="text-white bg-gradient-to-r from-red-400 via-red-500
-          to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300
-           dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg
-            dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center
-             mr-2 mb-2"
+                                class="btn btn-sm btn-error"
                               >
                                 Block
                               </button>

@@ -92,7 +92,7 @@ const InstructorCourseDetailPage = () => {
                   <div className="p-3 bg-green-200 rounded hover:cursor-pointer shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-70 duration-300">
                     <div className="text-green-600 text-1xl mb-1">
                       <i className="fas fa-layer-group"></i>
-                      <FontAwesomeIcon icon={faLayerGroup} />
+                    
                     </div>
                     <div className="text-lg font-bold text-green-800">
                       Level
@@ -106,7 +106,7 @@ const InstructorCourseDetailPage = () => {
                   <div className="p-3 bg-blue-200 rounded  shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-70 duration-300">
                     <div className="text-blue-600 text-1xl mb-1">
                       <i className="fas fa-tag"></i>
-                      <FontAwesomeIcon icon={faTag} />
+                      
                     </div>
                     <div className="text-lg font-bold text-blue-800">
                       Category
@@ -122,7 +122,7 @@ const InstructorCourseDetailPage = () => {
                   <div className="p-3 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-70 duration-300 bg-red-200 rounded shadow-lg">
                     <div className="text-red-600 text-1xl mb-1">
                       <i className="fas fa-dollar-sign"></i>
-                      <FontAwesomeIcon icon={faDollarSign} />
+                     
                     </div>
                     <div className="text-lg font-bold text-red-800">Price</div>
                     {loading ? (
@@ -134,7 +134,7 @@ const InstructorCourseDetailPage = () => {
                   <div className="p-3 bg-yellow-200 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-70 duration-300">
                     <div className="text-yellow-600 text-1xl mb-1">
                       <i className="fas fa-check-circle"></i>
-                      <FontAwesomeIcon icon={faCheckCircle} />
+                      
                     </div>
                     <div className="text-lg font-bold text-yellow-800">
                       Status

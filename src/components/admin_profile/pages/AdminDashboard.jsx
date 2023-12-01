@@ -16,17 +16,22 @@ const AdminDashboard = () => {
           {/* for mobile */}
           <AdminMobileSideBar />
 
-          <div className="relative container bg-blue-700 min-h-[200px] rounded-md mb-4">
-            <div className="absolute inset-0 bg-opacity-60 bg-black rounded-md" />
+
+          <div className="relative container bg-gray-900 min-h-[150px] rounded-md mb-4">
+            <div className="absolute inset-0 bg-opacity-60 bg-gray-900 rounded-md" />
             <div className="absolute left-0 top-0 bottom-0 p-4 text-white">
-              {/* Your text content here */}
-              <h2 className="text-3xl font-bold mt-4 text-green-500">
-                DashBoard
-              </h2>
-              {/* <p className="mt-2">All Students of Skill savant</p> */}
+              
+              
+              <h1 class="mb-3 text-3xl font-extrabold leading-none tracking-tight capitalize text-white md:text-3xl lg:text-4xl dark:text-white">Welcome to <span class="underline underline-offset-3 decoration-8 decoration-green-400 dark:decoration-blue-600">Admin panel.</span></h1>
+  
+  <p class="text-sm font-normal capitalize text-gray-200 lg:text-lg">Dash board of skill savant.</p>
             </div>
-            <div className="bg-cover bg-[url('/self-learning.jpg')] min-h-[200px] rounded-md" />
+            {/* <div className="bg-cover bg-[url('/self-learning.jpg')] min-h-[200px] rounded-md" /> */}
           </div>
+
+          
+
+
           <div className="container"></div>
         </div>
       </div>

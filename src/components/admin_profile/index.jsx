@@ -6,7 +6,7 @@ import AdminCategoryManagement from './pages/AdminCategoryManagement';
 import PendingCoursesPage from './pages/PendingCoursesPage';
 import PendingCourseDetailPage from './pages/PendingCourseDetailPage';
 import ApprovedCoursePage from './pages/ApprovedCoursePage';
-import ApprovedCourseDetailPage from './pages/PendingCourseDetailPage';
+import ApprovedCourseDetailPage from './pages/ApprovedCourseDetailPage';
 import AdminSalesPage from './pages/AdminSalesPage';
 
 

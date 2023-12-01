@@ -58,7 +58,7 @@ const TagTable = ({ tags, setTags, loading, subcategories }) => {
         setTags((prevtags) =>
           prevtags.filter((tag) => tag.id !== tagId)
         );
-        toast.warning();
+        toast.warning("Deleted successfully");
       })
       .catch((error) => {
         console.error("error while deleting tag:", error);
@@ -77,22 +77,11 @@ const TagTable = ({ tags, setTags, loading, subcategories }) => {
           
 
           <button
-            className="ml-5 text-white inline-flex items-center bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-md text-sm px-5 py-2.5 text-center mr-2 mb-2"
+            className="ml-4 btn btn-sm btn-success"
             onClick={() => document.getElementById("my_modal_5").showModal()}
           >
-            <svg
-              className="mr-1 -ml-1 w-6 h-6"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-                clipRule="evenodd"
-              />
-            </svg>
-            Create New Tag
+            
+            + Create New Tag
           </button>
           <dialog id="my_modal_5" className="modal">
             <div className="modal-box">
@@ -192,12 +181,6 @@ const TagTable = ({ tags, setTags, loading, subcategories }) => {
 
 
 
-
-
-          <p className="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">
-            Browse a list of Flowbite products designed to help you work and
-            play, stay.
-          </p>
         </caption>
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
@@ -224,14 +207,14 @@ const TagTable = ({ tags, setTags, loading, subcategories }) => {
                 <td className="px-6 py-4">
                   <button
                     type="button"
-                    class="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 shadow-lg shadow-teal-500/50 dark:shadow-lg dark:shadow-teal-800/80 font-medium rounded-md text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                    class="btn btn-accent btn-sm"
                   >
                     Edit
                   </button>
                   <button
                     onClick={()=>handleDelete(tag.id)}
                     type="button"
-                    class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-md text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                    class="btn btn-sm btn-error ml-2"
                   >
                     Delete
                   </button>

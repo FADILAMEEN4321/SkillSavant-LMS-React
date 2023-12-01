@@ -1,18 +1,31 @@
 import React, { useState, useEffect } from "react";
 import AdminSideBar from "../features/AdminSideBar";
-import { initFlowbite } from "flowbite";
 import {axiosInstance} from "../../../services/axios";
 import AdminMobileSideBar from "../features/AdminMobileSideBar";
 
 const AdminInstructorManagement = () => {
   const [instructors, setInstructors] = useState([]);
+  const [allInstructors, setAllInstructors] = useState([]);
+
+  const handleSearch = (searchQuery) => {
+    const searchedList = allInstructors.filter((instructor)=>{
+      const fullName = `${instructor.user.first_name} ${instructor.user.last_name}`
+      return fullName.toLowerCase().startsWith(searchQuery.toLowerCase());
+    });
+
+    // Update the state with the filtered list
+    console.log(searchedList)
+    setInstructors(searchedList);
+
+  }
 
   useEffect(() => {
-    initFlowbite();
+
     axiosInstance
       .get("admin/instructors-listing/")
       .then((response) => {
         setInstructors(response.data);
+        setAllInstructors(response.data);
       })
       .catch((error) => {
         console.error("Error fetching students:", error);
@@ -34,27 +47,27 @@ const AdminInstructorManagement = () => {
           {/* for mobile */}
           <AdminMobileSideBar />
 
-          <div className="relative container bg-blue-700 min-h-[200px] rounded-md mb-4">
-            <div className="absolute inset-0 bg-opacity-60 bg-black rounded-md" />
+          <div className="relative container bg-gray-900 min-h-[150px] rounded-md mb-4">
+            <div className="absolute inset-0 bg-opacity-60 bg-gray-900 rounded-md" />
             <div className="absolute left-0 top-0 bottom-0 p-4 text-white">
-              {/* Your text content here */}
-              <h2 className="text-3xl font-bold mt-4 text-green-500">
-                Instructor Management
-              </h2>
-              <p className="mt-2">All Instructors of Skill savant</p>
+              
+              
+              <h1 class="mb-3 text-3xl font-extrabold leading-none tracking-tight capitalize text-white md:text-3xl lg:text-4xl dark:text-white">Instructor <span class="underline underline-offset-3 decoration-8 decoration-green-400 dark:decoration-blue-600">Management.</span></h1>
+  
+  <p class="text-sm font-normal capitalize text-gray-200 lg:text-lg">Manage all Instructors of Skill savant.</p>
             </div>
-            <div className="bg-cover bg-[url('/self-learning.jpg')] min-h-[200px] rounded-md" />
+            {/* <div className="bg-cover bg-[url('/self-learning.jpg')] min-h-[200px] rounded-md" /> */}
           </div>
+
+          
+
+
           <div className="container">
             <div className="relative overflow-x-auto shadow-md sm:rounded-md">
               <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <caption className="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
-                  Our products
-                  <p className="mt-1 mb-5 text-sm font-normal text-gray-500 dark:text-gray-400">
-                    Browse a list of Flowbite products designed to help you work
-                    and play, stay organized, get answers, keep in touch, grow
-                    your business, and more.
-                  </p>
+                  
+              
                   <label for="table-search" class="sr-only">
                     Search
                   </label>
@@ -79,8 +92,9 @@ const AdminInstructorManagement = () => {
                     <input
                       type="text"
                       id="table-search"
-                      class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-md w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="Search for items"
+                      onChange={(e)=>handleSearch(e.target.value)}
+                      class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-md w-80 bg-gray-50 focus:ring-green-700 focus:border-green-700 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="Search for instructors..."
                     />
                   </div>
                 </caption>
@@ -118,7 +132,12 @@ const AdminInstructorManagement = () => {
                           </td>
                           <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{instructor.email}</td>
                           <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {instructor.skill}
+                            
+                            {instructor.skill ? (
+                            <span class="bg-blue-100 text-blue-800 text-sm 
+                            font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900
+                             dark:text-blue-300">{instructor.skill}</span>):
+                            ('')}
                           </td>
                         </tr>
                       ))

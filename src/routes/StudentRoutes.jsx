@@ -20,6 +20,7 @@ import {
     MylearningPage,
     StudenProfilePage
 } from './../components/student_profile/index'
+import OtpPage from '../components/home/pages/OtpPage';
 
 
 
@@ -32,6 +33,7 @@ const StudentRoutes = () => {
         <Route path='/signup' element={<SignupPage/>}></Route>
         <Route path='/courses' element={<CourseListingPage/>}></Route>
         <Route path='/courses/:courseId' element={<CoursedetailPage/>}></Route>
+        <Route path='/otp/:email' element={<OtpPage/>}></Route>
 
        {/* private routes */}
         <Route path='/profile' 

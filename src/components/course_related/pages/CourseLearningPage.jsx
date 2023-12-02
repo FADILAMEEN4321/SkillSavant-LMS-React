@@ -77,7 +77,7 @@ const CourseLearningPage = () => {
         <DiscussionRoom enrolledCourseId={courseId}/>
 
         </Tab>
-        <Tab label="Take Notes" icon="far fa-sticky-note">
+        {/* <Tab label="Take Notes" icon="far fa-sticky-note">
         
         
         <div className="container min-h-screen">
@@ -86,7 +86,7 @@ const CourseLearningPage = () => {
         </div>
 
         </Tab>
-     
+      */}
       </Tabs>
 
 

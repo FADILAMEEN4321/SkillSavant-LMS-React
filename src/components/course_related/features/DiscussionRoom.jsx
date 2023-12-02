@@ -33,7 +33,7 @@ const DiscussionRoom = ({ enrolledCourseId }) => {
 
 
     // Establish WebSocket connection
-    const ws = new WebSocket(`wss://${websocket_Url}/ws/chat/${enrolledCourseId}/`);
+    const ws = new WebSocket(`ws://${websocket_Url}/ws/chat/${enrolledCourseId}/`);
     
     ws.onopen = () => {
       console.log('WebSocket connection opened');

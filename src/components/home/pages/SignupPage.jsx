@@ -4,7 +4,6 @@ import { axiosInstance } from "../../../services/axios";
 import { toast } from "react-toastify";
 import { GoogleLogin } from '@react-oauth/google';
 import jwt_decode from 'jwt-decode';
-import { document } from "postcss";
 
 
 
@@ -15,29 +14,6 @@ const SignupPage = () => {
     email: "",
     password: "",
   });
-
-  const [otp, setOtp] = useState(['', '', '', '']);
-
-  const handleChange = (e, index) => {
-    const value = e.target.value;
-
-    // Ensure the input is a number
-    if (/^\d*$/.test(value)) {
-      // Update the OTP array with the new value at the specified index
-      setOtp((prevOtp) => {
-        const newOtp = [...prevOtp];
-        newOtp[index] = value;
-        return newOtp;
-      });
-
-      // Move to the next input field if the value is entered
-      if (value !== '' && index < 3) {
-        document.getElementById(`otp-input-${index + 1}`).focus();
-      }
-    }
-  };
-
-
 
 
 
@@ -54,7 +30,10 @@ const SignupPage = () => {
     try {
       const response = await axiosInstance.post("student-signup/", formData);
       console.log(response.data)
-      document.getElementById('otp_modal').showModal()
+      navigate(`/otp/${formData.email}`)
+      console.log('not navigated')
+
+      
      
      
     
@@ -64,26 +43,25 @@ const SignupPage = () => {
     }
   };
 
-  const handleOtpSubmit = async(e) =>{
-    e.preventDefault();
-    const enteredOtp = otp.join('');
-    console.log(enteredOtp)
-    try{
-      const response = await axiosInstance.post('verify-student-otp/',
-      {'email':formData.email, 'otp':enteredOtp}
-      )
-      console.log(response)
-      document.getElementById('otp_modal').close()
-      navigate('/login')
-      toast.success("Verification successfull. Please login now");
+  // const handleOtpSubmit = async(e) =>{
+  //   e.preventDefault();
+  //   const enteredOtp = otp.join('');
+  //   console.log(enteredOtp)
+  //   try{
+  //     const response = await axiosInstance.post('verify-student-otp/',
+  //     {'email':formData.email, 'otp':enteredOtp}
+  //     )
+  //     console.log(response)
+  //     navigate('/login')
+  //     toast.success("Verification successfull. Please login now");
 
 
-    }catch(error){
-      console.log(error)
-      toast.error("something went wrong.");
-    }
+  //   }catch(error){
+  //     console.log(error)
+  //     toast.error("something went wrong.");
+  //   }
 
-  }
+  // }
 
 
 
@@ -96,34 +74,7 @@ const SignupPage = () => {
 
     {/* You can open the modal using document.getElementById('ID').showModal() method */}
 {/* <button className="btn" onClick={()=>document.getElementById('otp_modal').showModal()}>open modal</button> */}
-<dialog id="otp_modal" className="modal">
-  <div className="modal-box">
-    <form method="dialog">
-      {/* if there is a button in form, it will close the modal */}
-      <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-    </form>
-    <div className="flex items-center justify-center space-x-4">
-    <form onSubmit={handleOtpSubmit} className="flex items-center justify-center space-x-4">
-      {otp.map((digit, index) => (
-        <input
-          key={index}
-          id={`otp-input-${index}`}
-          type="text"
-          inputMode="numeric"
-          pattern="[0-9]*"
-          maxLength="1"
-          value={digit}
-          onChange={(e) => handleChange(e, index)}
-          className="w-10 h-10 text-xl border-b-2 rounded-md border-gray-900 text-center focus:border-green-500"
-        />
-      ))}
-      <button type="submit" className="btn btn-primary">
-        Submit
-      </button>
-    </form>
-    </div>
-  </div>
-</dialog>
+
 
 
 

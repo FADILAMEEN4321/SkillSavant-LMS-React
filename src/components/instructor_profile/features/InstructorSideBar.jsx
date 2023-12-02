@@ -34,7 +34,7 @@ const InstructorSideBar = () => {
               </Link>
             </li>
             
-            <li>
+            {/* <li>
               <Link
                 to="/instructor/chat"
                 className="flex items-center p-2 text-gray-900 rounded-md dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group"
@@ -42,7 +42,7 @@ const InstructorSideBar = () => {
                
                💬<span className="flex-1 ml-2 whitespace-nowrap"> Chat</span>
               </Link>
-            </li>
+            </li> */}
           </ul>
           <hr />
 

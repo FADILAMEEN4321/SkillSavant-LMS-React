@@ -46,10 +46,7 @@ const InstructorSideBar = () => {
           </ul>
           <hr />
 
-          <p className="text-gray-500 text-md ml-2">reset password</p>
-          <p className="text-gray-500 text-md ml-2">
-          
-logout</p>
+        
          
         </div>
       </div>

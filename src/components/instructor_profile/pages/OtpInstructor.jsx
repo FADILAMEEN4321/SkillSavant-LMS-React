@@ -4,7 +4,7 @@ import {toast} from 'react-toastify';
 import { axiosInstance } from '../../../services/axios';
 
 
-const OtpPage = () => {
+const OtpInstructor = () => {
     const {email} = useParams()
     const [enteredOtp, setEnteredOtp] = useState('');
     console.log(email)
@@ -15,13 +15,13 @@ const OtpPage = () => {
     
         try {
           // Send email and entered OTP to the server for verification
-          const response = await axiosInstance.post('verify-student-otp/', {
+          const response = await axiosInstance.post('verify-instructor-otp/', {
             email,
             otp: enteredOtp,
           });
     
           console.log(response);
-          navigate('/login');
+          navigate('/instructor/login');
           toast.success('Verification successful. Please login now');
         } catch (error) {
           console.error(error);
@@ -67,4 +67,4 @@ submit
   )
 }
 
-export default OtpPage
+export default OtpInstructor

@@ -10,6 +10,7 @@ import {
     InstructorSignupPage
 } from './../components/instructor_profile/index';
 import InstructorChat from '../components/instructor_profile/pages/InstructorChat';
+import OtpInstructor from '../components/instructor_profile/pages/OtpInstructor';
 
 
 const InstructorRoutes = () => {
@@ -20,6 +21,8 @@ const InstructorRoutes = () => {
     {/* public routes */}
     <Route path='/login' element={<InstructorLoginPage/>}></Route>
     <Route path='/signup' element={<InstructorSignupPage/>}></Route>
+
+    <Route path='/otp/:email' element={<OtpInstructor/>}></Route>
     
     
     {/* private routes */}

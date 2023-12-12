@@ -38,11 +38,28 @@ export const AuthProvider = ({children}) => {
             navigate('/');
           } 
         } catch (error) {
-        console.log(error) 
-        toast.error(<div>
-          <p className='text-md font-semibold'>Invaild Email or Password</p>
-          <p className='text-xs font-light text-red-600'>Check your credentials and please try again.</p>
-        </div>),{theme:"colored"};
+        
+        if(error.response){
+          const errorMessage = error.response.data?.message;
+
+          switch (errorMessage){
+            case "Invalid credentials":
+              toast.error('Invalid credentials');
+              break;
+            case "Please verify your account.":
+              toast.error('Please verify your account.');
+              break;
+            case "Your account is blocked. Please contact support for assistance.":
+              toast.error('Your account is blocked. Please contact support for assistance.');
+              break;
+            default:
+              toast.error('Something went wrong.');
+              break;    
+
+          }
+        }else{
+          toast.error('Something went wrong.');
+        }
           
          
         }

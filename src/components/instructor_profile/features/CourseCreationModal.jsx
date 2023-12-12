@@ -384,7 +384,7 @@ const CourseCreationModal = ({setCourses}) => {
                       />
                       {formik.touched.cover_image && formik.errors.cover_image && (
                         <div className="text-red-500 text-sm">
-                          {formik.errors.cover_image}
+                           {formik.errors.cover_image}
                         </div>
                       )}
                     </div>

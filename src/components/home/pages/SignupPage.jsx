@@ -1,88 +1,54 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { axiosInstance } from "../../../services/axios";
+import { useFormik } from 'formik';
 import { toast } from "react-toastify";
 import { GoogleLogin } from '@react-oauth/google';
 import jwt_decode from 'jwt-decode';
+import * as Yup from 'yup';
+import {SignupSchema} from './../../../formValidations/signupSchema';
 
 
 
 const SignupPage = () => {
-  const [formData, setFormData] = useState({
-    first_name: "",
-    last_name: "",
-    email: "",
-    password: "",
-  });
-
-
-
-
   const navigate = useNavigate();
 
-  const handleInputChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const initialValues={
+    first_name: '',
+    last_name: '',
+    email: '',
+    password: '',
+  }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const onSubmit = async (values, { setSubmitting }) => {
     try {
-      const response = await axiosInstance.post("student-signup/", formData);
-      console.log(response.data)
-      navigate(`/otp/${formData.email}`)
-      console.log('not navigated')
-
-      
-     
-     
-    
+      const response = await axiosInstance.post('student-signup/', values);
+   
+      console.log(response.data);
+      navigate(`/otp/${values.email}`);
     } catch (error) {
-      console.error("Error:", error);
-      toast.error("something went wrong.");
+      console.error('Error:', error);
+      if (error.response?.data?.message === 'Email Already registered. Login or resend otp to verify account.') {
+        toast.error('Email Already registered. Login or resend otp to verify account.')
+      } else {
+        console.error('Something went wrong.');
+        toast.error('Something went wrong.')
+      }
+    } finally {
+      setSubmitting(false);
     }
   };
 
-  // const handleOtpSubmit = async(e) =>{
-  //   e.preventDefault();
-  //   const enteredOtp = otp.join('');
-  //   console.log(enteredOtp)
-  //   try{
-  //     const response = await axiosInstance.post('verify-student-otp/',
-  //     {'email':formData.email, 'otp':enteredOtp}
-  //     )
-  //     console.log(response)
-  //     navigate('/login')
-  //     toast.success("Verification successfull. Please login now");
-
-
-  //   }catch(error){
-  //     console.log(error)
-  //     toast.error("something went wrong.");
-  //   }
-
-  // }
-
-
-
-
+  const formik = useFormik({
+    initialValues,
+    validationSchema:SignupSchema,
+    onSubmit,
+})
 
   return (
 
-
+    
     <>
-
-    {/* You can open the modal using document.getElementById('ID').showModal() method */}
-{/* <button className="btn" onClick={()=>document.getElementById('otp_modal').showModal()}>open modal</button> */}
-
-
-
-
-
-
-
-
-
 
 
 {/* // bg-[url('/self-learning.jpg')] */}
@@ -107,8 +73,8 @@ const SignupPage = () => {
         </div>
 
         {/* Login card on the right */}
-        <div className="w-full sm:w-1/2 max-w-sm p-4  bg-white bg-opacity-70 border-white/80 rounded-md shadow-2xl sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700 backdrop-blur-2xl backdrop-saturate-200">
-          <form className="space-y-6" onSubmit={handleSubmit}>
+        <div className="w-full sm:w-1/2 max-w-sm p-4  bg-white bg-opacity-80 border-white/80 rounded-md shadow-2xl sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700 backdrop-blur-2xl backdrop-saturate-200">
+          <form className="space-y-6" onSubmit={formik.handleSubmit}>
             <h5 className="text-xl font-medium text-gray-900 dark:text-white">
               Join Skill Savant.
             </h5>
@@ -125,11 +91,17 @@ const SignupPage = () => {
                 type="text"
                 name="first_name"
                 id="first_name"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.first_name}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                 placeholder="first name"
-                onChange={handleInputChange}
-                required
               />
+              {formik.touched.first_name && formik.errors.first_name && (
+                        <div className="text-red-500 text-sm">
+                          {formik.errors.first_name}
+                        </div>
+                      )}
             </div>
             <div>
               <label
@@ -142,11 +114,17 @@ const SignupPage = () => {
                 type="text"
                 name="last_name"
                 id="last_name"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.last_name}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                 placeholder="last name"
-                onChange={handleInputChange}
-                required
               />
+              {formik.touched.last_name && formik.errors.last_name && (
+                        <div className="text-red-500 text-sm">
+                          {formik.errors.last_name}
+                        </div>
+                      )}
             </div>
 
             <div>
@@ -160,11 +138,17 @@ const SignupPage = () => {
                 type="email"
                 name="email"
                 id="email"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.email}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                 placeholder="example@gmail.com"
-                onChange={handleInputChange}
-                required
               />
+              {formik.touched.email && formik.errors.email && (
+                        <div className="text-red-500 text-sm">
+                          {formik.errors.email}
+                        </div>
+                      )}
             </div>
             
             <div>
@@ -178,11 +162,17 @@ const SignupPage = () => {
                 type="password"
                 name="password"
                 id="password"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.password}
                 placeholder="••••••••"
-                onChange={handleInputChange}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                required
               />
+              {formik.touched.password && formik.errors.password && (
+                        <div className="text-red-500 text-sm">
+                          {formik.errors.password}
+                        </div>
+                      )}
             </div>
 
             <button
@@ -211,12 +201,8 @@ const SignupPage = () => {
     
     
     </>
-
-
-
-
     
   );
-};  
+};
 
 export default SignupPage;

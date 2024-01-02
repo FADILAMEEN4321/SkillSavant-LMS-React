@@ -33,7 +33,7 @@ const PaymentCard = ({ loading, courseDetails }) => {
             }
         })
         .then((response)=>{
-            navigate(`/enrolled-course/${courseDetails.id}`)
+            navigate(`/enrolled-course/${courseDetails.id}`,{ replace: true })
             toast.success('You are successfully enrolled.')         
         })
         .catch((error)=>{

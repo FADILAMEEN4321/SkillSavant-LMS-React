@@ -1,10 +1,10 @@
 import React from "react";
-import {axiosInstance} from "./../../../services/axios";
+import { axiosInstance } from "./../../../services/axios";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
 
-const EditCategoryModal = ({ category,setCategories }) => {
+const EditCategoryModal = ({ category, setCategories }) => {
   const editCategorySchema = Yup.object().shape({
     categoryName: Yup.string()
       .required("Category name is required")
@@ -15,54 +15,50 @@ const EditCategoryModal = ({ category,setCategories }) => {
   const initialValues = {
     categoryName: category.name,
   };
-  const categoryId = category.id
+  const categoryId = category.id;
   // Function to handle form submission
   const onSubmit = (values, categoryId) => {
     // setSubmitting(true);
     console.log("Form submitted with values:", values);
-    
+
     axiosInstance
-      .put(`admin/categories-retrieve-update-destroy/${category.id}/`, { name: values.categoryName })
+      .put(`admin/categories-retrieve-update-destroy/${category.id}/`, {
+        name: values.categoryName,
+      })
       .then((response) => {
         console.log("category--table- creation-->", response.data);
         const updatedCategory = response.data;
         // Update the categories list with the new category
         setCategories((prevCategories) => {
-            const updatedCategories = prevCategories.map((prevCategory) => {
-              if (prevCategory.id === category.id) {
-                return {
-                  ...prevCategory,
-                  name: updatedCategory.name, // Update the category name
-                };
-              }
-              return prevCategory;
-            });
-            return updatedCategories;
+          const updatedCategories = prevCategories.map((prevCategory) => {
+            if (prevCategory.id === category.id) {
+              return {
+                ...prevCategory,
+                name: updatedCategory.name, // Update the category name
+              };
+            }
+            return prevCategory;
           });
-       
+          return updatedCategories;
+        });
 
         // setSubmitting(false);
         formik.resetForm();
         document.getElementById(`my_Editmodal_${category.id}`).close();
         toast.success("Edited category successfully.");
-
-        
       })
       .catch((error) => {
         console.error("error while creating category:", error);
-        
       })
       .finally(() => {
         // setSubmitting(false);
       });
   };
 
-
-
-   // Use the useFormik hook to manage form state
-   const formik = useFormik({
+  // Use the useFormik hook to manage form state
+  const formik = useFormik({
     initialValues,
-    validationSchema:editCategorySchema,
+    validationSchema: editCategorySchema,
     onSubmit,
   });
 
@@ -70,7 +66,9 @@ const EditCategoryModal = ({ category,setCategories }) => {
     <>
       <button
         className="btn btn-sm btn-accent"
-        onClick={() => document.getElementById(`my_Editmodal_${category.id}`).showModal()}
+        onClick={() =>
+          document.getElementById(`my_Editmodal_${category.id}`).showModal()
+        }
       >
         Edit
       </button>
@@ -106,11 +104,11 @@ const EditCategoryModal = ({ category,setCategories }) => {
                     className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   />
                   {formik.touched.categoryName &&
-                        formik.errors.categoryName && (
-                          <div className="text-red-500">
-                            {formik.errors.categoryName}
-                          </div>
-                        )}
+                    formik.errors.categoryName && (
+                      <div className="text-red-500">
+                        {formik.errors.categoryName}
+                      </div>
+                    )}
                 </div>
               </div>
               <div className="flex items-center space-x-4">

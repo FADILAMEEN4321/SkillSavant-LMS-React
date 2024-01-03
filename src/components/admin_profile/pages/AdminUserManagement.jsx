@@ -1,29 +1,24 @@
 import React, { useEffect, useState } from "react";
 import AdminSideBar from "../features/AdminSideBar";
-import {axiosInstance} from "../../../services/axios";
+import { axiosInstance } from "../../../services/axios";
 import { Link } from "react-router-dom";
 import AdminMobileSideBar from "../features/AdminMobileSideBar";
-import { toast } from 'react-toastify';
- 
+import { toast } from "react-toastify";
+
 const AdminUserManagement = () => {
   const [students, setStudents] = useState([]);
   const [allStudents, setAllStudents] = useState([]);
 
   const handleSearchInput = (searchQuery) => {
-    const searchedList = allStudents.filter((student)=>{
-      const fullName = `${student.user.first_name} ${student.user.last_name}`
+    const searchedList = allStudents.filter((student) => {
+      const fullName = `${student.user.first_name} ${student.user.last_name}`;
       return fullName.toLowerCase().startsWith(searchQuery.toLowerCase());
     });
 
     // Update the state with the filtered list
-    console.log(searchedList)
+    console.log(searchedList);
     setStudents(searchedList);
-
-  }
-
-
-
-
+  };
 
   const toggleBlock = (user) => {
     const newStatus = !user.user.is_blocked;
@@ -44,24 +39,21 @@ const AdminUserManagement = () => {
           return student;
         });
         setStudents(updatedStudents);
-        toast.success("Successfully done")
-
+        toast.success("Successfully done");
       })
       .catch((error) => {
         console.error("Error toggling block/unblock:", error);
-        toast.error("Error while blocking or unblocking student.")
+        toast.error("Error while blocking or unblocking student.");
       });
   };
 
   useEffect(() => {
-
-
     axiosInstance
       .get("admin/students/")
       .then((response) => {
         // console.log('API Response:', response.data);
         setStudents(response.data);
-        setAllStudents(response.data)
+        setAllStudents(response.data);
         // console.log('student-data---',students)
       })
       .catch((error) => {
@@ -87,11 +79,16 @@ const AdminUserManagement = () => {
           <div className="relative container bg-gray-900 min-h-[150px] rounded-md mb-4">
             <div className="absolute inset-0 bg-opacity-60 bg-gray-900 rounded-md" />
             <div className="absolute left-0 top-0 bottom-0 p-4 text-white">
-              
-              
-              <h1 class="mb-3 text-3xl font-extrabold leading-none tracking-tight capitalize text-white md:text-3xl lg:text-4xl dark:text-white">Student <span class="underline underline-offset-3 decoration-8 decoration-green-400 dark:decoration-blue-600">Management.</span></h1>
-  
-  <p class="text-sm font-normal capitalize text-gray-200 lg:text-lg">Manage all Students of Skill savant.</p>
+              <h1 class="mb-3 text-3xl font-extrabold leading-none tracking-tight capitalize text-white md:text-3xl lg:text-4xl dark:text-white">
+                Student{" "}
+                <span class="underline underline-offset-3 decoration-8 decoration-green-400 dark:decoration-blue-600">
+                  Management.
+                </span>
+              </h1>
+
+              <p class="text-sm font-normal capitalize text-gray-200 lg:text-lg">
+                Manage all Students of Skill savant.
+              </p>
             </div>
             {/* <div className="bg-cover bg-[url('/self-learning.jpg')] min-h-[200px] rounded-md" /> */}
           </div>
@@ -99,9 +96,6 @@ const AdminUserManagement = () => {
             <div className="relative overflow-x-auto shadow-md sm:rounded-md">
               <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <caption className="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
-                  
-                  
-                 
                   <div class="relative mt-1">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                       <svg
@@ -125,7 +119,7 @@ const AdminUserManagement = () => {
                       id="table-search"
                       class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-md w-80 bg-gray-50 focus:ring-green-900 focus:border-green-600 dark:bg-gray-600 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Search for students..."
-                      onChange={(e)=>handleSearchInput(e.target.value)}
+                      onChange={(e) => handleSearchInput(e.target.value)}
                     />
                   </div>
                 </caption>
@@ -161,7 +155,9 @@ const AdminUserManagement = () => {
                           <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {student.user.last_name}
                           </td>
-                          <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{student.email}</td>
+                          <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {student.email}
+                          </td>
                           <td className="px-6 py-4">
                             {student.user.is_blocked ? (
                               <button

@@ -5,30 +5,22 @@ import AuthContext from "./../../../context/AuthContext";
 const LoginPage = () => {
   let { loginUser } = useContext(AuthContext);
 
-
   return (
-    
     <section className="bg-center bg-cover bg-no-repeat bg-gradient-to-r from-teal-200 to-green-400">
-      
       <div className="w-full flex flex-wrap justify-center items-center py-24 px-6">
         {/* Text on the left */}
         <div className="w-full sm:w-1/2 p-4 text-left">
-          
-         
           <>
-  <h1 className="mb-4 text-4xl capitalize font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
-  Welcome to {" "}
-    <span className="underline capitalize underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">
-    Skill Savant.
-    </span>
-  </h1>
-  <p className="text-lg font-normal text-gray-700 lg:text-xl dark:text-gray-400">
-  Discover a world of knowledge and unlock your potential.
-  </p>
-</>
-
-
-
+            <h1 className="mb-4 text-4xl capitalize font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+              Welcome to{" "}
+              <span className="underline capitalize underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">
+                Skill Savant.
+              </span>
+            </h1>
+            <p className="text-lg font-normal text-gray-700 lg:text-xl dark:text-gray-400">
+              Discover a world of knowledge and unlock your potential.
+            </p>
+          </>
         </div>
 
         {/* Login card on the right */}
@@ -71,7 +63,6 @@ const LoginPage = () => {
               />
             </div>
             <div className="flex items-start">
-              
               {/* <a
                 href="#"
                 className="ml-auto text-sm text-blue-700 hover:underline dark:text-blue-500"
@@ -95,10 +86,6 @@ const LoginPage = () => {
               </Link>
             </div>
           </form>
-
-         
-
-
         </div>
       </div>
     </section>

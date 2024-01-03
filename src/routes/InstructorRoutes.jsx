@@ -18,14 +18,14 @@ const InstructorRoutes = () => {
 
 <Routes>
 
-    {/* public routes */}
+    {/* Public routes */}
     <Route path='/login' element={<InstructorLoginPage/>}></Route>
     <Route path='/signup' element={<InstructorSignupPage/>}></Route>
 
     <Route path='/otp/:email' element={<OtpInstructor/>}></Route>
     
     
-    {/* private routes */}
+    {/* Private routes */}
     <Route path='/profile' 
     element={<PrivateRoute element={<InstructorProfilePage/>} roles={['instructor']}/>}>
     </Route>

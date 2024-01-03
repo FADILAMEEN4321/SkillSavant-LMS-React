@@ -43,15 +43,7 @@ const Footer = () => {
     //   </form>
     // </footer>
 
-
-
-
-
-<footer className="footer p-10 bg-base-200 text-base-content">
- 
-
-</footer>
-
+    <footer className="footer p-10 bg-base-200 text-base-content"></footer>
   );
 };
 

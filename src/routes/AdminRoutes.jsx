@@ -18,10 +18,10 @@ import {
 const AdminRoutes = () => {
   return (
     <Routes>
-        {/* public routes */}
+        {/* Public routes */}
         <Route path='/login' element={<AdminLoginPage/>}></Route>
         
-        {/* private routes */}
+        {/* Private routes */}
         <Route path='/dashboard' 
         element={<PrivateRoute element={<AdminDashboard/>} roles={['admin']}/>}>
         </Route>

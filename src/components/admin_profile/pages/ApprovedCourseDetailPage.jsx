@@ -4,7 +4,7 @@ import AdminMobileSideBar from "./../features/AdminMobileSideBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useParams } from "react-router-dom";
 import { axiosInstance } from "./../../../services/axios";
-import {toast} from 'react-toastify';
+import { toast } from "react-toastify";
 import PlayButton from "../../instructor_profile/features/PlayButton";
 
 const ApprovedCourseDetailPage = () => {
@@ -97,12 +97,10 @@ const ApprovedCourseDetailPage = () => {
                   )}
                 </div>
 
-                
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
                   <div className="p-3 bg-green-200 rounded hover:cursor-pointer shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-70 duration-300">
                     <div className="text-green-600 text-1xl mb-1">
                       <i className="fas fa-layer-group"></i>
-                    
                     </div>
                     <div className="text-lg font-bold text-green-800">
                       Level
@@ -116,7 +114,6 @@ const ApprovedCourseDetailPage = () => {
                   <div className="p-3 bg-blue-200 rounded  shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-70 duration-300">
                     <div className="text-blue-600 text-1xl mb-1">
                       <i className="fas fa-tag"></i>
-                      
                     </div>
                     <div className="text-lg font-bold text-blue-800">
                       Category
@@ -132,7 +129,6 @@ const ApprovedCourseDetailPage = () => {
                   <div className="p-3 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-70 duration-300 bg-red-200 rounded shadow-lg">
                     <div className="text-red-600 text-1xl mb-1">
                       <i className="fas fa-dollar-sign"></i>
-                     
                     </div>
                     <div className="text-lg font-bold text-red-800">Price</div>
                     {loading ? (
@@ -144,7 +140,6 @@ const ApprovedCourseDetailPage = () => {
                   <div className="p-3 bg-yellow-200 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-70 duration-300">
                     <div className="text-yellow-600 text-1xl mb-1">
                       <i className="fas fa-check-circle"></i>
-                      
                     </div>
                     <div className="text-lg font-bold text-yellow-800">
                       Status
@@ -158,9 +153,6 @@ const ApprovedCourseDetailPage = () => {
                     )}
                   </div>
                 </div>
-
-
-
 
                 {/* Module listing content here */}
                 <div className="container p-3 flex items-center justify-between">
@@ -195,8 +187,10 @@ const ApprovedCourseDetailPage = () => {
                           {module.module_order}. {module.module_title}
                         </h3>
                         <div>
-                         
-                        <span><PlayButton module={module}/>{module.duration}m</span>
+                          <span>
+                            <PlayButton module={module} />
+                            {module.duration}m
+                          </span>
                         </div>
                       </div>
                     ))

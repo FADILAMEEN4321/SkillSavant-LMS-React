@@ -7,13 +7,13 @@ import StudentRoutes from "./routes/StudentRoutes.jsx";
 const RoutesComponents = () => {
   return (
     <Routes>
-      {/* student routes */}
+      {/* Student routes */}
       <Route path="/*" element={<StudentRoutes />} />
 
-      {/* instructor routes */}
+      {/* Instructor routes */}
       <Route path="/instructor/*" element={<InstructorRoutes />} />
 
-      {/* admin routes */}
+      {/* Admin routes */}
       <Route path="/admin/*" element={<AdminRoutes />} />
     </Routes>
   );

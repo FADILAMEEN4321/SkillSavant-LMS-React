@@ -10,17 +10,17 @@ const InstructorLoginPage = () => {
       <div className="w-full flex flex-wrap justify-center items-center py-24 px-6">
         {/* Text on the left */}
         <div className="w-full sm:w-1/2 p-4 text-left">
-        <>
-  <h1 className="mb-4 text-4xl capitalize font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
-  Welcome Back {" "}<br/>
-    <span className="underline capitalize underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">
-    Lets teach the world.
-    </span>
-  </h1>
-  <p className="text-lg font-normal text-gray-700 lg:text-xl dark:text-gray-400">
-  Spread the knowledge and make this world a beautiful place.
-  </p>
-</>
+          <>
+            <h1 className="mb-4 text-4xl capitalize font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+              Welcome Back <br />
+              <span className="underline capitalize underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">
+                Lets teach the world.
+              </span>
+            </h1>
+            <p className="text-lg font-normal text-gray-700 lg:text-xl dark:text-gray-400">
+              Spread the knowledge and make this world a beautiful place.
+            </p>
+          </>
         </div>
 
         {/* Login card on the right */}
@@ -63,7 +63,6 @@ const InstructorLoginPage = () => {
               />
             </div>
             <div className="flex items-start">
-              
               {/* <a
                 href="#"
                 className="ml-auto text-sm text-blue-700 hover:underline dark:text-blue-500"

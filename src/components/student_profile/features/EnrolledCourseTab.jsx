@@ -28,68 +28,62 @@ const EnrolledCourseTab = () => {
           <>
             {loading ? (
               <>
-              <div className="w-[300px] mx-auto bg-white shadow-xl rounded-lg overflow-hidden m-4 animate-pulse">
-    <div className="h-48 bg-gray-400"></div>
-    <div className="p-4">
-      <div className="h-4 w-full bg-gray-400 rounded-md mb-2"></div>
-      
-      <div className="h-4 w-3/4 rounded-md bg-gray-400 mb-2"></div>
+                <div className="w-[300px] mx-auto bg-white shadow-xl rounded-lg overflow-hidden m-4 animate-pulse">
+                  <div className="h-48 bg-gray-400"></div>
+                  <div className="p-4">
+                    <div className="h-4 w-full bg-gray-400 rounded-md mb-2"></div>
 
-      <div className="flex justify-start items-center">
-      <div className="h-3 w-[12px] mr-2 rounded-full bg-gray-400 mt-7 mb-2"></div>
-      <div className="h-2 w-[59px] rounded-md bg-gray-400 mt-7 mb-2"></div>
-      </div>
+                    <div className="h-4 w-3/4 rounded-md bg-gray-400 mb-2"></div>
 
-      <div className="flex justify-start items-center">
-      <div className="h-3 w-[12px] mr-2 rounded-full bg-gray-400  mb-2"></div>
-      <div className="h-2 w-[59px] rounded-md bg-gray-400  mb-2"></div>
-      </div>
-     
-     
-    </div>
-  </div>
+                    <div className="flex justify-start items-center">
+                      <div className="h-3 w-[12px] mr-2 rounded-full bg-gray-400 mt-7 mb-2"></div>
+                      <div className="h-2 w-[59px] rounded-md bg-gray-400 mt-7 mb-2"></div>
+                    </div>
 
-  <div className="w-[300px] mx-auto bg-white shadow-xl rounded-lg overflow-hidden m-4 animate-pulse">
-    <div className="h-48 bg-gray-400"></div>
-    <div className="p-4">
-      <div className="h-4 w-full bg-gray-400 rounded-md mb-2"></div>
-      
-      <div className="h-4 w-3/4 rounded-md bg-gray-400 mb-2"></div>
+                    <div className="flex justify-start items-center">
+                      <div className="h-3 w-[12px] mr-2 rounded-full bg-gray-400  mb-2"></div>
+                      <div className="h-2 w-[59px] rounded-md bg-gray-400  mb-2"></div>
+                    </div>
+                  </div>
+                </div>
 
-      <div className="flex justify-start items-center">
-      <div className="h-3 w-[12px] mr-2 rounded-full bg-gray-400 mt-7 mb-2"></div>
-      <div className="h-2 w-[59px] rounded-md bg-gray-400 mt-7 mb-2"></div>
-      </div>
+                <div className="w-[300px] mx-auto bg-white shadow-xl rounded-lg overflow-hidden m-4 animate-pulse">
+                  <div className="h-48 bg-gray-400"></div>
+                  <div className="p-4">
+                    <div className="h-4 w-full bg-gray-400 rounded-md mb-2"></div>
 
-      <div className="flex justify-start items-center">
-      <div className="h-3 w-[12px] mr-2 rounded-full bg-gray-400  mb-2"></div>
-      <div className="h-2 w-[59px] rounded-md bg-gray-400  mb-2"></div>
-      </div>
-     
-     
-    </div>
-  </div>
+                    <div className="h-4 w-3/4 rounded-md bg-gray-400 mb-2"></div>
 
-  <div className="w-[300px] mx-auto bg-white shadow-xl rounded-lg overflow-hidden m-4 animate-pulse">
-    <div className="h-48 bg-gray-400"></div>
-    <div className="p-4">
-      <div className="h-4 w-full bg-gray-400 rounded-md mb-2"></div>
-      
-      <div className="h-4 w-3/4 rounded-md bg-gray-400 mb-2"></div>
+                    <div className="flex justify-start items-center">
+                      <div className="h-3 w-[12px] mr-2 rounded-full bg-gray-400 mt-7 mb-2"></div>
+                      <div className="h-2 w-[59px] rounded-md bg-gray-400 mt-7 mb-2"></div>
+                    </div>
 
-      <div className="flex justify-start items-center">
-      <div className="h-3 w-[12px] mr-2 rounded-full bg-gray-400 mt-7 mb-2"></div>
-      <div className="h-2 w-[59px] rounded-md bg-gray-400 mt-7 mb-2"></div>
-      </div>
+                    <div className="flex justify-start items-center">
+                      <div className="h-3 w-[12px] mr-2 rounded-full bg-gray-400  mb-2"></div>
+                      <div className="h-2 w-[59px] rounded-md bg-gray-400  mb-2"></div>
+                    </div>
+                  </div>
+                </div>
 
-      <div className="flex justify-start items-center">
-      <div className="h-3 w-[12px] mr-2 rounded-full bg-gray-400  mb-2"></div>
-      <div className="h-2 w-[59px] rounded-md bg-gray-400  mb-2"></div>
-      </div>
-     
-     
-    </div>
-  </div>
+                <div className="w-[300px] mx-auto bg-white shadow-xl rounded-lg overflow-hidden m-4 animate-pulse">
+                  <div className="h-48 bg-gray-400"></div>
+                  <div className="p-4">
+                    <div className="h-4 w-full bg-gray-400 rounded-md mb-2"></div>
+
+                    <div className="h-4 w-3/4 rounded-md bg-gray-400 mb-2"></div>
+
+                    <div className="flex justify-start items-center">
+                      <div className="h-3 w-[12px] mr-2 rounded-full bg-gray-400 mt-7 mb-2"></div>
+                      <div className="h-2 w-[59px] rounded-md bg-gray-400 mt-7 mb-2"></div>
+                    </div>
+
+                    <div className="flex justify-start items-center">
+                      <div className="h-3 w-[12px] mr-2 rounded-full bg-gray-400  mb-2"></div>
+                      <div className="h-2 w-[59px] rounded-md bg-gray-400  mb-2"></div>
+                    </div>
+                  </div>
+                </div>
               </>
             ) : (
               enrolledCourses.map((enrolled) => (
@@ -141,7 +135,9 @@ const EnrolledCourseTab = () => {
                           <div className="w-full bg-gray-200 rounded-full dark:bg-gray-700">
                             <div
                               className="bg-gradient-to-br from-green-500 to-indigo-800 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full"
-                              style={{ width: `${enrolled.completion_percentage}%` }}
+                              style={{
+                                width: `${enrolled.completion_percentage}%`,
+                              }}
                             >
                               {" "}
                               {enrolled.completion_percentage}%

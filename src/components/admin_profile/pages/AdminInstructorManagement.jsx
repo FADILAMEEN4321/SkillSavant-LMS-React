@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import AdminSideBar from "../features/AdminSideBar";
-import {axiosInstance} from "../../../services/axios";
+import { axiosInstance } from "../../../services/axios";
 import AdminMobileSideBar from "../features/AdminMobileSideBar";
 
 const AdminInstructorManagement = () => {
@@ -8,19 +8,17 @@ const AdminInstructorManagement = () => {
   const [allInstructors, setAllInstructors] = useState([]);
 
   const handleSearch = (searchQuery) => {
-    const searchedList = allInstructors.filter((instructor)=>{
-      const fullName = `${instructor.user.first_name} ${instructor.user.last_name}`
+    const searchedList = allInstructors.filter((instructor) => {
+      const fullName = `${instructor.user.first_name} ${instructor.user.last_name}`;
       return fullName.toLowerCase().startsWith(searchQuery.toLowerCase());
     });
 
     // Update the state with the filtered list
-    console.log(searchedList)
+    console.log(searchedList);
     setInstructors(searchedList);
-
-  }
+  };
 
   useEffect(() => {
-
     axiosInstance
       .get("admin/instructors-listing/")
       .then((response) => {
@@ -50,24 +48,24 @@ const AdminInstructorManagement = () => {
           <div className="relative container bg-gray-900 min-h-[150px] rounded-md mb-4">
             <div className="absolute inset-0 bg-opacity-60 bg-gray-900 rounded-md" />
             <div className="absolute left-0 top-0 bottom-0 p-4 text-white">
-              
-              
-              <h1 class="mb-3 text-3xl font-extrabold leading-none tracking-tight capitalize text-white md:text-3xl lg:text-4xl dark:text-white">Instructor <span class="underline underline-offset-3 decoration-8 decoration-green-400 dark:decoration-blue-600">Management.</span></h1>
-  
-  <p class="text-sm font-normal capitalize text-gray-200 lg:text-lg">Manage all Instructors of Skill savant.</p>
+              <h1 class="mb-3 text-3xl font-extrabold leading-none tracking-tight capitalize text-white md:text-3xl lg:text-4xl dark:text-white">
+                Instructor{" "}
+                <span class="underline underline-offset-3 decoration-8 decoration-green-400 dark:decoration-blue-600">
+                  Management.
+                </span>
+              </h1>
+
+              <p class="text-sm font-normal capitalize text-gray-200 lg:text-lg">
+                Manage all Instructors of Skill savant.
+              </p>
             </div>
             {/* <div className="bg-cover bg-[url('/self-learning.jpg')] min-h-[200px] rounded-md" /> */}
           </div>
-
-          
-
 
           <div className="container">
             <div className="relative overflow-x-auto shadow-md sm:rounded-md">
               <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <caption className="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
-                  
-              
                   <label for="table-search" class="sr-only">
                     Search
                   </label>
@@ -92,7 +90,7 @@ const AdminInstructorManagement = () => {
                     <input
                       type="text"
                       id="table-search"
-                      onChange={(e)=>handleSearch(e.target.value)}
+                      onChange={(e) => handleSearch(e.target.value)}
                       class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-md w-80 bg-gray-50 focus:ring-green-700 focus:border-green-700 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Search for instructors..."
                     />
@@ -130,14 +128,21 @@ const AdminInstructorManagement = () => {
                           <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {instructor.user.last_name}
                           </td>
-                          <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{instructor.email}</td>
                           <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            
+                            {instructor.email}
+                          </td>
+                          <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {instructor.skill ? (
-                            <span class="bg-blue-100 text-blue-800 text-sm 
+                              <span
+                                class="bg-blue-100 text-blue-800 text-sm 
                             font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900
-                             dark:text-blue-300">{instructor.skill}</span>):
-                            ('')}
+                             dark:text-blue-300"
+                              >
+                                {instructor.skill}
+                              </span>
+                            ) : (
+                              ""
+                            )}
                           </td>
                         </tr>
                       ))

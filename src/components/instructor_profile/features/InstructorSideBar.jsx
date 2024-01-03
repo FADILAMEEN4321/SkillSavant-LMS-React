@@ -16,7 +16,6 @@ const InstructorSideBar = () => {
                 href="#"
                 className="flex items-center p-2 text-gray-900 rounded-md dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group"
               >
-                
                 🗃️<span className="ml-2">Dashboard</span>
               </Link>
             </li>
@@ -26,14 +25,13 @@ const InstructorSideBar = () => {
                 href="#"
                 className="flex items-center p-2 text-gray-900 rounded-md dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group"
               >
-                
-                📚<span className="flex-1 ml-2 whitespace-nowrap">
+                📚
+                <span className="flex-1 ml-2 whitespace-nowrap">
                   My courses
                 </span>
-                
               </Link>
             </li>
-            
+
             {/* <li>
               <Link
                 to="/instructor/chat"
@@ -45,9 +43,6 @@ const InstructorSideBar = () => {
             </li> */}
           </ul>
           <hr />
-
-        
-         
         </div>
       </div>
     </>

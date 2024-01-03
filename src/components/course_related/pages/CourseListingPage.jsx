@@ -15,13 +15,12 @@ const CourseListingPage = () => {
   const [selectedLevel, setsSelectedLevel] = useState("");
   const [selectedTag, setSelectedTag] = useState("");
 
-
-  
   const handleCategoryChange = (category) => {
-    setSelectedCategroy(category)
-    setSelectedTag("")
-    setLoading(true)
-    axiosInstance.get(`all-courses/?category=${category}&level=${selectedLevel}`)
+    setSelectedCategroy(category);
+    setSelectedTag("");
+    setLoading(true);
+    axiosInstance
+      .get(`all-courses/?category=${category}&level=${selectedLevel}`)
       .then((response) => {
         setCourses(response.data);
       })
@@ -34,11 +33,12 @@ const CourseListingPage = () => {
   };
 
   const handleTagChange = (tag) => {
-    setSelectedTag(tag)
-    setSelectedCategroy("")
-    setsSelectedLevel("")
-    setLoading(true)
-    axiosInstance.get(`all-courses/?tag=${tag}`)
+    setSelectedTag(tag);
+    setSelectedCategroy("");
+    setsSelectedLevel("");
+    setLoading(true);
+    axiosInstance
+      .get(`all-courses/?tag=${tag}`)
       .then((response) => {
         setCourses(response.data);
       })
@@ -50,12 +50,12 @@ const CourseListingPage = () => {
       });
   };
 
-  const handleLevelChange = (level) =>{
-   
-    setsSelectedLevel(level)
-    setSelectedTag("")
-    setLoading(true)
-    axiosInstance.get(`all-courses/?level=${level}&category=${selectedCategroy}`)
+  const handleLevelChange = (level) => {
+    setsSelectedLevel(level);
+    setSelectedTag("");
+    setLoading(true);
+    axiosInstance
+      .get(`all-courses/?level=${level}&category=${selectedCategroy}`)
       .then((response) => {
         setCourses(response.data);
       })
@@ -65,14 +65,14 @@ const CourseListingPage = () => {
       .finally(() => {
         setLoading(false);
       });
+  };
 
-  }
-
-  const handleAllCourse = () =>{
-    setSelectedTag("")
-    setSelectedCategroy("")
-    setLoading(true)
-    axiosInstance.get(`all-courses/?level=${selectedLevel}`)
+  const handleAllCourse = () => {
+    setSelectedTag("");
+    setSelectedCategroy("");
+    setLoading(true);
+    axiosInstance
+      .get(`all-courses/?level=${selectedLevel}`)
       .then((response) => {
         setCourses(response.data);
       })
@@ -82,20 +82,13 @@ const CourseListingPage = () => {
       .finally(() => {
         setLoading(false);
       });
-
-  }
-
-
-
-
-
+  };
 
   useEffect(() => {
     //URLs for API endpoints
     const categoriesSubCategoriesUrl = "categories-subcategories/";
     const tagsUrl = "tags/";
     const coursesUrl = "all-courses/";
-
 
     // Array of promises for the API requests
     const requests = [
@@ -148,21 +141,21 @@ const CourseListingPage = () => {
               {/* Category Tabs */}
 
               {sideBarLoading ? (
-                 <div className="animate-pulse">
-                 <div className="h-4 bg-gray-300 rounded-md w-2/4 mb-2"></div>
-                 <div className="h-4 bg-gray-300 rounded-md w-3/4"></div>
-                 <div className="h-4 bg-gray-300 rounded-md w-2/4 mt-2 mb-2"></div>
-                 <div className="h-4 bg-gray-300 rounded-md w-3/4"></div>
-                 <hr className="mt-4 mb-4"></hr>
-                 <div className="h-4 bg-gray-300 rounded-md w-2/4 mb-2"></div>
-                 <div className="h-4 bg-gray-300 rounded-md w-3/4"></div>
-                 <div className="h-4 bg-gray-300 rounded-md w-2/4 mt-2 mb-2"></div>
-                 <div className="h-4 bg-gray-300 rounded-md w-3/4"></div>
-                 <hr className="mt-4 mb-4"></hr>
-                 <div className="h-4 bg-gray-300 rounded-md w-2/4 mb-2"></div>
-                 <div className="h-4 bg-gray-300 rounded-md w-3/4"></div>
-                 {/* Add more skeleton elements as needed */}
-               </div>
+                <div className="animate-pulse">
+                  <div className="h-4 bg-gray-300 rounded-md w-2/4 mb-2"></div>
+                  <div className="h-4 bg-gray-300 rounded-md w-3/4"></div>
+                  <div className="h-4 bg-gray-300 rounded-md w-2/4 mt-2 mb-2"></div>
+                  <div className="h-4 bg-gray-300 rounded-md w-3/4"></div>
+                  <hr className="mt-4 mb-4"></hr>
+                  <div className="h-4 bg-gray-300 rounded-md w-2/4 mb-2"></div>
+                  <div className="h-4 bg-gray-300 rounded-md w-3/4"></div>
+                  <div className="h-4 bg-gray-300 rounded-md w-2/4 mt-2 mb-2"></div>
+                  <div className="h-4 bg-gray-300 rounded-md w-3/4"></div>
+                  <hr className="mt-4 mb-4"></hr>
+                  <div className="h-4 bg-gray-300 rounded-md w-2/4 mb-2"></div>
+                  <div className="h-4 bg-gray-300 rounded-md w-3/4"></div>
+                  {/* Add more skeleton elements as needed */}
+                </div>
               ) : (
                 categoryAndSubcategory.map((category) => (
                   <>
@@ -173,10 +166,13 @@ const CourseListingPage = () => {
                     <hr />
                     {category.subcategories.map((subcategory) => (
                       <p
-                      onClick={()=>handleCategoryChange(subcategory.id)}
+                        onClick={() => handleCategoryChange(subcategory.id)}
                         key={subcategory.id}
-                       
-                        className={`${subcategory.id == selectedCategroy ? ("bg-gray-300 text-gray-950"):('hover:bg-gray-300 bg-white text-gray-700')}
+                        className={`${
+                          subcategory.id == selectedCategroy
+                            ? "bg-gray-300 text-gray-950"
+                            : "hover:bg-gray-300 bg-white text-gray-700"
+                        }
                         px-4 py-2  hover:cursor-pointer
                           rounded-md `}
                       >
@@ -193,24 +189,32 @@ const CourseListingPage = () => {
         </div>
         {/* Scrollable Area for Course Listings */}
         {/* <div className="w-3/4 w-full md:w-3/4 px-4 mt-5 "> */}
-       
+
         <div className="w-full md:w-3/4 px-4 mt-5 mb-5">
           {/* for mobile view */}
 
-          <CourseSideBar 
-          handleAllCourse={handleAllCourse}
-          handleCategoryChange={handleCategoryChange}
-          categoryAndSubcategory={categoryAndSubcategory} 
-          sideBarLoading={sideBarLoading} 
-          selectedCategroy={selectedCategroy} />
+          <CourseSideBar
+            handleAllCourse={handleAllCourse}
+            handleCategoryChange={handleCategoryChange}
+            categoryAndSubcategory={categoryAndSubcategory}
+            sideBarLoading={sideBarLoading}
+            selectedCategroy={selectedCategroy}
+          />
 
           <div className="relative container min-h-[200px]  rounded-md mb-4">
             <div className="absolute inset-0 bg-opacity-60 bg-black rounded-md" />
             <div className="absolute left-0 top-0 bottom-0 p-4 text-white">
               {/* Your text content here */}
-              <h1 class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-white md:text-3xl lg:text-4xl dark:text-white">SkillsAvant - Unlock Your <span class="underline underline-offset-3 decoration-8 decoration-green-400 dark:decoration-blue-600">Potential, Master New Skills</span></h1>
-<p class="text-sm font-normal text-gray-200 lg:text-lg">Explore a World of Knowledge. Elevate Your Skills with Courses Tailored for Success on SkillsAvant. </p>
-              
+              <h1 class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-white md:text-3xl lg:text-4xl dark:text-white">
+                SkillsAvant - Unlock Your{" "}
+                <span class="underline underline-offset-3 decoration-8 decoration-green-400 dark:decoration-blue-600">
+                  Potential, Master New Skills
+                </span>
+              </h1>
+              <p class="text-sm font-normal text-gray-200 lg:text-lg">
+                Explore a World of Knowledge. Elevate Your Skills with Courses
+                Tailored for Success on SkillsAvant.{" "}
+              </p>
             </div>
             <div className="bg-cover bg-[url('/self-learning.jpg')] min-h-[200px] rounded-md" />
           </div>
@@ -223,27 +227,32 @@ const CourseListingPage = () => {
               {/* Tag 2 */}
 
               {sideBarLoading ? (
-                 <div className="animate-pulse flex h-9">
-                 <div className="h-8 bg-gray-200 mr-2 rounded-md w-[90px] mb-2"></div>
-                 <div className="h-8 bg-gray-200 mr-2 rounded-md w-[90px] mb-2"></div>
-                 <div className="h-8 bg-gray-200 mr-2 rounded-md w-[90px] mb-2"></div>
-                 <div className="h-8 bg-gray-200 mr-2 rounded-md w-[90px] mb-2"></div>
-                 <div className="h-8 bg-gray-200 mr-2 rounded-md w-[90px] mb-2"></div>
-                 <div className="h-8 bg-gray-200 mr-2 rounded-md w-[90px] mb-2"></div>
-                 <div className="h-8 bg-gray-200 mr-2 rounded-md w-[90px] mb-2"></div>
-                 <div className="h-8 bg-gray-200 mr-2 rounded-md w-[90px] mb-2"></div>
-                 
-                 {/* Add more skeleton elements as needed */}
-               </div>
+                <div className="animate-pulse flex h-9">
+                  <div className="h-8 bg-gray-200 mr-2 rounded-md w-[90px] mb-2"></div>
+                  <div className="h-8 bg-gray-200 mr-2 rounded-md w-[90px] mb-2"></div>
+                  <div className="h-8 bg-gray-200 mr-2 rounded-md w-[90px] mb-2"></div>
+                  <div className="h-8 bg-gray-200 mr-2 rounded-md w-[90px] mb-2"></div>
+                  <div className="h-8 bg-gray-200 mr-2 rounded-md w-[90px] mb-2"></div>
+                  <div className="h-8 bg-gray-200 mr-2 rounded-md w-[90px] mb-2"></div>
+                  <div className="h-8 bg-gray-200 mr-2 rounded-md w-[90px] mb-2"></div>
+                  <div className="h-8 bg-gray-200 mr-2 rounded-md w-[90px] mb-2"></div>
+
+                  {/* Add more skeleton elements as needed */}
+                </div>
               ) : (
                 tags.map((tag) => (
-                  <span 
-                  onClick={()=>handleTagChange(tag.id)}
-                  className={`${tag.id === selectedTag? ('bg-gray-900 text-white'):('bg-white text-gray-900 hover:bg-gray-900 hover:text-white')}
+                  <span
+                    onClick={() => handleTagChange(tag.id)}
+                    className={`${
+                      tag.id === selectedTag
+                        ? "bg-gray-900 text-white"
+                        : "bg-white text-gray-900 hover:bg-gray-900 hover:text-white"
+                    }
                   px-3 py-4 h-6 hover:cursor-pointer  font-bold
                     border border-gray-900 rounded-md 
                    flex items-center justify-center transition-all 
-                     whitespace-no-wrap`}>
+                     whitespace-no-wrap`}
+                  >
                     {tag.name}
                   </span>
                 ))
@@ -256,8 +265,9 @@ const CourseListingPage = () => {
           <div className="container min-h-[30px] p-4 flex items-center justify-between">
             {/* First Select Field */}
             <select
-            onChange={(e)=>handleLevelChange(e.target.value)} 
-            className="px-3 py-2 bg-white text-gray-900 border border-gray-900 rounded-md">
+              onChange={(e) => handleLevelChange(e.target.value)}
+              className="px-3 py-2 bg-white text-gray-900 border border-gray-900 rounded-md"
+            >
               <option value="">All level</option>
               <option value="Beginner">Beginner</option>
               <option value="Intermediate">Intermediate</option>

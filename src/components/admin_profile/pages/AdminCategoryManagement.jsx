@@ -5,7 +5,7 @@ import AdminSideBar from "../features/AdminSideBar";
 import CategoryTable from "../features/CategoryTable";
 import SubCategoryTable from "../features/SubCategoryTable";
 import TagTable from "../features/TagTable";
-import {axiosInstance} from "./../../../services/axios";
+import { axiosInstance } from "./../../../services/axios";
 
 const AdminCategoryManagement = () => {
   const [categories, setCategories] = useState([]);
@@ -69,17 +69,19 @@ const AdminCategoryManagement = () => {
           <div className="relative container bg-gray-900 min-h-[150px] rounded-md mb-4">
             <div className="absolute inset-0 bg-opacity-60 bg-gray-900 rounded-md" />
             <div className="absolute left-0 top-0 bottom-0 p-4 text-white">
-              
-              
-              <h1 class="mb-3 text-3xl font-extrabold leading-none tracking-tight capitalize text-white md:text-3xl lg:text-4xl dark:text-white">Category <span class="underline underline-offset-3 decoration-8 decoration-green-400 dark:decoration-blue-600">management.</span></h1>
-  
-  <p class="text-sm font-normal capitalize text-gray-200 lg:text-lg">Manage all categories of skill savant.</p>
+              <h1 class="mb-3 text-3xl font-extrabold leading-none tracking-tight capitalize text-white md:text-3xl lg:text-4xl dark:text-white">
+                Category{" "}
+                <span class="underline underline-offset-3 decoration-8 decoration-green-400 dark:decoration-blue-600">
+                  management.
+                </span>
+              </h1>
+
+              <p class="text-sm font-normal capitalize text-gray-200 lg:text-lg">
+                Manage all categories of skill savant.
+              </p>
             </div>
             {/* <div className="bg-cover bg-[url('/self-learning.jpg')] min-h-[200px] rounded-md" /> */}
           </div>
-
-          
-
 
           <div className="container">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -96,7 +98,12 @@ const AdminCategoryManagement = () => {
                 categories={categories}
               />
 
-              <TagTable tags={tags} setTags={setTags} loading={loading} subcategories={subcategories} />
+              <TagTable
+                tags={tags}
+                setTags={setTags}
+                loading={loading}
+                subcategories={subcategories}
+              />
             </div>
           </div>
         </div>

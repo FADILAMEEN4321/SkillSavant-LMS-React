@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {axiosInstance} from "./../../../services/axios";
+import { axiosInstance } from "./../../../services/axios";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
@@ -38,7 +38,6 @@ const CategoryTable = ({ categories, setCategories, loading }) => {
       })
       .catch((error) => {
         console.error("error while creating category:", error);
-        
       })
       .finally(() => {
         setSubmitting(false);
@@ -76,7 +75,6 @@ const CategoryTable = ({ categories, setCategories, loading }) => {
             className="ml-5 btn btn-sm btn-success"
             onClick={() => document.getElementById("my_modal_3").showModal()}
           >
-           
             + Create New Category
           </button>
           <dialog id="my_modal_3" className="modal">
@@ -131,7 +129,6 @@ const CategoryTable = ({ categories, setCategories, loading }) => {
               </>
             </div>
           </dialog>
-        
         </caption>
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
@@ -156,13 +153,10 @@ const CategoryTable = ({ categories, setCategories, loading }) => {
                   {category.name}
                 </th>
                 <td className="px-6 py-4">
-                
-                  
-                <EditCategoryModal 
-                category={category}
-                setCategories={setCategories} />
-
-
+                  <EditCategoryModal
+                    category={category}
+                    setCategories={setCategories}
+                  />
 
                   <button
                     onClick={() => handleDelete(category.id)}

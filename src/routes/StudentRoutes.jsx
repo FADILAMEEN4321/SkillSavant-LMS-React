@@ -27,7 +27,7 @@ import OtpPage from '../components/home/pages/OtpPage';
 const StudentRoutes = () => {
   return (
     <Routes>
-      {/* public routes */}
+      {/* Public routes */}
         <Route path='/' element={<Home/>} exact></Route>
         <Route path='/login' element={<LoginPage/>}></Route>
         <Route path='/signup' element={<SignupPage/>}></Route>
@@ -35,7 +35,7 @@ const StudentRoutes = () => {
         <Route path='/courses/:courseId' element={<CoursedetailPage/>}></Route>
         <Route path='/otp/:email' element={<OtpPage/>}></Route>
 
-       {/* private routes */}
+       {/* Private routes */}
         <Route path='/profile' 
         element={<PrivateRoute element={<StudenProfilePage/>} roles={['student']}/>}>        
         </Route>

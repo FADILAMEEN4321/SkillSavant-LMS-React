@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {axiosInstance} from "./../../../services/axios";
+import { axiosInstance } from "./../../../services/axios";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
@@ -10,7 +10,6 @@ const SubCategoryTable = ({
   loading,
   categories,
 }) => {
-
   const validationSchema = Yup.object().shape({
     category: Yup.number().required("Category is required"),
     subCategoryName: Yup.string().required("Sub Category Name is required"),
@@ -21,29 +20,31 @@ const SubCategoryTable = ({
     subCategoryName: "",
   };
 
-  const onSubmit = (values,{ setSubmitting, resetForm}) => {
+  const onSubmit = (values, { setSubmitting, resetForm }) => {
     // setSubmitting(true);
     console.log("values fromsub--->", values);
     axiosInstance
-    .post('admin/subcategories-list-create/',{name:values.subCategoryName,category:values.category})
-    .then((response)=>{
-      console.log('======>',response.data)
-      const newSubCategory = response.data;
-      setSubcategories((prevsubcategories) => [...prevsubcategories, newSubCategory]);
-      document.getElementById("my_modal_4").close();
-      toast.success("New Sub category created successfully.");
+      .post("admin/subcategories-list-create/", {
+        name: values.subCategoryName,
+        category: values.category,
+      })
+      .then((response) => {
+        console.log("======>", response.data);
+        const newSubCategory = response.data;
+        setSubcategories((prevsubcategories) => [
+          ...prevsubcategories,
+          newSubCategory,
+        ]);
+        document.getElementById("my_modal_4").close();
+        toast.success("New Sub category created successfully.");
 
-      formik.resetForm();
+        formik.resetForm();
+      })
+      .catch((error) => {
+        console.error("error while creating subcategory:", error);
+      })
+      .finally(() => {});
 
-    })
-    .catch((error)=>{
-      console.error("error while creating subcategory:", error);
-
-    })
-    .finally(()=>{
-
-    })
-    
     // setSubmitting(false);
   };
 
@@ -54,14 +55,15 @@ const SubCategoryTable = ({
     onSubmit,
   });
 
-
   const handleDelete = (subCategoryId) => {
     axiosInstance
       .delete(`admin/subcategories-retrieve-update-destroy/${subCategoryId}/`)
       .then((response) => {
         console.log("Category deleted:", subCategoryId);
         setSubcategories((prevsubcategories) =>
-          prevsubcategories.filter((subcategory) => subcategory.id !== subCategoryId)
+          prevsubcategories.filter(
+            (subcategory) => subcategory.id !== subCategoryId
+          )
         );
         toast.warning("Deleted successfully");
       })
@@ -70,11 +72,6 @@ const SubCategoryTable = ({
         toast.error("error while deleting Subcategory");
       });
   };
-  
-
-
-
-
 
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-md">
@@ -124,9 +121,8 @@ const SubCategoryTable = ({
                           </option>
                         ) : (
                           <>
-                          <option value="">Select a category</option>
+                            <option value="">Select a category</option>
                             {categories.map((category) => (
-                              
                               <option key={category.id} value={category.id}>
                                 {category.name}
                               </option>
@@ -170,14 +166,13 @@ const SubCategoryTable = ({
                       // disabled={formik.isSubmitting}
                       className="text-black border border-black bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                     >
-                      {formik.isSubmitting ? 'Creating...' : 'Create'}
+                      {formik.isSubmitting ? "Creating..." : "Create"}
                     </button>
                   </div>
                 </form>
               </>
             </div>
           </dialog>
-         
         </caption>
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
@@ -202,14 +197,11 @@ const SubCategoryTable = ({
                   {subCategory.name}
                 </th>
                 <td className="px-6 py-4">
-                  <button
-                    type="button"
-                    class="btn btn-accent btn-sm"
-                  >
+                  <button type="button" class="btn btn-accent btn-sm">
                     Edit
                   </button>
                   <button
-                    onClick={()=>handleDelete(subCategory.id)}
+                    onClick={() => handleDelete(subCategory.id)}
                     type="button"
                     class="btn btn-sm btn-error ml-2"
                   >

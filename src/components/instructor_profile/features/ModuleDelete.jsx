@@ -1,33 +1,38 @@
-import React,{useState} from "react";
-import { deleteModule } from './../../../api/instructorAPI';
-import { toast } from 'react-toastify';
+import React, { useState } from "react";
+import { deleteModule } from "./../../../api/instructorAPI";
+import { toast } from "react-toastify";
 
 const ModuleDelete = ({ module, setModules, modules }) => {
-    const [deleting, setDeleting] = useState(false);
+  const [deleting, setDeleting] = useState(false);
 
-    const handleModuleDelete = async (moduleId) =>{
-        setDeleting(true)
-        try{
-            const response = await deleteModule(moduleId);
+  const handleModuleDelete = async (moduleId) => {
+    setDeleting(true);
+    try {
+      const response = await deleteModule(moduleId);
 
-            const updatedModuleList = modules.filter((module)=> module.id !== moduleId)
-            setModules(updatedModuleList)   
-            toast.success('Module deleted successfully.')
-            document.getElementById(`module_delete_modal_${module.id}`).close()
-            setDeleting(false)
-
-        }catch(error){
-            setDeleting(false)
-            toast.error('Error while deleting module.')
-
-        }
+      const updatedModuleList = modules.filter(
+        (module) => module.id !== moduleId
+      );
+      setModules(updatedModuleList);
+      toast.success("Module deleted successfully.");
+      document.getElementById(`module_delete_modal_${module.id}`).close();
+      setDeleting(false);
+    } catch (error) {
+      setDeleting(false);
+      toast.error("Error while deleting module.");
     }
+  };
 
   return (
     <>
-      <div 
-      onClick={()=>document.getElementById(`module_delete_modal_${module.id}`).showModal()}
-      className="bg-red-700 hover:bg-red-800 hover:cursor-pointer p-1 rounded-md">
+      <div
+        onClick={() =>
+          document
+            .getElementById(`module_delete_modal_${module.id}`)
+            .showModal()
+        }
+        className="bg-red-700 hover:bg-red-800 hover:cursor-pointer p-1 rounded-md"
+      >
         <svg
           width="18"
           height="18"
@@ -93,7 +98,11 @@ const ModuleDelete = ({ module, setModules, modules }) => {
           </p>
           <div className="flex justify-center items-center space-x-4">
             <button
-              onClick={()=> document.getElementById(`module_delete_modal_${module.id}`).close()}
+              onClick={() =>
+                document
+                  .getElementById(`module_delete_modal_${module.id}`)
+                  .close()
+              }
               type="button"
               className="py-2 px-3 text-sm font-medium text-gray-500 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-primary-300 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
             >
@@ -105,9 +114,9 @@ const ModuleDelete = ({ module, setModules, modules }) => {
     >
       Yes, I'm sure
     </button> */}
-            
-              {deleting ? (
-                <button
+
+            {deleting ? (
+              <button
                 disabled
                 className="py-2 px-3 text-sm font-medium bg-red-700 text-white hover:bg-red-800 rounded-md"
               >
@@ -130,18 +139,14 @@ const ModuleDelete = ({ module, setModules, modules }) => {
                 </svg>
                 deleting...
               </button>
-              ):(
-                <button
-                onClick={()=> handleModuleDelete(module.id)}
+            ) : (
+              <button
+                onClick={() => handleModuleDelete(module.id)}
                 className="py-2 px-3 text-sm font-medium bg-red-700 text-white hover:bg-red-800 rounded-md"
               >
                 Yes, I'm sure
               </button>
-
-              )}
-           
-              
-           
+            )}
           </div>
         </div>
       </dialog>

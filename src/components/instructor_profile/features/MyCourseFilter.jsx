@@ -1,22 +1,26 @@
-import React,{useEffect,useState} from "react";
+import React, { useEffect, useState } from "react";
 
-const MyCourseFilter = ({setCourses, originalCourses}) => {
-    const [selectedFilter, setSelectedFilter] = useState("");
+const MyCourseFilter = ({ setCourses, originalCourses }) => {
+  const [selectedFilter, setSelectedFilter] = useState("");
 
-    const handleFilterChange = (event) =>{
-        const selectedValue = event.target.value;
-        setSelectedFilter(selectedValue);
+  const handleFilterChange = (event) => {
+    const selectedValue = event.target.value;
+    setSelectedFilter(selectedValue);
 
-        if(selectedValue === "approved"){
-            const filteredCourses = originalCourses.filter((course)=> course.is_approved === true );
-            setCourses(filteredCourses);
-        }else if(selectedValue === "pending"){
-            const filteredCourses = originalCourses.filter((course)=> course.is_approved === false );
-            setCourses(filteredCourses);      
-        }else{
-            setCourses(originalCourses);
-        }
+    if (selectedValue === "approved") {
+      const filteredCourses = originalCourses.filter(
+        (course) => course.is_approved === true
+      );
+      setCourses(filteredCourses);
+    } else if (selectedValue === "pending") {
+      const filteredCourses = originalCourses.filter(
+        (course) => course.is_approved === false
+      );
+      setCourses(filteredCourses);
+    } else {
+      setCourses(originalCourses);
     }
+  };
 
   return (
     <div className="mx-auto md:mr-6">

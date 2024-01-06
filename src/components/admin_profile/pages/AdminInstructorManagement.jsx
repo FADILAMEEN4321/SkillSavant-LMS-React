@@ -14,7 +14,6 @@ const AdminInstructorManagement = () => {
     });
 
     // Update the state with the filtered list
-    console.log(searchedList);
     setInstructors(searchedList);
   };
 
@@ -29,8 +28,6 @@ const AdminInstructorManagement = () => {
         console.error("Error fetching students:", error);
       });
   }, []);
-
-  console.log("----------->from inst---->", instructors);
 
   return (
     <>
@@ -59,7 +56,6 @@ const AdminInstructorManagement = () => {
                 Manage all Instructors of Skill savant.
               </p>
             </div>
-            {/* <div className="bg-cover bg-[url('/self-learning.jpg')] min-h-[200px] rounded-md" /> */}
           </div>
 
           <div className="container">

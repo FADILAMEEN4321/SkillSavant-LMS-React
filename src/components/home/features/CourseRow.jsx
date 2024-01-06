@@ -22,7 +22,7 @@ const CourseRow = ({
     } else {
       try {
         const response = await addToFavourites(studentId, courseId);
-        console.log(response);
+
         if (response.status === 201) {
           setPopularCourses((prevPopularCourses) =>
             prevPopularCourses.map((course) =>
@@ -148,14 +148,8 @@ const CourseRow = ({
                   key={course.id}
                   className="flex-shrink-0 snap-center w-[300px] hover:drop-shadow-xl transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-80 duration-300 bg-white shadow-xl rounded-lg overflow-hidden m-4"
                 >
-                  {/* h-[338px] */}
                   {/* Course Image */}
                   <Link to={`/courses/${course.id}`}>
-                    {/* <img
-                      className="object-cover w-full h-48"
-                      src={course.cover_image}
-                      alt="Course Image"
-                    /> */}
                     <div className="relative group">
                       <img
                         className="object-cover w-full h-48"
@@ -189,10 +183,7 @@ const CourseRow = ({
                     {/* Course Title */}
 
                     <Link to={`/courses/${course.id}`}>
-                      <h2
-                        className="line-clamp-2 uppercase hover:line-clamp-none text-md font-extrabold mb-2 overflow-hidden"
-                        // title={course.title} // Adding a tooltip using the title attribute
-                      >
+                      <h2 className="line-clamp-2 uppercase hover:line-clamp-none text-md font-extrabold mb-2 overflow-hidden">
                         {course.title}
                       </h2>
                     </Link>
@@ -212,8 +203,6 @@ const CourseRow = ({
                       {/* Instructor Name */}
                       <Link to={`/courses/${course.id}`}>
                         <p className="text-[13px] text-gray-500">
-                          {/* <span className="text-[16px] text-black"><i class="fas fa-user mr-2">
-     </i></span> */}
                           <span className="text-[16px] text-black">
                             <i class="fas fa-chalkboard-teacher mr-2 text-black"></i>
                           </span>
@@ -264,8 +253,6 @@ const CourseRow = ({
                 </div>
               ))
             )}
-
-            {/* <!-- Add more Latest Courses as needed --> */}
           </div>
         </div>
       </div>

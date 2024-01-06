@@ -15,7 +15,7 @@ const DiscussionRoom = ({ enrolledCourseId }) => {
   const handleFetchPreviousChats = async (enrolledCourseId) => {
     try {
       const response = await fetchPreviousChats(enrolledCourseId);
-      console.log(response.data);
+
       setMessages(response.data);
     } catch (error) {
       console.log("---->", error);
@@ -72,25 +72,6 @@ const DiscussionRoom = ({ enrolledCourseId }) => {
   return (
     <div className="mx-auto shadow-lg p-4 bg-white rounded-lg">
       <div className="h-80 overflow-y-auto border border-gray-200 p-4 rounded-lg mb-4">
-        {/* {messages.map((msg, index) => (
-        <div
-          key={index}
-          className={`flex mb-2 ${
-            msg.user_id === user_id ? 'justify-end' : 'justify-start'
-          }`}
-        >
-          <div
-            className={`py-2 px-4 rounded-lg ${
-              msg.user_id === user_id
-                ? 'bg-blue-500 text-white rounded-t-lg rounded-bl-lg'
-                : 'bg-gray-300 text-gray-800 rounded-t-lg rounded-br-lg'
-            }`}
-          >
-            {msg.first_name}: {msg.message}
-          </div>
-        </div>
-      ))} */}
-
         {messages.map((msg, index) => (
           <div
             key={index}
@@ -99,13 +80,6 @@ const DiscussionRoom = ({ enrolledCourseId }) => {
             }`}
           >
             <div className="chat-image avatar">
-              {/* <div className="w-10 rounded-full">
-        <img
-          alt="Tailwind CSS chat bubble component"
-          src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-        />
-      </div> */}
-
               <div className="relative w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
                 <svg
                   className="absolute w-12 h-12 text-gray-400 -left-1"
@@ -123,11 +97,7 @@ const DiscussionRoom = ({ enrolledCourseId }) => {
             </div>
             <div className="chat-header">
               {msg.first_name}
-              <time className="text-xs opacity-50">
-                {
-                  msg.timestamp /* Assuming you have a timestamp property in your message object */
-                }
-              </time>
+              <time className="text-xs opacity-50">{msg.timestamp}</time>
             </div>
             <div
               className={`chat-bubble ${

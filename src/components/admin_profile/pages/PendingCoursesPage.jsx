@@ -12,7 +12,6 @@ const PendingCoursesPage = () => {
     axiosInstance
       .get("admin/pending-courses/")
       .then((response) => {
-        console.log(response.data);
         setPendingCourses(response.data);
       })
       .catch((error) => {
@@ -50,7 +49,6 @@ const PendingCoursesPage = () => {
                 Manage all pending courses of skill savant.
               </p>
             </div>
-            {/* <div className="bg-cover bg-[url('/self-learning.jpg')] min-h-[200px] rounded-md" /> */}
           </div>
 
           <div className="container"></div>
@@ -97,8 +95,6 @@ const PendingCoursesPage = () => {
                   </Link>
                 ))
               )}
-
-              {/* Repeat the above course card div for each course */}
             </div>
           </div>
         </div>

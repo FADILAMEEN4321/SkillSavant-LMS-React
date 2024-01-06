@@ -17,7 +17,6 @@ const ApprovedCourseDetailPage = () => {
     axiosInstance
       .get(`courses-details/${courseId}/`)
       .then((response) => {
-        console.log(response.data);
         const { course, modules } = response.data;
         setCourse(course);
         setModules(modules);
@@ -36,7 +35,6 @@ const ApprovedCourseDetailPage = () => {
         `admin/course-approval-toggle/${courseId}/`
       );
       if (response.data) {
-        console.log(response.data);
         setCourse(response.data);
         toast.success("Blocked successfully");
       }

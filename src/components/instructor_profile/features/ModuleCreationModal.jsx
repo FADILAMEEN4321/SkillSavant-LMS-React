@@ -43,10 +43,8 @@ const ModuleCreationModal = ({ course, setModules }) => {
         setCreating(false);
         formik.resetForm();
         document.getElementById("module_modal").close();
-        console.log(response.data);
       }
     } catch (error) {
-      // toast.error('An error occurred while creating the course.');
       console.error("Error:", error);
       setCreating(false);
       if (error.response.data.message) {
@@ -65,12 +63,6 @@ const ModuleCreationModal = ({ course, setModules }) => {
 
   return (
     <>
-      {/* <button type="button" 
-    className="text-white bg-gradient-to-br from-green-400
-    to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none
-     focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg 
-     text-sm px-5 py-2.5 text-center mr-2 mb-2">+ Add New Module</button> */}
-
       <button
         onClick={() => document.getElementById("module_modal").showModal()}
         type="button"
@@ -142,31 +134,6 @@ const ModuleCreationModal = ({ course, setModules }) => {
                   </div>
                 )}
               </div>
-              {/* <div>
-                      <label
-                        htmlFor="duration"
-                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                      >
-                        Duration
-                      </label>
-                      <input
-                        type="number"
-                        name="duration"
-                        id="duration"
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        value={formik.values.duration}      
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Enter module duration"
-                        required
-                      />
-                      {formik.touched.duration && formik.errors.duration && (
-                        <div className="text-red-500">
-                          {formik.errors.duration}
-                        </div>
-                      )}
-                    
-                    </div> */}
 
               <div className="sm:col-span-2">
                 <label

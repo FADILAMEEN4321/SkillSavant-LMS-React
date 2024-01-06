@@ -5,8 +5,6 @@ import AuthContext from "../../../context/AuthContext";
 const StudenProfilePage = () => {
   let { userProfile, user } = useContext(AuthContext);
 
-  console.log(userProfile, "---------------from studentpage");
-
   useEffect(() => {
     initFlowbite();
   }, []);

@@ -12,7 +12,6 @@ const ApprovedCoursePage = () => {
     axiosInstance
       .get("admin/approved-courses/")
       .then((response) => {
-        console.log(response.data);
         setApprovedCourses(response.data);
       })
       .catch((error) => {
@@ -50,7 +49,6 @@ const ApprovedCoursePage = () => {
                 Manage all Approved courses of skill savant.
               </p>
             </div>
-            {/* <div className="bg-cover bg-[url('/self-learning.jpg')] min-h-[200px] rounded-md" /> */}
           </div>
 
           <div className="container"></div>
@@ -101,8 +99,6 @@ const ApprovedCoursePage = () => {
                   </Link>
                 ))
               )}
-
-              {/* Repeat the above course card div for each course */}
             </div>
           </div>
         </div>

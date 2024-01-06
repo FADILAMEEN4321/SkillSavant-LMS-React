@@ -30,7 +30,6 @@ const AdminDashboard = () => {
                 Dash board of skill savant.
               </p>
             </div>
-            {/* <div className="bg-cover bg-[url('/self-learning.jpg')] min-h-[200px] rounded-md" /> */}
           </div>
 
           <div className="container"></div>

@@ -18,8 +18,6 @@ const InstructorSignupPage = () => {
     try {
       const response = await axiosInstance.post("instructor-signup/", values);
 
-      console.log(response.data);
-      console.log("/instructor/otp/${values.email}");
       navigate(`/instructor/otp/${values.email}`);
     } catch (error) {
       console.error("Error:", error);
@@ -47,7 +45,6 @@ const InstructorSignupPage = () => {
 
   return (
     <>
-      {/* // bg-[url('/self-learning.jpg')] */}
       <section className="bg-center bg-cover bg-gradient-to-r from-teal-200 to-green-400 bg-no-repeat">
         <div className="w-full flex flex-wrap justify-center items-center py-24 px-6">
           {/* Text on the left */}

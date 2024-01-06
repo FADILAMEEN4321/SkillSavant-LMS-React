@@ -17,14 +17,13 @@ const TagTable = ({ tags, setTags, loading, subcategories }) => {
 
   const onSubmit = (values, { setSubmitting, resetForm }) => {
     // setSubmitting(true);
-    console.log("values fromtag--->", values);
+
     axiosInstance
       .post("admin/tags-list-create/", {
         name: values.tagName,
         subcategory: values.subCategory,
       })
       .then((response) => {
-        console.log("======>", response.data);
         const newTag = response.data;
         setTags((prevtags) => [...prevtags, newTag]);
         document.getElementById("my_modal_5").close();
@@ -50,7 +49,6 @@ const TagTable = ({ tags, setTags, loading, subcategories }) => {
     axiosInstance
       .delete(`admin/tags-retrieve-update-destroy/${tagId}/`)
       .then((response) => {
-        console.log("Category deleted:", tagId);
         setTags((prevtags) => prevtags.filter((tag) => tag.id !== tagId));
         toast.warning("Deleted successfully");
       })

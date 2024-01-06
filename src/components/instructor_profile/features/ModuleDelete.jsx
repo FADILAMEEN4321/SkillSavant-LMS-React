@@ -108,12 +108,6 @@ const ModuleDelete = ({ module, setModules, modules }) => {
             >
               No, cancel
             </button>
-            {/* <button
-      type="submit"
-      className="py-2 px-3 text-sm font-medium text-center text-white bg-red-600 rounded-md"
-    >
-      Yes, I'm sure
-    </button> */}
 
             {deleting ? (
               <button

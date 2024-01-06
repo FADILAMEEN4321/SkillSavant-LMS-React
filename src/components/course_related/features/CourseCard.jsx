@@ -72,14 +72,6 @@ const CourseCard = ({ courses, loading }) => {
                 key={course.id}
                 className="w-[300px] hover:drop-shadow-xl transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-80 duration-300 mx-auto bg-white shadow-xl rounded-lg overflow-hidden m-4"
               >
-                {/* h-[338px] */}
-                {/* Course Image */}
-                {/* <img
-                  className="object-cover w-full h-48"
-                  src={course.cover_image}
-                  alt="Course Image"
-                /> */}
-
                 <div className="relative group">
                   <img
                     className="object-cover w-full h-48"
@@ -111,12 +103,8 @@ const CourseCard = ({ courses, loading }) => {
                 {/* Course Details */}
                 <div className="p-4">
                   {/* Course Title */}
-                  {/* <h2 className="text-xl font-bold mb-2">{course.title}</h2> */}
 
-                  <h2
-                    className="line-clamp-2 uppercase hover:line-clamp-none text-md font-extrabold mb-2 overflow-hidden"
-                    // title={course.title} // Adding a tooltip using the title attribute
-                  >
+                  <h2 className="line-clamp-2 uppercase hover:line-clamp-none text-md font-extrabold mb-2 overflow-hidden">
                     {course.title}
                   </h2>
                   {/* Hours */}
@@ -176,27 +164,6 @@ const CourseCard = ({ courses, loading }) => {
           </>
         ))
       )}
-
-      {/* <div className="w-[300px] mx-auto bg-white shadow-xl rounded-lg overflow-hidden m-4 animate-pulse">
-    <div className="h-48 bg-gray-400"></div>
-    <div className="p-4">
-      <div className="h-4 w-full bg-gray-400 rounded-md mb-2"></div>
-      
-      <div className="h-4 w-3/4 rounded-md bg-gray-400 mb-2"></div>
-
-      <div className="flex justify-start items-center">
-      <div className="h-3 w-[12px] mr-2 rounded-full bg-gray-400 mt-7 mb-2"></div>
-      <div className="h-2 w-[59px] rounded-md bg-gray-400 mt-7 mb-2"></div>
-      </div>
-
-      <div className="flex justify-start items-center">
-      <div className="h-3 w-[12px] mr-2 rounded-full bg-gray-400  mb-2"></div>
-      <div className="h-2 w-[59px] rounded-md bg-gray-400  mb-2"></div>
-      </div>
-     
-     
-    </div>
-  </div> */}
     </>
   );
 };

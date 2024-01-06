@@ -13,7 +13,6 @@ const AdminSalesPage = () => {
       try {
         const response = await fetchSales();
         if (response.status === 200) {
-          console.log(response.data);
           setSales(response.data);
           setLoading(false);
         }

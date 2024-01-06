@@ -15,19 +15,13 @@ const SkillGPT = () => {
         course: courseName,
       });
 
-      // Handle the response as needed
-      console.log(response.data);
       const content = response.data.find((item) => item[0] === "content");
       if (content) {
         setLearnigPath(content[1]);
       }
       setLoading(false);
-
-      // Update state or perform other actions based on the response
-      //   setLearningPath(response.data);
     } catch (error) {
       console.error("Error submitting form:", error);
-      // Handle errors as needed
     }
   };
 

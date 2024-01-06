@@ -24,7 +24,6 @@ const CourseDelete = ({
       setDeleting(false);
 
       document.getElementById(`delete_modal_${course.id}`).close();
-      console.log(response);
     } catch (error) {
       console.log(error);
       setDeleting(false);
@@ -114,12 +113,7 @@ const CourseDelete = ({
             >
               No, cancel
             </button>
-            {/* <button
-      type="submit"
-      className="py-2 px-3 text-sm font-medium text-center text-white bg-red-600 rounded-md"
-    >
-      Yes, I'm sure
-    </button> */}
+
             {deleting ? (
               <button
                 disabled

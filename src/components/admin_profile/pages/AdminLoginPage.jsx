@@ -24,7 +24,7 @@ const AdminLoginPage = () => {
             <h5 className="text-xl font-medium text-gray-900 dark:text-white">
               Admin Panel Skill Savant
             </h5>
-            {/* ... Your login form fields and buttons ... */}
+
             <div>
               <label
                 htmlFor="email"

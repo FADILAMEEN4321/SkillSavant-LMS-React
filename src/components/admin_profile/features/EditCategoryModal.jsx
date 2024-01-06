@@ -19,7 +19,6 @@ const EditCategoryModal = ({ category, setCategories }) => {
   // Function to handle form submission
   const onSubmit = (values, categoryId) => {
     // setSubmitting(true);
-    console.log("Form submitted with values:", values);
 
     axiosInstance
       .put(`admin/categories-retrieve-update-destroy/${category.id}/`, {
@@ -96,7 +95,6 @@ const EditCategoryModal = ({ category, setCategories }) => {
                     Edit Category Name
                   </label>
                   <input
-                    // id="categoryName"
                     name="categoryName"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -116,9 +114,7 @@ const EditCategoryModal = ({ category, setCategories }) => {
                   type="submit"
                   className="text-black border border-black bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                 >
-                  {/* {formik.isSubmitting ? "Saving..." : "Save"}  */}
                   save
-                  {/* Create */}
                 </button>
               </div>
             </form>

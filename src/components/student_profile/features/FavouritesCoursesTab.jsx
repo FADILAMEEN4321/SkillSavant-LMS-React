@@ -115,25 +115,20 @@ const FavouritesCoursesTab = () => {
                     key={favCourse.id}
                     className="w-[300px] hover:drop-shadow-xl transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-80 duration-300 mx-auto bg-white shadow-xl rounded-lg overflow-hidden m-4"
                   >
-                    {/* h-[338px] */}
                     {/* Course Image */}
-                    {/* <Link to={`/courses/${favCourse.course_details.id}`}> */}
+
                     <img
                       className="object-cover w-full h-48"
                       src={favCourse.course_details?.cover_image}
                       alt="Course Image"
                     />
-                    {/* </Link> */}
 
                     {/* Course Details */}
                     <div className="p-4">
                       {/* Course Title */}
-                      {/* <h2 className="text-xl font-bold mb-2">{course.title}</h2> */}
+
                       <Link to={`/courses/${favCourse.course_details?.id}`}>
-                        <h2
-                          className="line-clamp-2 uppercase hover:line-clamp-none text-md font-extrabold mb-2 overflow-hidden"
-                          // title={course.title} // Adding a tooltip using the title attribute
-                        >
+                        <h2 className="line-clamp-2 uppercase hover:line-clamp-none text-md font-extrabold mb-2 overflow-hidden">
                           {favCourse.course_details?.title}
                         </h2>
                       </Link>
@@ -185,7 +180,6 @@ const FavouritesCoursesTab = () => {
                           </svg>
                         ) : (
                           <svg
-                            //   onClick={() => handleAddToFavourites(course.id)}
                             className="cursor-pointer"
                             width="24"
                             height="24"

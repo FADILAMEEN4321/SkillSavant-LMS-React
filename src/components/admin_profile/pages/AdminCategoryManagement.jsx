@@ -17,7 +17,6 @@ const AdminCategoryManagement = () => {
     axiosInstance
       .get("admin/categories-list-create/")
       .then((response) => {
-        console.log("from cat--->", response.data);
         setCategories(response.data);
       })
       .catch((error) => {
@@ -29,7 +28,6 @@ const AdminCategoryManagement = () => {
     axiosInstance
       .get("admin/subcategories-list-create/")
       .then((response) => {
-        console.log("subcat from cat--->", response.data);
         setSubcategories(response.data);
       })
       .catch((error) => {
@@ -42,7 +40,6 @@ const AdminCategoryManagement = () => {
     axiosInstance
       .get("admin/tags-list-create/")
       .then((response) => {
-        console.log("tags from cat----->", response.data);
         setTags(response.data);
       })
       .catch((error) => {
@@ -80,7 +77,6 @@ const AdminCategoryManagement = () => {
                 Manage all categories of skill savant.
               </p>
             </div>
-            {/* <div className="bg-cover bg-[url('/self-learning.jpg')] min-h-[200px] rounded-md" /> */}
           </div>
 
           <div className="container">

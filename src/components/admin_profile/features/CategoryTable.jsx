@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import EditCategoryModal from "./EditCategoryModal";
 
 const CategoryTable = ({ categories, setCategories, loading }) => {
-  // Define validation schema using Yup
+  // Validation schema using Yup
   const validationSchema = Yup.object().shape({
     categoryName: Yup.string()
       .required("Category name is required")
@@ -25,7 +25,6 @@ const CategoryTable = ({ categories, setCategories, loading }) => {
     axiosInstance
       .post("admin/categories-list-create/", { name: values.categoryName })
       .then((response) => {
-        console.log("category--table- creation-->", response.data);
         const newCategory = response.data;
         // Update the categories list with the new category
         setCategories((prevCategories) => [...prevCategories, newCategory]);
@@ -55,7 +54,6 @@ const CategoryTable = ({ categories, setCategories, loading }) => {
     axiosInstance
       .delete(`admin/categories-retrieve-update-destroy/${categoryId}/`)
       .then((response) => {
-        console.log("Category deleted:", categoryId);
         setCategories((prevCategories) =>
           prevCategories.filter((category) => category.id !== categoryId)
         );
@@ -101,7 +99,6 @@ const CategoryTable = ({ categories, setCategories, loading }) => {
                         Category Name
                       </label>
                       <input
-                        // id="categoryName"
                         name="categoryName"
                         className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                         onChange={formik.handleChange}
@@ -122,7 +119,6 @@ const CategoryTable = ({ categories, setCategories, loading }) => {
                       className="text-black border border-black bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                     >
                       {formik.isSubmitting ? "Creating..." : "Create"}
-                      {/* Create */}
                     </button>
                   </div>
                 </form>

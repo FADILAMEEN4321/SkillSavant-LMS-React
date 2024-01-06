@@ -29,7 +29,6 @@ const SubCategoryTable = ({
         category: values.category,
       })
       .then((response) => {
-        console.log("======>", response.data);
         const newSubCategory = response.data;
         setSubcategories((prevsubcategories) => [
           ...prevsubcategories,
@@ -59,7 +58,6 @@ const SubCategoryTable = ({
     axiosInstance
       .delete(`admin/subcategories-retrieve-update-destroy/${subCategoryId}/`)
       .then((response) => {
-        console.log("Category deleted:", subCategoryId);
         setSubcategories((prevsubcategories) =>
           prevsubcategories.filter(
             (subcategory) => subcategory.id !== subCategoryId

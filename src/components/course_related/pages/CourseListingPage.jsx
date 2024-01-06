@@ -120,12 +120,11 @@ const CourseListingPage = () => {
   return (
     <>
       {/* Main Content Container */}
-      {/* <div class="container mx-auto flex mt-6 "> */}
+
       <div className="container mx-auto flex mt-5 ">
         {/* Sidebar for Categories */}
-        {/* <div className="h-screen bg-gray-white rounded-md mt-5 hidden md:flex"> */}
+
         <div className="h-screen w-1/4 bg-gray-white rounded-md mt-5 hidden md:flex">
-          {/* Add category links and styling here */}
           {/* Tab Buttons */}
           <div className="p-4 w-full">
             <div className="grid gap-2 mb-3">
@@ -154,7 +153,6 @@ const CourseListingPage = () => {
                   <hr className="mt-4 mb-4"></hr>
                   <div className="h-4 bg-gray-300 rounded-md w-2/4 mb-2"></div>
                   <div className="h-4 bg-gray-300 rounded-md w-3/4"></div>
-                  {/* Add more skeleton elements as needed */}
                 </div>
               ) : (
                 categoryAndSubcategory.map((category) => (
@@ -182,13 +180,10 @@ const CourseListingPage = () => {
                   </>
                 ))
               )}
-
-              {/* Add more category tabs as needed */}
             </div>
           </div>
         </div>
         {/* Scrollable Area for Course Listings */}
-        {/* <div className="w-3/4 w-full md:w-3/4 px-4 mt-5 "> */}
 
         <div className="w-full md:w-3/4 px-4 mt-5 mb-5">
           {/* for mobile view */}
@@ -218,9 +213,7 @@ const CourseListingPage = () => {
             </div>
             <div className="bg-cover bg-[url('/self-learning.jpg')] min-h-[200px] rounded-md" />
           </div>
-          {/* <div class="container bg-blue-700 min-h-[50px] mb-4">
 
-  </div> */}
           <div className="container bg-white min-h-[8px] mb-4 p-2 overflow-x-auto">
             <div className="flex space-x-2">
               {/* Tag 1 */}
@@ -236,8 +229,6 @@ const CourseListingPage = () => {
                   <div className="h-8 bg-gray-200 mr-2 rounded-md w-[90px] mb-2"></div>
                   <div className="h-8 bg-gray-200 mr-2 rounded-md w-[90px] mb-2"></div>
                   <div className="h-8 bg-gray-200 mr-2 rounded-md w-[90px] mb-2"></div>
-
-                  {/* Add more skeleton elements as needed */}
                 </div>
               ) : (
                 tags.map((tag) => (
@@ -272,15 +263,7 @@ const CourseListingPage = () => {
               <option value="Beginner">Beginner</option>
               <option value="Intermediate">Intermediate</option>
               <option value="Advanced">Advanced</option>
-              {/* Add more options as needed */}
             </select>
-
-            {/* Second Select Field */}
-            {/* <select className="px-3 py-2 bg-white text-gray-900 border border-gray-900 rounded-md">
-              <option value="optionA">Option A</option>
-              <option value="optionB">Option B</option>
-            
-            </select> */}
           </div>
           <div className="container pl-4 mb-4">
             <h4 className="text-3xl font-bold text-gray-900">All courses</h4>
@@ -289,11 +272,8 @@ const CourseListingPage = () => {
             {/* Course Cards */}
 
             <CourseCard courses={courses} loading={loading} />
-
-            {/* Repeat the above course card div for each course */}
           </div>
         </div>
-        {/* </div> */}
       </div>
     </>
   );

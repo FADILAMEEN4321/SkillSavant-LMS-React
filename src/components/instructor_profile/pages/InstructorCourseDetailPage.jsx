@@ -25,7 +25,6 @@ const InstructorCourseDetailPage = () => {
     axiosInstance
       .get(`courses-details/${courseId}/`)
       .then((response) => {
-        console.log(response.data);
         const { course, modules } = response.data;
         setCourse(course);
         setModules(modules);
@@ -76,9 +75,8 @@ const InstructorCourseDetailPage = () => {
                         {course.subtitle}
                       </p>
                     )}
-                    {/* <p className="mt-2">All Students of Skill savant</p> */}
                   </div>
-                  {/* bg-[url('/self-learning.jpg')]  */}
+
                   <div
                     className="bg-cover min-h-[150px] rounded-md"
                     style={{

@@ -20,20 +20,18 @@ const InstructorCoursePage = (props) => {
     const fetchData = async () => {
       if (userProfile) {
         const instructorId = userProfile.id;
-        console.log("from instructor course page--->", instructorId);
-        // Set loading to true when starting the API call
+
         setLoading(true);
         try {
           const response = await axiosInstance.get(
             `instructor-courses/${instructorId}/`
           );
-          console.log(response.data);
+
           setCourses(response.data);
           setOriginalCourses(response.data);
         } catch (error) {
           console.error("Error fetching courses", error);
         } finally {
-          // Set loading to false when the API call is complete
           setLoading(false);
         }
       }
@@ -69,7 +67,6 @@ const InstructorCoursePage = (props) => {
                 Craft your legacy as a Skill Savant instructor.
               </p>
             </div>
-            {/* <div className="bg-cover bg-[url('/self-learning.jpg')] min-h-[160px] rounded-md" /> */}
           </div>
 
           <div className="container">
@@ -147,12 +144,9 @@ const InstructorCoursePage = (props) => {
                       {/* Course Details */}
                       <div className="p-4">
                         {/* Course Title */}
-                        {/* <h2 className="text-xl font-bold mb-2">{course.title}</h2> */}
+
                         <Link to={`/instructor/mycourses/${course.id}`}>
-                          <h2
-                            className="line-clamp-2 uppercase hover:line-clamp-none text-md font-extrabold mb-1 overflow-hidden"
-                            // title={course.title} // Adding a tooltip using the title attribute
-                          >
+                          <h2 className="line-clamp-2 uppercase hover:line-clamp-none text-md font-extrabold mb-1 overflow-hidden">
                             {course.title}
                           </h2>
                         </Link>
@@ -240,8 +234,6 @@ const InstructorCoursePage = (props) => {
                   </>
                 ))
               )}
-
-              {/* Repeat the above course card div for each course */}
             </div>
           </div>
         </div>

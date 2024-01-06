@@ -10,7 +10,6 @@ const EnrolledCourseTab = () => {
     axiosInstance
       .get("enrolled-courses/")
       .then((response) => {
-        console.log(response.data);
         setEnrolledCourses(response.data);
       })
       .catch((error) => {
@@ -95,7 +94,6 @@ const EnrolledCourseTab = () => {
                       key={enrolled.id}
                       className="w-[300px] hover:drop-shadow-xl transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-80 duration-300 mx-auto bg-white shadow-xl rounded-lg overflow-hidden m-4"
                     >
-                      {/* h-[338px] */}
                       {/* Course Image */}
                       <img
                         className="object-cover w-full h-48"
@@ -106,12 +104,8 @@ const EnrolledCourseTab = () => {
                       {/* Course Details */}
                       <div className="p-4">
                         {/* Course Title */}
-                        {/* <h2 className="text-xl font-bold mb-2">{course.title}</h2> */}
 
-                        <h2
-                          className="line-clamp-2 uppercase hover:line-clamp-none text-md font-extrabold mb-2 overflow-hidden"
-                          // title={course.title} // Adding a tooltip using the title attribute
-                        >
+                        <h2 className="line-clamp-2 uppercase hover:line-clamp-none text-md font-extrabold mb-2 overflow-hidden">
                           {enrolled.course.title}
                         </h2>
                         {/* Hours */}

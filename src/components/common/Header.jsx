@@ -2,7 +2,6 @@ import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import { axiosInstance } from "./../../services/axios";
-import SkillGPT from "./SkillGPT";
 
 const Header = () => {
   let { logoutUser, user, authTokens, setUserProfile, userProfile } =
@@ -29,33 +28,30 @@ const Header = () => {
             Authorization: `Bearer ${authTokens?.access}`,
           };
           if (user.role === "student") {
-            console.log("if condition---yes");
             const response = await axiosInstance.get(
               `student-profile-view-update/${user_id}/`,
               { headers }
             );
             if (response.status === 200) {
               const studentProfileData = response.data;
-              console.log("from header----------->", studentProfileData);
+
               setStudentData(studentProfileData);
               setUserProfile(studentProfileData);
             }
           }
           if (user.role === "instructor") {
-            console.log("if condition---yes admin");
             const response = await axiosInstance.get(
               `instructor-profile-view-update/${user_id}/`,
               { headers }
             );
             if (response.status === 200) {
               const studentProfileData = response.data;
-              console.log("from header----------->", studentProfileData);
+
               setStudentData(studentProfileData);
               setUserProfile(studentProfileData);
             }
           }
         } catch (error) {
-          // Handle any errors, e.g., by showing an error message or logging them
           console.error("Error fetching student profile data:", error);
         }
       };
@@ -63,8 +59,6 @@ const Header = () => {
       fetchStudentData();
     }
   }, [user]);
-
-  console.log(studentData, "---------------header");
 
   return (
     <div className="navbar bg-base-100 sticky inset-0 z-40 border-white/8 bg-opacity-80 shadow-md backdrop-blur-2xl backdrop-saturate-200">
@@ -154,20 +148,6 @@ const Header = () => {
           </ul>
         </div>
         <a className="btn btn-ghost normal-case text-xl mr-6">Skill Savant</a>
-        {/* {user ? (
-          user.role === 'student' && (
-            <div className="form-control w-full hidden md:flex rounded-md relative">
-  <input
-    type="text"
-    placeholder="What you want to learn ?"
-    className="input input-bordered md:w-auto hidden rounded-md md:flex bg-transparent"
-  />
-  <div className="absolute btn btn-sm right-2 rounded-md p-2 bg-gray-200 hover:bg-gray-300 text-[17px] top-1/2 transform -translate-y-1/2 cursor-pointer">
-  <i class="fas fa-search text-gray-900"></i>
-  </div>
-</div>
-          )
-        ):('')} */}
 
         {user
           ? user.role === "student" && (
@@ -223,25 +203,6 @@ const Header = () => {
               </li>
             )
           ) : (
-            // <li tabIndex={0}>
-            //       <details>
-            //         <summary>Courses</summary>
-            //         <ul className="p-2">
-            //           <li><a>Submenu 1</a></li>
-            //           <li><a>Submenu 2</a></li>
-            //         </ul>
-            //       </details>
-            //     </li>
-
-            // <li tabIndex={0}>
-            //   <details>
-            //     <summary>Courses</summary>
-            //     <ul className="p-2">
-            //       <li><a>Submenu 1</a></li>
-            //       <li><a>Submenu 2</a></li>
-            //     </ul>
-            //   </details>
-            // </li>
             <li>
               <Link to="/courses">
                 <span className="text-[15px] text-black">📚 Courses</span>

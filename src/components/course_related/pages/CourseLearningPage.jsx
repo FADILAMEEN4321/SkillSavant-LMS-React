@@ -18,10 +18,8 @@ const CourseLearningPage = () => {
     axiosInstance
       .get(`single-course-details/${courseId}/`)
       .then((response) => {
-        console.log(response.data);
         setCourseData(response.data);
-        console.log("---->modules====", response.data.modules[0]);
-        console.log("---->modules====", response.data.modules);
+
         if (response.data.modules) {
           setCurrentModule(response.data.modules[0]);
         }
@@ -46,9 +44,6 @@ const CourseLearningPage = () => {
             loading={loading}
             currentModule={currentModule}
           />
-          {/* sidebar */}
-
-          {/* ReactPlayer Component (replace with your ReactPlayer code) */}
 
           <LearningReactPlayer
             setCourseData={setCourseData}
@@ -138,7 +133,6 @@ const CourseLearningPage = () => {
                         </span>
                       </div>
                       <div class="flex items-center">
-                        {/* <i class="far fa-file-alt text-gray-500 mr-2"></i> */}
                         <span class="text-sm text-gray-600">
                           {module.duration}m
                         </span>

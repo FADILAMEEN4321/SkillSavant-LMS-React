@@ -16,7 +16,6 @@ const PendingCourseDetailPage = () => {
     axiosInstance
       .get(`courses-details/${courseId}/`)
       .then((response) => {
-        console.log(response.data);
         const { course, modules } = response.data;
         setCourse(course);
         setModules(modules);
@@ -35,7 +34,6 @@ const PendingCourseDetailPage = () => {
         `admin/course-approval-toggle/${courseId}/`
       );
       if (response.data) {
-        console.log(response.data);
         setCourse(response.data);
         toast.success("Course approved successfully");
       }
@@ -64,8 +62,6 @@ const PendingCourseDetailPage = () => {
                 <div className="relative container bg-blue-700 min-h-[200px] rounded-md mb-4">
                   <div className="absolute inset-0 bg-opacity-60 bg-black rounded-md" />
                   <div className="absolute left-0 top-0 bottom-0 p-4 text-white">
-                    {/* Your text content here */}
-
                     {loading ? (
                       <p>loading...</p>
                     ) : (

@@ -43,22 +43,13 @@ const InstructorProfilePage = () => {
                 Seamless control, powerful insights – Your gateway to an
                 enriched instructing journey.
               </p>
-              {/* <p className="mt-2">All Students of Skill savant</p> */}
             </div>
             <div className="bg-cover bg-[url('/self-learning.jpg')] min-h-[170px] rounded-md" />
           </div>
 
-          {/* <div> */}
-          {/* <InstructorDashboardGrid/> */}
-
-          {/* </div> */}
-
           <div className="container">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* <!-- Profile Details --> */}
-              {/* <div className="p-4 bg-white rounded shadow-lg"> */}
-              {/* <h2 className="text-2xl font-bold mb-2">Profile Details</h2> */}
-              {/* <!-- Add your profile information here --> */}
 
               <div className="p-4 bg-white rounded shadow-lg">
                 <div className="flex items-center justify-between">
@@ -117,10 +108,6 @@ const InstructorProfilePage = () => {
                   </>
                 </div>
               </div>
-
-              {/* </div> */}
-
-              {/* </div> */}
 
               {/* <!-- Instructor Statistics --> */}
               <div className="p-4 bg-white rounded shadow-lg">

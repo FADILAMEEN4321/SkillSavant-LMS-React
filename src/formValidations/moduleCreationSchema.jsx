@@ -1,30 +1,28 @@
-import * as Yup from 'yup';
+import * as Yup from "yup";
 
 export const moduleCreationSchema = Yup.object().shape({
-  module_title: Yup.string().required('* Module title is required.'),
-  module_order: Yup.number().required('* Module order is required.'),
-  // duration: Yup.number().required('Duration is required'),
+  module_title: Yup.string().required("* Module title is required."),
+  module_order: Yup.number().required("* Module order is required."),
   video_url: Yup.mixed()
-    .required('* Video file is required.')
+    .required("* Video file is required.")
     .test(
-      'fileFormat',
-      'Invalid file format. Only .mp4 files are allowed.',
+      "fileFormat",
+      "Invalid file format. Only .mp4 files are allowed.",
       (value) => {
         if (value) {
-          return ['video/mp4'].includes(value.type);
+          return ["video/mp4"].includes(value.type);
         }
-        return true; // Return true if the file is not selected
+        return true;
       }
     )
     .test(
-        'fileSize',
-        'File size is too large. Maximum size allowed is 100MB.',
-        (value) => {
-          if (value) {
-            return value.size <= 100 * 1024 * 1024; // 100MB in bytes
-          }
-          return true; 
+      "fileSize",
+      "File size is too large. Maximum size allowed is 100MB.",
+      (value) => {
+        if (value) {
+          return value.size <= 100 * 1024 * 1024; // 100MB in bytes
         }
-      ),
-    
-})
+        return true;
+      }
+    ),
+});

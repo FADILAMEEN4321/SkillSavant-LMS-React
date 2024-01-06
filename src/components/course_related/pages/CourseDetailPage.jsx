@@ -22,7 +22,6 @@ const CoursedetailPage = () => {
     axiosInstance
       .get(`single-course-details/${courseId}/`)
       .then((response) => {
-        console.log(response.data);
         setCourseDetails(response.data);
       })
       .catch((error) => {
@@ -41,7 +40,7 @@ const CoursedetailPage = () => {
         const response = await axiosInstance.get(
           `verify-course/${courseId}/${userProfile.id}`
         );
-        console.log(response.data, response.status);
+
         if (response.status === 200) {
           navigate(`/courses/enroll/${courseId}`);
         }
@@ -111,7 +110,6 @@ const CoursedetailPage = () => {
               <div className="flex flex-wrap items-center">
                 {/* Left Part - Video Player */}
                 <div className="md:w-full lg:w-1/3">
-                  {/* Replace 'your_video_url' with the actual video URL */}
                   <ReactPlayer
                     url={
                       courseDetails?.modules[0]
@@ -131,7 +129,7 @@ const CoursedetailPage = () => {
                   <h2 className="mb-3 line-clamp-3 capitalize hover:line-clamp-none text-2xl font-extrabold tracking-wide leading-none text-white md:text-3xl lg:text-4xl dark:text-white">
                     {courseDetails.title}
                   </h2>
-                  {/* Replace the placeholder data with actual course details */}
+
                   <p className="mb-4 text-lg font-normal capitalize text-gray-300 lg:text-xl dark:text-gray-400">
                     {courseDetails.subtitle}
                   </p>
@@ -174,8 +172,6 @@ const CoursedetailPage = () => {
                       </div>
                     </div>
                   </div>
-
-                  {/* Add more details as needed */}
                 </div>
               </div>
             </div>
@@ -260,7 +256,6 @@ const CoursedetailPage = () => {
                 <div className="h-4 rounded-md bg-gray-400 w-3/4 mb-4"></div>
                 <div className="h-4 rounded-md bg-gray-400 w-2/4 mb-4"></div>
                 <div className="h-4 rounded-md bg-gray-400 w-1/4 mb-4"></div>
-                {/* Add more skeleton elements as needed */}
               </div>
             ) : (
               <p className="text-gray-700">{courseDetails.description}</p>
@@ -312,7 +307,6 @@ const CoursedetailPage = () => {
                 <div className="h-4 rounded-md bg-gray-400 w-3/4 mb-4"></div>
                 <div className="h-4 rounded-md bg-gray-400 w-2/4 mb-4"></div>
                 <div className="h-4 rounded-md bg-gray-400 w-1/4 mb-4"></div>
-                {/* Add more skeleton elements as needed */}
               </div>
             ) : (
               <p className="text-gray-700 mt-2">

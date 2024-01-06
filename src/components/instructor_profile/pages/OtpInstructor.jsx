@@ -19,7 +19,6 @@ const OtpInstructor = () => {
         otp: enteredOtp,
       });
 
-      console.log(response);
       navigate("/instructor/login");
       toast.success("Verification successful. Please login now");
     } catch (error) {
@@ -55,7 +54,6 @@ const OtpInstructor = () => {
         </div>
 
         <div className="flex items-center justify-between">
-          {/* bg-gradient-to-r from-blue-500 to-red-500 hover:bg-gradient-to-l */}
           <button className="px-4 py-1 m-2 bg-transparent border text-gray-900 border-gray-900 hover:bg-gray-900 hover:text-white btn btn-sm rounded-md">
             submit
           </button>

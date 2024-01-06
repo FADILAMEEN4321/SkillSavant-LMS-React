@@ -16,7 +16,7 @@ const AdminUserManagement = () => {
     });
 
     // Update the state with the filtered list
-    console.log(searchedList);
+
     setStudents(searchedList);
   };
 
@@ -51,16 +51,12 @@ const AdminUserManagement = () => {
     axiosInstance
       .get("admin/students/")
       .then((response) => {
-        // console.log('API Response:', response.data);
         setStudents(response.data);
         setAllStudents(response.data);
-        // console.log('student-data---',students)
       })
       .catch((error) => {
         console.error("Error fetching students:", error);
       });
-
-    console.log("student-data---", students);
   }, []);
 
   return (
@@ -90,7 +86,6 @@ const AdminUserManagement = () => {
                 Manage all Students of Skill savant.
               </p>
             </div>
-            {/* <div className="bg-cover bg-[url('/self-learning.jpg')] min-h-[200px] rounded-md" /> */}
           </div>
           <div className="container">
             <div className="relative overflow-x-auto shadow-md sm:rounded-md">

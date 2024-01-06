@@ -28,7 +28,6 @@ const CourseCreationModal = ({ setCourses }) => {
     axiosInstance
       .get("admin/tags-list-create/")
       .then((response) => {
-        console.log(response.data);
         setTags(response.data);
       })
       .catch((error) => {
@@ -65,9 +64,6 @@ const CourseCreationModal = ({ setCourses }) => {
       instructor: userProfile.id,
     };
 
-    console.log("from---courese-crea-->", formData);
-    console.log("from---courese-crea-->", userProfile.id);
-
     try {
       const response = await axiosInstance.post("courses/create/", formData, {
         headers: {
@@ -76,13 +72,12 @@ const CourseCreationModal = ({ setCourses }) => {
       });
 
       if (response.data) {
-        // Show a success toast
+        // Show success toast
         const newCourse = response.data;
         setCourses((prevCourses) => [...prevCourses, newCourse]);
         document.getElementById("my_modal_6").close();
         toast.success("Course created successfully!");
         setCreating(false);
-        console.log(response.data);
       }
     } catch (error) {
       toast.error("An error occurred while creating the course.");

@@ -211,7 +211,7 @@ const CourseListingPage = () => {
                 Tailored for Success on SkillsAvant.{" "}
               </p>
             </div>
-            <div className="bg-cover bg-[url('/self-learning.jpg')] min-h-[200px] rounded-md" />
+            <div className="bg-cover bg-center bg-[url('/self-learning.png')] min-h-[200px] rounded-md" />
           </div>
 
           <div className="container bg-white min-h-[8px] mb-4 p-2 overflow-x-auto">

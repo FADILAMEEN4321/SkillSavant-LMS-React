@@ -52,19 +52,19 @@ const Home = () => {
 
       <section
         // bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')]
-        className="bg-gradient-to-r from-pink-900 to-blue-900 bg-green-900 dark:bg-gray-900 bg-center bg-no-repeat bg-cover"
-        // style={{ backgroundImage: "url(/hero-section.jpg)" }}
+        className="bg-gradient-to-r from-pink-900 to-blue-900 bg-green-900 dark:bg-gray-900 bg-center bg-cover bg-no-repeat"
+        // style={{ backgroundImage: "url(/hero-image.jpg)" }}
       >
         <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 grid lg:grid-cols-2 gap-8 lg:gap-16">
           <div className="flex flex-col justify-center">
             <Slide>
-              <h1 className="mb-4 text-4xl z-10 font-extrabold tracking-tight leading-none text-blue-200 md:text-5xl lg:text-6xl dark:text-white">
+              <h1 className="mb-4 text-4xl z-10 font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl dark:text-white">
                 Unlock Your Potential with Skill Savant{" "}
                 <span className="animate-bounce">🚀</span>
               </h1>
             </Slide>
             <Fade delay={1e3} cascade damping={1e-1}>
-              <p className="mb-8 text-lg font-normal z-10 text-gray-300 lg:text-xl dark:text-gray-400">
+              <p className="mb-8 text-lg font-normal z-10 text-gray-200 lg:text-xl dark:text-gray-400">
                 Explore a world of knowledge and enhance your skills from the
                 comfort of your home. Start your journey to success today.
               </p>

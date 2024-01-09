@@ -262,7 +262,7 @@ const Header = () => {
         <div className="dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
-              {studentData ? (
+              {studentData?.profile_photo ? (
                 <img src={studentData.profile_photo} />
               ) : (
                 <div className="w-10 rounded-full bg-gradient-to-br from-teal-500 to-indigo-900 btn btn-ghost btn-circle avatar"></div>

@@ -152,8 +152,8 @@ const CourseLearningPage = () => {
                       certificates from Stable Diffusion model.
                     </p>
                     <a className="font-semibold flex items-center" href="#">
-                      Get certified
-                      <i className="fas fa-arrow-right ml-2" />
+                      Feature Coming Soon...
+                      {/* <i className="fas fa-arrow-right ml-2" /> */}
                     </a>
                   </div>
                 </div>

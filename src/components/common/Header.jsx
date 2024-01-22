@@ -222,17 +222,7 @@ const Header = () => {
               )
             : ""}
 
-          {user
-            ? user.role === "student" && (
-                <li
-                  onClick={() =>
-                    document.getElementById("skillGPT").showModal()
-                  }
-                >
-                  <span className="text-[15px] text-black">🤹 skillGPT </span>
-                </li>
-              )
-            : ""}
+        
 
           {user ? (
             ""

@@ -64,34 +64,29 @@ const Home = () => {
               </h1>
             </Slide>
             <Fade delay={1e3} cascade damping={1e-1}>
-              <p className="mb-8 text-lg font-normal z-10 text-gray-200 lg:text-xl dark:text-gray-400">
+              <p className="mb-6 text-lg font-normal z-10 text-gray-200 lg:text-xl dark:text-gray-400 ">
                 Explore a world of knowledge and enhance your skills from the
                 comfort of your home. Start your journey to success today.
               </p>
             </Fade>
+            <Fade delay={1e3} cascade damping={1e-1}>
+              <p className="mb-5 text-base font-normal z-10 text-gray-200 lg:text-base dark:text-gray-400">
+                Try out SkillGPT to generate a complete roadmap for you.
+              </p>
+            </Fade>
             <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
               <Fade delay={1e3} cascade damping={1e-1}>
-                <Link
-                  to="/courses"
-                  className="inline-flex z-10 justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-md bg-gray-950 hover:bg-transparent hover:border hover:border-gary-950 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
+                <span
+                  className="relative inline-block overflow-hidden rounded-full p-[1px]"
+                  onClick={() =>
+                    document.getElementById("skillGPT").showModal()
+                  }
                 >
-                  Get started
-                  <svg
-                    className="w-3.5 h-3.5 ml-2"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 14 10"
-                  >
-                    <path
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M1 5h12m0 0L9 1m4 4L9 9"
-                    />
-                  </svg>
-                </Link>
+                  <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+                  <div className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950/90 px-7 py-3 text-base font-medium text-white backdrop-blur-3xl">
+                    Generate a Roadmap ✨
+                  </div>
+                </span>
               </Fade>
             </div>
           </div>
@@ -216,8 +211,8 @@ const Home = () => {
                 with OpenAI's Whisper model.
               </p>
               <a className="font-semibold flex items-center" href="#">
-                View transcripts
-                <i className="fas fa-arrow-right ml-2" />
+                Feature Coming Soon...
+                {/* <i className="fas fa-arrow-right ml-2" /> */}
               </a>
             </div>
           </div>
@@ -232,8 +227,8 @@ const Home = () => {
                 certificates from Stable Diffusion model.
               </p>
               <a className="font-semibold flex items-center" href="#">
-                Get certified
-                <i className="fas fa-arrow-right ml-2" />
+                Feature Coming Soon...
+                {/* <i className="fas fa-arrow-right ml-2" /> */}
               </a>
             </div>
           </div>

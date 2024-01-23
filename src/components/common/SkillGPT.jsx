@@ -34,7 +34,7 @@ const SkillGPT = () => {
     <>
       {/* You can open the modal using document.getElementById('ID').showModal() method */}
       <dialog id="skillGPT" className="modal">
-        <div className="modal-box">
+        <div className="modal-box custom-scrollbar">
           <form method="dialog">
             {/* if there is a button in form, it will close the modal */}
             <button
@@ -63,16 +63,16 @@ const SkillGPT = () => {
               />
               <button
                 type="submit"
-                className="btn btn-primary w-full mb-2 mt-2 text-black"
+                className={`btn btn-md btn-outline w-full mb-2 mt-2 text-black ${loading ? 'cursor-wait' : ''}`}
                 disabled={loading}
               >
-                {loading ? "creating..." : "Create Learning Path"}
+                {loading ? "creating..." : "Create Learning Path "}
               </button>
             </form>
-            <div className="bg-gray-200 p-4 rounded-md">
+            {learningPath && <div className="bg-gray-200 p-4 rounded-md">
               {/* {learningPath} */}
               <div dangerouslySetInnerHTML={{ __html: learningPath }} />
-            </div>
+            </div>}
           </div>
         </div>
       </dialog>

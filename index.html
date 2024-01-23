@@ -12,12 +12,37 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+    <style>
+    .custom-scrollbar::-webkit-scrollbar {
+    width: 10px;
+    
+  }
+  
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: white; /* Adjust the color as needed */
+    border-radius: 3px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background-color: #4B5563;
+    border-radius: 3px;
+  }
+    </style>
+
+
+
+
     <title>Skill Savant</title>
+
+
+
 
   
 
   </head>
-  <body>
+  <body class="custom-scrollbar">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
 

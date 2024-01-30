@@ -52,28 +52,31 @@ const Home = () => {
 
       <section
         // bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')]
-        className="bg-gradient-to-r from-pink-900 to-blue-900 bg-green-900 dark:bg-gray-900 bg-center bg-cover bg-no-repeat"
+        className="bg-gradient-to-r from-pink-900 to-blue-900 bg-green-900  dark:bg-gray-900 bg-center bg-cover bg-no-repeat"
         // style={{ backgroundImage: "url(/hero-image.jpg)" }}
       >
         <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 grid lg:grid-cols-2 gap-8 lg:gap-16">
-          <div className="flex flex-col justify-center">
+          <div className="flex mt-5 mb-5 flex-col justify-center">
+         
+            <Fade delay={1e3} cascade damping={1e-1}>
+              <p className="mb-2 text-lg font-normal z-10 text-gray-200 lg:text-xl dark:text-gray-400 ">
+              Skill Savant🧠📚 Where Passion Meets Progress🚀 
+              </p>
+            </Fade>
             <Slide>
-              <h1 className="mb-4 text-4xl z-10 font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl dark:text-white">
-                Unlock Your Potential with Skill Savant{" "}
-                <span className="animate-bounce">🚀</span>
+              <h1 className="mb-4 text-3xl z-10 font-extrabold tracking-tight leading-none text-white md:text-4xl lg:text-5xl dark:text-white">
+            
+              Immerse Yourself in Skills.
               </h1>
             </Slide>
             <Fade delay={1e3} cascade damping={1e-1}>
               <p className="mb-6 text-lg font-normal z-10 text-gray-200 lg:text-xl dark:text-gray-400 ">
-                Explore a world of knowledge and enhance your skills from the
-                comfort of your home. Start your journey to success today.
+              Empower Your Learning Journey with SkillGPT. 
+              <br></br>
+              Instantly Craft Your Personalized Learning Pathway
               </p>
             </Fade>
-            <Fade delay={1e3} cascade damping={1e-1}>
-              <p className="mb-5 text-base font-normal z-10 text-gray-200 lg:text-base dark:text-gray-400">
-                Try out SkillGPT to generate a complete roadmap for you.
-              </p>
-            </Fade>
+            
             <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
               <Fade delay={1e3} cascade damping={1e-1}>
                 <span
@@ -83,7 +86,7 @@ const Home = () => {
                   }
                 >
                   <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
-                  <div className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950/90 px-7 py-3 text-base font-medium text-white backdrop-blur-3xl">
+                  <div className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950/90 px-7 py-1 text-base font-medium text-white backdrop-blur-3xl">
                     Generate a Roadmap ✨
                   </div>
                 </span>

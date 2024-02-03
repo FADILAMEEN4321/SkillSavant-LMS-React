@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import ReactPlayer from "react-player";
 import { axiosInstance } from "./../../../services/axios";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
 import { FaLayerGroup } from "react-icons/fa";
 import { FaDollarSign } from "react-icons/fa";
@@ -14,6 +14,7 @@ const CoursedetailPage = () => {
   const { user, userProfile } = useContext(AuthContext);
 
   const [courseDetails, setCourseDetails] = useState({});
+  const [enrolled, setEnrolled] = useState(false);
   const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
@@ -31,6 +32,23 @@ const CoursedetailPage = () => {
       .finally(() => {
         setLoading(false);
       });
+  }, []);
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/login");
+    } else {
+      axiosInstance
+        .get(`verify-course/${courseId}/${userProfile.id}`)
+        .then((respone) => {
+          console.log(respone);
+          setEnrolled(false);
+        })
+        .catch((error) => {
+          console.log(error);
+          setEnrolled(true);
+        });
+    }
   }, []);
 
   const onClickVerifyCourse = async (courseId) => {
@@ -162,14 +180,27 @@ const CoursedetailPage = () => {
                     </div>
                     <div className="w-full h-full flex items-end">
                       <div>
-                        <button
-                          type="button"
-                          onClick={() => onClickVerifyCourse(courseDetails.id)}
-                          class="bg-white border border-gray-400 text-sm text-white text-center font-semibold p-3 rounded-md hover:bg-white hover:text-black"
-                        >
-                          <i class="fas fa-user-plus mr-2"></i>
-                          Enroll Now
-                        </button>
+                        {enrolled ? (
+                          <Link
+                            to={`/enrolled-course/${courseId}`}
+                            type="button"
+                            className="bg-white border border-gray-400 text-sm text-white text-center font-semibold p-3 rounded-md hover:bg-white hover:text-black"
+                          >
+                            <i className="fas fa-user-plus mr-2"></i>
+                            Continue Learning
+                          </Link>
+                        ) : (
+                          <button
+                            type="button"
+                            onClick={() =>
+                              onClickVerifyCourse(courseDetails.id)
+                            }
+                            class="bg-white border border-gray-400 text-sm text-white text-center font-semibold p-3 rounded-md hover:bg-white hover:text-black"
+                          >
+                            <i class="fas fa-user-plus mr-2"></i>
+                            Enroll Now
+                          </button>
+                        )}
                       </div>
                     </div>
                   </div>

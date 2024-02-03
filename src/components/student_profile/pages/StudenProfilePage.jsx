@@ -6,7 +6,7 @@ const StudenProfilePage = () => {
   let { userProfile, user } = useContext(AuthContext);
 
   useEffect(() => {
-    initFlowbite();
+    window.scrollTo(0, 0);
   }, []);
   return (
     <>

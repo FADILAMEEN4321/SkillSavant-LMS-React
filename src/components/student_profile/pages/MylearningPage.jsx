@@ -1,9 +1,12 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { MyLearningTabs, Tab } from "../features/MyLearningTabs";
 import EnrolledCourseTab from "../features/EnrolledCourseTab";
 import FavouritesCoursesTab from "../features/FavouritesCoursesTab";
 
 const MylearningPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       {/* Top section with heading */}

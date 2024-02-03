@@ -85,6 +85,7 @@ const CourseListingPage = () => {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     //URLs for API endpoints
     const categoriesSubCategoriesUrl = "categories-subcategories/";
     const tagsUrl = "tags/";

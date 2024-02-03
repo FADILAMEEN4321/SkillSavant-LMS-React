@@ -10,6 +10,7 @@ const EnrollmentPage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     axiosInstance
       .get(`single-course-details/${courseId}/`)
       .then((response) => {

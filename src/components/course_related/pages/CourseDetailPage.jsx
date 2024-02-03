@@ -19,6 +19,7 @@ const CoursedetailPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     axiosInstance
       .get(`single-course-details/${courseId}/`)
       .then((response) => {

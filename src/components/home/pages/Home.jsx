@@ -19,6 +19,7 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     //URLs for API endpoints
     const popularCoursesUrl = "popular-courses/";
     const latestCoursesUrl = "latest-courses/";

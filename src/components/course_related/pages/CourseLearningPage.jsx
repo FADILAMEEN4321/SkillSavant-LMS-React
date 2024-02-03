@@ -15,6 +15,7 @@ const CourseLearningPage = () => {
   const [currentModule, setCurrentModule] = useState({});
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     axiosInstance
       .get(`single-course-details/${courseId}/`)
       .then((response) => {

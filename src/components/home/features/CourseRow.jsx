@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { addToFavourites, removeFavourites } from "./../../../api/studentAPI";
 import AuthContext from "./../../../context/AuthContext";
+import classNames from "classnames";
 
 const CourseRow = ({
   title,
@@ -11,6 +12,7 @@ const CourseRow = ({
   setPopularCourses,
   setLatestCourses,
 }) => {
+  console.log(courses);
   const { userProfile, user } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -180,32 +182,42 @@ const CourseRow = ({
 
                   {/* Course Details */}
                   <div className="p-4">
+                    <span
+                      className={classNames({
+                        "bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-300 text-xs rounded font-medium px-2.5 py-0.5":
+                          course.level === "Beginner",
+                        "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300 text-xs rounded font-medium px-2.5 py-0.5":
+                          course.level === "Intermediate",
+                        "bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-300 text-xs rounded font-medium px-2.5 py-0.5":
+                          course.level === "Advanced",
+                      })}
+                    >
+                      {course.level}
+                    </span>
+
                     {/* Course Title */}
 
                     <Link to={`/courses/${course.id}`}>
-                      <h2 className="line-clamp-2 uppercase hover:line-clamp-none text-md font-extrabold mb-2 overflow-hidden">
+                      <h2 className="line-clamp-2 uppercase hover:line-clamp-none text-md font-extrabold mb-1 overflow-hidden">
                         {course.title}
                       </h2>
                     </Link>
+                    <hr classNames="" />
                     {/* Hours */}
                     <Link to={`/courses/${course.id}`}>
-                      <div className="flex items-center  mb-1">
-                        <span className="text-[16px]">
-                          <i class="far fa-clock mr-2"></i>
-                        </span>
+                      <div className="flex items-center mt-2  mb-1">
+                        <span className="text-[17px] mr-1">🕗</span>
                         <span className="text-[14px] text-gray-500">
                           {" "}
                           {course.duration}
                         </span>
                       </div>
                     </Link>
-                    <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center justify-between mb-1">
                       {/* Instructor Name */}
                       <Link to={`/courses/${course.id}`}>
                         <p className="text-[13px] text-gray-500">
-                          <span className="text-[16px] text-black">
-                            <i class="fas fa-chalkboard-teacher mr-2 text-black"></i>
-                          </span>
+                          <span className="text-[17px] mr-1">👨‍⚖️</span>
                           {course.instructor_first_name}{" "}
                           {course.instructor_last_name}
                         </p>

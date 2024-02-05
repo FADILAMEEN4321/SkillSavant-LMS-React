@@ -190,7 +190,7 @@ const CourseRow = ({
                           course.level === "Intermediate",
                         "bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-300 text-xs rounded font-medium px-2.5 py-0.5":
                           course.level === "Advanced",
-                      })}
+                      })} 
                     >
                       {course.level}
                     </span>
@@ -206,8 +206,8 @@ const CourseRow = ({
                     {/* Hours */}
                     <Link to={`/courses/${course.id}`}>
                       <div className="flex items-center mt-2  mb-1">
-                        <span className="text-[17px] mr-1">🕗</span>
-                        <span className="text-[14px] text-gray-500">
+                        <span className="text-[15px] mr-1">🕗</span>
+                        <span className="text-[13px] text-gray-500">
                           {" "}
                           {course.duration}
                         </span>
@@ -217,7 +217,7 @@ const CourseRow = ({
                       {/* Instructor Name */}
                       <Link to={`/courses/${course.id}`}>
                         <p className="text-[13px] text-gray-500">
-                          <span className="text-[17px] mr-1">👨‍⚖️</span>
+                          <span className="text-[15px] mr-1">👨‍⚖️</span>
                           {course.instructor_first_name}{" "}
                           {course.instructor_last_name}
                         </p>
@@ -227,8 +227,8 @@ const CourseRow = ({
                         <svg
                           onClick={() => handleRemoveFavourites(course.id)}
                           className="fill-red-500 cursor-pointer"
-                          width="24"
-                          height="24"
+                          width="21"
+                          height="21"
                           viewBox="0 0 24 24"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
@@ -245,8 +245,8 @@ const CourseRow = ({
                         <svg
                           onClick={() => handleAddToFavourites(course.id)}
                           className="cursor-pointer"
-                          width="24"
-                          height="24"
+                          width="21"
+                          height="21"
                           viewBox="0 0 24 24"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"

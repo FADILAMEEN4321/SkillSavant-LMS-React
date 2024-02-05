@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { axiosInstance } from "./../../../services/axios";
 import { Link } from "react-router-dom";
+import classNames from "classnames";
 
 const CourseCard = ({ courses, loading }) => {
   return (
@@ -102,31 +103,44 @@ const CourseCard = ({ courses, loading }) => {
 
                 {/* Course Details */}
                 <div className="p-4">
+                <span
+                      className={classNames({
+                        "bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-300 text-xs rounded font-medium px-2.5 py-0.5":
+                          course.level === "Beginner",
+                        "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300 text-xs rounded font-medium px-2.5 py-0.5":
+                          course.level === "Intermediate",
+                        "bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-300 text-xs rounded font-medium px-2.5 py-0.5":
+                          course.level === "Advanced",
+                      })}
+                    >
+                      {course.level}
+                    </span>
                   {/* Course Title */}
 
-                  <h2 className="line-clamp-2 uppercase hover:line-clamp-none text-md font-extrabold mb-2 overflow-hidden">
+                  <h2 className="line-clamp-2 uppercase hover:line-clamp-none text-md font-extrabold mb-1 overflow-hidden">
                     {course.title}
                   </h2>
+                  <hr classNames="" />
                   {/* Hours */}
-                  <div className="flex items-center  mb-1">
-                    <span className="text-[17px]">🕤</span>
-                    <span className="text-[14px] text-gray-500">
+                  <div className="flex items-center mt-2 mb-1">
+                    <span className="text-[15px] mr-1">🕤</span>
+                    <span className="text-[13px] text-gray-500">
                       {"  "}
                       {course.duration}
                     </span>
                   </div>
-                  <div className="flex items-center justify-between mb-2">
+                  <div className="flex items-center justify-between mb-1">
                     {/* Instructor Name */}
-                    <p className="text-[14px] text-gray-500">
-                      <span className="text-[17px]">👨‍⚖️</span>
+                    <p className="text-[13px] text-gray-500">
+                      <span className="text-[15px] mr-1">👨‍⚖️</span>
                       {course.instructor_first_name}{" "}
                       {course.instructor_last_name}
                     </p>
                     {course.is_favourite ? (
                       <svg
                         className="fill-red-500"
-                        width="24"
-                        height="24"
+                        width="21"
+                        height="21"
                         viewBox="0 0 24 24"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -142,8 +156,8 @@ const CourseCard = ({ courses, loading }) => {
                     ) : (
                       <svg
                         className=""
-                        width="24"
-                        height="24"
+                        width="21"
+                        height="21"
                         viewBox="0 0 24 24"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"

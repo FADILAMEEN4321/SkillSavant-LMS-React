@@ -243,7 +243,7 @@ const CourseListingPage = () => {
                   px-3 py-4 h-6 hover:cursor-pointer  font-bold
                     border border-gray-900 rounded-md 
                    flex items-center justify-center transition-all 
-                     whitespace-no-wrap`}
+                     whitespace-no-wrap capitalize`}
                   >
                     {tag.name}
                   </span>

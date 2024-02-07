@@ -35,9 +35,7 @@ const CoursedetailPage = () => {
   }, []);
 
   useEffect(() => {
-    if (!user) {
-      navigate("/login");
-    } else {
+    if (user) {
       axiosInstance
         .get(`verify-course/${courseId}/${userProfile.id}`)
         .then((respone) => {
@@ -48,7 +46,7 @@ const CoursedetailPage = () => {
           console.log(error);
           setEnrolled(true);
         });
-    }
+    } 
   }, []);
 
   const onClickVerifyCourse = async (courseId) => {

@@ -53,8 +53,9 @@ const Home = () => {
 
       <section
         // bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')]
-        className="bg-gradient-to-b from-gray-900 via-blue-700 to-white-600 dark:bg-gray-900 bg-center bg-cover bg-no-repeat"
-        style={{ backgroundImage: "url(src/assets/gradient2.jpg)" }}
+        // bg-gradient-to-br from-gray-900 via-purple-900 to-violet-600
+        className="bg-gradient-to-br from-gray-900 via-purple-900 to-violet-600 dark:bg-gray-900 bg-center bg-cover bg-no-repeat"
+        // style={{ backgroundImage: "url(src/assets/gradient2.jpg)" }}
       >
         <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 grid lg:grid-cols-2 gap-8 lg:gap-16">
           <div className="flex mt-5 mb-2 flex-col justify-center">

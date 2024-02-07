@@ -53,11 +53,11 @@ const Home = () => {
 
       <section
         // bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')]
-        className="bg-gradient-to-b from-gray-900 via-blue-900 to-white-600 dark:bg-gray-900 bg-center bg-cover bg-no-repeat"
-        style={{ backgroundImage: "url(src/assets/skilhero.jpg)" }}
+        className="bg-gradient-to-b from-gray-900 via-blue-700 to-white-600 dark:bg-gray-900 bg-center bg-cover bg-no-repeat"
+        style={{ backgroundImage: "url(src/assets/gradient2.jpg)" }}
       >
         <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 grid lg:grid-cols-2 gap-8 lg:gap-16">
-          <div className="flex mt-5 mb-5 flex-col justify-center">
+          <div className="flex mt-5 mb-2 flex-col justify-center">
          
             <Fade delay={1e3} cascade damping={1e-1}>
               <p className="mb-2 text-lg font-normal z-10 text-gray-200 lg:text-xl dark:text-gray-400 ">
@@ -96,9 +96,8 @@ const Home = () => {
           </div>
           <div></div>
         </div>
-      </section>
 
-      <section>
+
         <div class="scrolling-wrapper">
           <div class="scrolling-content">
             <div class="card rounded-md bg-gradient-to-r from-blue-500 to-indigo-600 p-4 text-white">
@@ -162,7 +161,12 @@ const Home = () => {
             </div>
           </div>
         </div>
+
+
+
       </section>
+
+      
 
       <CourseRow
         title="Popular Courses"

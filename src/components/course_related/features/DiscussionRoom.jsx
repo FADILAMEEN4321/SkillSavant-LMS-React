@@ -8,7 +8,7 @@ const DiscussionRoom = ({ enrolledCourseId }) => {
   const [messages, setMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState("");
   const [webSocket, setWebSocket] = useState(null);
-
+ 
   const user_id = user.user_id;
   const jwtToken = authTokens.access;
 

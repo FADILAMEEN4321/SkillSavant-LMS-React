@@ -1,42 +1,57 @@
 import React, { useState } from "react";
-import { axiosInstance } from "./../../services/axios";
+import { websocket_Url } from "./../../services/constants";
+import "./skillgpt.css";
 
 const SkillGPT = () => {
-  const [learningPath, setLearnigPath] = useState();
   const [courseName, setCourseName] = useState("");
+  const [streamedContent, setStreamedContent] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLearnigPath("");
-    setLoading(true);
-    try {
-      const response = await axiosInstance.post("learning-path-creation/", {
-        course: courseName,
-      });
+  const handleInputChange = (e) => {
+    setCourseName(e.target.value);
+  };
 
-      const content = response.data.find((item) => item[0] === "content");
-      if (content) {
-        setLearnigPath(content[1]);
+  /**
+   * Opens a WebSocket connection to the learning path creation endpoint.
+   * Sends the course name to the server and streams back the generated content.
+   * Displays a loading indicator and closes the connection when finished.
+   */
+  const handleGeneration = () => {
+    setStreamedContent("");
+
+    const socket = new WebSocket(`${websocket_Url}/ws/learning-path-creation`);
+
+    socket.onopen = () => {
+      setLoading(true);
+      console.log("WebSocket connected");
+      socket.send(JSON.stringify({ course_name: courseName }));
+    };
+
+    socket.onmessage = (message) => {
+      const content = JSON.parse(message.data);
+      if (content.content === "<:END:>") {
+        socket.close();
+        setLoading(false);
+      } else {
+        setStreamedContent((prevContent) => prevContent + content.content);
       }
-      setLoading(false);
-    } catch (error) {
-      console.error("Error submitting form:", error);
-    }
+    };
+
+    socket.onclose = () => {
+      console.log("WebSocket closed");
+    };
   };
 
   const clearModal = () => {
-    setLearnigPath("");
     setCourseName("");
+    setStreamedContent("");
   };
 
   return (
     <>
-      {/* You can open the modal using document.getElementById('ID').showModal() method */}
       <dialog id="skillGPT" className="modal">
         <div className="modal-box custom-scrollbar">
           <form method="dialog">
-            {/* if there is a button in form, it will close the modal */}
             <button
               className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
               onClick={clearModal}
@@ -50,7 +65,7 @@ const SkillGPT = () => {
               Create a Learning Path uisng AI.
             </h3>{" "}
             <hr className="mb-2" />
-            <form onSubmit={handleSubmit}>
+            <form>
               <input
                 type="text"
                 name="course_name"
@@ -58,21 +73,36 @@ const SkillGPT = () => {
                 className="bg-gray-50 border mb-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                 placeholder="Type the name of a course..."
                 value={courseName}
-                onChange={(e) => setCourseName(e.target.value)}
+                onChange={handleInputChange}
                 required
               />
               <button
-                type="submit"
-                className={`btn btn-md btn-outline w-full mb-2 mt-2 text-black ${loading ? 'cursor-wait' : ''}`}
-                disabled={loading}
+                type="button"
+                className={`btn btn-md btn-outline w-full mb-2 mt-2 text-black`}
+                onClick={handleGeneration}
               >
-                {loading ? "creating..." : "Create Learning Path "}
+                {loading ? (
+                  <>
+                    <div class="typing-indicator">
+                      <div class="typing-circle"></div>
+                      <div class="typing-circle"></div>
+                      <div class="typing-circle"></div>
+                      <div class="typing-shadow"></div>
+                      <div class="typing-shadow"></div>
+                      <div class="typing-shadow"></div>
+                    </div>
+                  </>
+                ) : (
+                  "Create Learning Path"
+                )}
               </button>
             </form>
-            {learningPath && <div className="bg-gray-200 p-4 rounded-md">
-              {/* {learningPath} */}
-              <div dangerouslySetInnerHTML={{ __html: learningPath }} />
-            </div>}
+            {streamedContent && (
+              <div className="bg-gray-300 p-4 rounded-md">
+                <p>{streamedContent}</p>
+                <div />
+              </div>
+            )}
           </div>
         </div>
       </dialog>
